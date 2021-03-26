@@ -1,0 +1,60 @@
+@import '/src/style/calc-theme.scss';
+
+.calc-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.calc-form-contents {
+    display: flex;
+    flex-direction: row;
+}
+
+.calc-form {
+    flex-grow: 1;
+}
+  
+.calc-results {
+    flex-grow: 1;
+    max-width: 500px;
+    margin-inline-start: 2rem
+}
+
+@media screen and (max-width: 1200px) {
+    .calc-form-contents {
+        display: block;
+    }
+
+    .calc-results {
+        max-width: 100%;
+        margin-block-start: 2rem;
+        margin-inline-start: 0;
+    }
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+
+.mat-card-avatar {
+    background-color: mat-color($calc-app-accent);
+    color: White;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+  .calc-accordion .mat-expansion-panel-header-title,
+  .calc-accordion .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+  
+  .calc-accordion .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  tr.mat-footer-row {
+    font-weight: bold;
+  }

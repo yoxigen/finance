@@ -1,0 +1,23 @@
+.input-with-symbol {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        right: 0;
+        opacity: .8;
+    }
+}
+
+.calc-percentage {
+    @extend .input-with-symbol;
+
+    width: 80px;
+
+    &::after {
+        content: '%';
+    }
+}
+
+.calc-medium-width {
+    width: 60px;
+}
