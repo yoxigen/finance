@@ -1,8 +1,8 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 export enum CalcTextType {
-  good,
-  bad
+  good = 'good',
+  bad = 'bad'
 }
 @Component({
   selector: 'calc-text',

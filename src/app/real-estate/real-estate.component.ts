@@ -1,18 +1,11 @@
+import { getCurrencySymbol } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
+import { Mortgage } from '../data_types/Mortgage';
+import { Rent } from '../data_types/Rent';
+import { calculatCapitalGainsTax, futureValue, subtractCapitalGainsTax } from '../math/payments';
+import { SummaryItem } from '../summary-table/summary-table.component';
+import { CalcTextType } from '../text/text.component';
 
-interface LoanConfig {
-  name: string,
-  months: number,
-  interestRate: number,
-  principal: number,
-}
-
-interface AmountPerMonths {
-  amount: number, 
-  months: number,
-  monthCount: number,
-}
 
 interface ChartDataItem {
     year: number, 
@@ -21,9 +14,12 @@ interface ChartDataItem {
     monthlyRentInvestment: number, 
     yearlyRentInvestment: number, 
     totalRentSavings: number,
+    totalRentInvestmentSum: number,
     mortgageInvestments: number,
     mortgageMonthlyInvestments: number,
-    mortgageAmountLeft: number
+    mortgageAmountLeft: number,
+    propertyValue: number,
+    solventMortgageAmount: number
 }
 
 type ChartData = ChartDataItem[];
@@ -40,7 +36,21 @@ export class RealEstateComponent implements OnInit {
   private _totalMortgageInvestmentSum: number;
   private _totalRentPaid: number;
 
-  chartData: ChartData = [];
+  yearsData: ChartData = [];
+  chartData: [string, number, number][] = [];
+  savingsChartData: [string, number, number][] = [];
+  chartColumns = ['Year', 'Mortgage', 'Rent'];
+  chartOptions = {
+    legend: {
+      position: 'bottom',
+    },
+    chartArea: {
+      right: 0,
+      left: 80,
+      height: 200
+    },
+    height: 280
+  };
 
   initialSum = 920000;
   price = 2120000;
@@ -52,11 +62,19 @@ export class RealEstateComponent implements OnInit {
   mortgage: Mortgage;
   rent: Rent;
 
-  displayedMortgageLoanColumns = ['name', 'principal', 'interestRate', 'months', 'monthlyPayment', 'total'];
+  displayedMortgageLoanColumns = ['principal', 'interestRate', 'months', 'monthlyPayment', 'total'];
   displayedChartDataTableColumns = ['year', 'rent', 'monthlyRentInvestment', 'totalRentSavings', 'mortgageMonthlyPayment', 'mortgageInvestments', 'mortgageAmountLeft'];
 
   currency: 'ILS';
   currencyFormat: '0.0-0';
+  currencySymbol = getCurrencySymbol('ILS', 'wide');
+
+  rentSummaryItems: SummaryItem[] = [];
+  mortgageSummaryItems: SummaryItem[] = [];
+
+  get totalTime(): number {
+    return this.mortgage.totalYears + this.extraYears;
+  }
 
   get mortgageSum(): number {
     return this.price - this.initialSum;
@@ -78,12 +96,20 @@ export class RealEstateComponent implements OnInit {
     return this._totalMortgageSavings;
   }
 
+  get totalMortgageInvestmentTax(): number {
+    return (this.totalMortgageSavings - this.totalMortgageInvestmentSum) * this.capitalGainsTax;
+  }
+
   get totalMortgageInvestmentGainsAfterTax(): number {
     return this.totalMortgageInvestmentSum + (this.totalMortgageSavings - this.totalMortgageInvestmentSum) * (1 - this.capitalGainsTax);
   }
 
+  get totalRentInvestmentGainsTax(): number {
+    return (this.totalRentSavings - this.totalRentInvestmentSum) * this.capitalGainsTax;
+  }
+
   get totalRentInvestmentGainsAfterTax(): number {
-    return this.totalRentInvestmentSum + (this.totalRentSavings - this.totalRentInvestmentSum) * (1 - this.capitalGainsTax);
+    return this.totalRentSavings - this.totalRentInvestmentGainsTax;
   }
 
   get totalRentPaid(): number {
@@ -126,21 +152,26 @@ export class RealEstateComponent implements OnInit {
     let mortgageInvestmentSum = 0;
     let totalRentPaid = 0;
 
-    const chartData: ChartData = [
+    const yearsData: ChartData = [
       {
         rent: this.rent.rentAtYear(0),
         year: 0,
         monthlyRentInvestment: 0,
         yearlyRentInvestment: this.initialSum,
         totalRentSavings: Math.floor(rentSavings),
+        totalRentInvestmentSum: this.initialSum,
         mortgageMonthlyPayment: this.mortgage.paymentAtMonth(0),
         mortgageInvestments: 0,
         mortgageMonthlyInvestments: 0,
-        mortgageAmountLeft: this.mortgage.totalAmount
+        mortgageAmountLeft: this.mortgage.totalAmount,
+        propertyValue: this.price,
+        solventMortgageAmount: 0
       }
     ];
 
-    for (let year = 0; year < this.mortgage.totalYears + this.extraYears; year++) {
+    const yearsCount = this.totalTime;
+
+    for (let year = 0; year < yearsCount; year++) {
       const rent = this.rent.rentAtYear(year);
       const mortgageMonthlyPayment = this.mortgage.paymentAtMonth(year * 12);
       const mortgageToRentDifference = mortgageMonthlyPayment - rent;
@@ -158,37 +189,161 @@ export class RealEstateComponent implements OnInit {
       });
       
       if (mortgageToRentDifference < 0) {
+        const mortgageMonthlyInvestment = Math.abs(mortgageToRentDifference);
+
         mortgageInvestments = Math.ceil(futureValue({
           yearlyInterestRate: this.investmentInterest,
           paymentsPerYear: 12,
           paymentCount: 12,
-          payment: -mortgageToRentDifference,
+          payment: mortgageMonthlyInvestment,
           initialValue: mortgageInvestments
         }));
-        mortgageInvestmentSum += this.mortgage.paymentAtYear(year) - rent * 12;
+        mortgageInvestmentSum += mortgageMonthlyInvestment * 12;
       }
-      
 
-      chartData.push({
+      const propertyValue = Math.floor(futureValue({
+        yearlyInterestRate: this.annualAssetInterest,
+        paymentsPerYear: 12,
+        paymentCount: (year + 1) * 12,
+        payment: 0,
+        initialValue: this.price
+      }));
+
+      yearsData.push({
         rent,
         year: year + 1,
         monthlyRentInvestment: Math.floor(monthlySavings),
         yearlyRentInvestment: Math.floor(monthlySavings) * 12,
         totalRentSavings: Math.floor(rentSavings),
+        totalRentInvestmentSum: rentInvestmentSum,
         mortgageMonthlyPayment,
         mortgageInvestments,
         mortgageMonthlyInvestments: mortgageToRentDifference < 0 ? -mortgageToRentDifference : 0,
-        mortgageAmountLeft
+        mortgageAmountLeft,
+        propertyValue,
+        solventMortgageAmount: propertyValue + subtractCapitalGainsTax(mortgageInvestmentSum, mortgageInvestments - mortgageInvestmentSum, this.capitalGainsTax) - mortgageAmountLeft
       });
     }
 
-    this.chartData = chartData;
-    console.table(chartData);
+    this.yearsData = yearsData;
+    console.table(yearsData);
     this._totalRentSavings = rentSavings;
     this._totalMortgageSavings = mortgageInvestments;
     this._totalRentInvestmentSum = rentInvestmentSum;
     this._totalMortgageInvestmentSum = mortgageInvestmentSum;
     this._totalRentPaid = totalRentPaid;
+
+    const rentInvestmentsGains = rentSavings - rentInvestmentSum;
+    const rentInvestmentsTax = calculatCapitalGainsTax(rentInvestmentsGains, this.capitalGainsTax);
+
+    this.chartData = getChartData(yearsData);
+    this.savingsChartData = getSavingsChartData(yearsData, this.capitalGainsTax);
+
+    this.rentSummaryItems = [
+      {
+        title: "Total rent paid",
+        valueType: CalcTextType.bad,
+        value: totalRentPaid,
+        description: `All the rent payments combined`
+      },
+      {
+        title: "Total money invested",
+        value: rentInvestmentSum,
+        description: `How much money was invested`
+      },
+      {
+        title: "Total money gained from investments",
+        value: rentInvestmentsGains,
+        description: `The gain from investments`
+      },
+      {
+        title: "Assets available (before tax)",
+        value: rentSavings,
+        description: `How much all invested assets are worth, before capital gains tax`
+      },
+      {
+        title: "Capital gains tax",
+        valueType: CalcTextType.bad,
+        value: rentInvestmentsTax,
+        description: `Tax money to pay`
+      },
+      {
+        title: "Assets available (after tax)",
+        valueType: CalcTextType.good,
+        value: rentSavings - rentInvestmentsTax,
+        description: `Soluble assets in investments`,
+        isHighlight: true
+      },
+      {
+        title: "Assets available minus rent paid",
+        value: rentSavings - rentInvestmentsTax - totalRentPaid,
+        description: `Soluble assets in investments`
+      },
+    ];
+
+    const mortgageInvestmentsGains = mortgageInvestments - mortgageInvestmentSum;
+    const mortgageInvestmentsTax = calculatCapitalGainsTax(mortgageInvestmentsGains, this.capitalGainsTax);
+    const futurePropertyValue = this.futurePropertyValue;
+
+    this.mortgageSummaryItems = [
+      {
+        title: "Total mortgage paid",
+        valueType: CalcTextType.bad,
+        value: this.mortgage.totalAmount + this.initialSum,
+        description: `Total money paid to return the mortgage`
+      },
+      {
+        title: "Avg. monthly payment",
+        value: this.mortgage.weightedAvgPayment,
+        description: "The avg payment for the while period of the mortgage"
+      },
+      {
+        title: "Total money invested",
+        value: mortgageInvestmentSum,
+        description: `How much money was invested, when the mortgage payment was lower than the rent payment`
+      },
+      {
+        title: "Total money gained from investments",
+        value: mortgageInvestmentsGains,
+        description: `The gain from investments`
+      },
+      {
+        title: "Assets available (before tax)",
+        value: mortgageInvestments,
+        description: `How much all invested assets (not including the property!) are worth, before capital gains tax`
+      },
+      {
+        title: "Capital gains tax",
+        valueType: CalcTextType.bad,
+        value: mortgageInvestmentsTax,
+        description: `Tax money to pay for investments`
+      },
+      {
+        title: "Assets available (after tax)",
+        valueType: CalcTextType.good,
+        value: mortgageInvestments - mortgageInvestmentsTax,
+        description: `Soluble assets in investments`,
+        isHighlight: true
+      },
+      {
+        title: "Property value",
+        valueType: CalcTextType.good,
+        value: futurePropertyValue,
+        description: `Value of the property at the end of the period`,
+      },
+      {
+        title: "Total assets value (after tax)",
+        valueType: CalcTextType.good,
+        value: futurePropertyValue + mortgageInvestments - mortgageInvestmentsTax,
+        description: `Property value + investments value`,
+        isHighlight: true
+      },
+      {
+        title: "Total value - money paid",
+        value: futurePropertyValue + mortgageInvestments - mortgageInvestmentsTax - (this.mortgage.totalAmount + this.initialSum),
+        description: `Money gained minus money paid`
+      },
+    ];
   }
 
   get futurePropertyValue(): number {
@@ -204,222 +359,18 @@ export class RealEstateComponent implements OnInit {
   }
 }
 
-class Rent {
-  initialRent: number;
-  annualIncreaseRate: number;
-
-  constructor(config: { initialRent: number, annualIncreaseRate: number}) {
-    Object.assign(this, config);
-  }
-
-  totalRent(months: number): number {
-    return months * this.initialRent;
-  }
-
-  rentPerYear(month: number): number[] {
-    return new Array(Math.ceil((month + 1) / 12))
-      .fill(this.initialRent)
-      .map((rent, year) => Math.floor(rent * (1 + year * this.annualIncreaseRate / 100)));
-  }
-
-  totalRentWithIncrease(months: number): number {
-    return this.rentPerYear(months).reduce((totalRent, yearRent) => 
-        totalRent + yearRent * 12
-      , 0);
-  }
-
-  rentAtMonth(month: number): number {
-    return this.rentPerYear(month).pop();
-  }
-
-  rentAtYear(year: number): number {
-    return this.rentAtMonth(year * 12);
-  }
+function getChartData(yearsData: ChartData): [string, number, number][] {
+  return yearsData.slice(1).map(yearData => [
+    yearData.year.toString(),
+    yearData.mortgageMonthlyPayment, 
+    yearData.rent
+  ]);
 }
 
-class Mortgage {
-  loans: Array<Loan>;
-  private _paymentPerMonths: AmountPerMonths[];
-
-  constructor(loans: Array<LoanConfig>, private onChange?: (mortgage: Mortgage) => void) {
-    this.loans = loans.map(loan => new Loan(loan, () => this.reset()));
-  }
-
-  get totalMonths(): number {
-    return Math.max(...this.loans.map(({months}) => months));
-  }
-
-  get totalYears(): number {
-    return this.totalMonths / 12;
-  }
-
-  get maxMonthlyPayment(): number {
-    return this.loans.reduce((total, {monthlyPayment}) => total + monthlyPayment, 0);
-  }
-
-  get weightedAvgPayment(): number {
-    const paymentPerMonths = this.paymentPerMonths;
-    const totalmonths = this.totalMonths;
-
-    return paymentPerMonths.reduce((weights, {monthCount, amount}) => 
-      weights + monthCount * amount
-    , 0) / this.totalMonths;
-  }
-
-  get totalAmount(): number {
-    return this.loans.reduce((total, loan) => total + loan.totalAmount, 0);
-  }
-
-  get avgInterestRate(): number {
-    return this.loans.reduce((total, loan) => total + loan.principal * loan.interestRate, 0) / this.principal;
-  }
-
-  get principal(): number {
-    return this.loans.reduce((total, {principal}) => total + principal, 0);
-  }
-
-  get paymentPerMonths(): AmountPerMonths[] {
-    if (this._paymentPerMonths) {
-      return this._paymentPerMonths;
-    }
-
-    const paymentsPerMonths: Map<number, number> = this.loans.reduce((returnsMap, loan) => {
-      const monthsReturn = returnsMap.get(loan.months);
-      returnsMap.set(loan.months, (monthsReturn ?? 0) + loan.monthlyPayment);
-      return returnsMap;
-    }, new Map<number, number>());
-
-    paymentsPerMonths.forEach((amount, months) => {
-      paymentsPerMonths.forEach((_amount, _months) => {
-        if (months !== _months && months < _months) {
-          paymentsPerMonths.set(months, amount + _amount);
-        }
-      })
-    })
-
-    const amountPerMonths = Array.from(paymentsPerMonths.entries())
-      .map(([months, amount]) => ({months, amount}))
-      .sort((a, b) => a.months < b.months ? -1 : 1);
-
-    return amountPerMonths.map(({amount, months}, i) => ({ 
-      amount, 
-      months, 
-      monthCount: i ? months - amountPerMonths[i - 1].months : months
-    }));
-  }
-
-  reset() {
-    this._paymentPerMonths = null;
-    this.onChange && this.onChange(this);
-  }
-
-  paymentAtMonth(month: number): number {
-    const paymentPerMonths = this.paymentPerMonths
-    for (const {months, amount} of paymentPerMonths) {
-      if (month < months) {
-        return amount;
-      }
-    }
-
-    return 0;
-  }
-
-  paymentAtYear(year: number): number {
-    let yearPayment = 0;
-    const startingMonth = year * 12;
-    for (let month=0; month < 12; month++) {
-      const paymentAtMonth = this.paymentAtMonth(startingMonth + month);
-      if (paymentAtMonth) {
-        yearPayment += paymentAtMonth
-      } else {
-        return yearPayment;
-      }
-    }
-    return yearPayment;
-  }
-}
-
-class Loan {
-  name: string;
-  private _months: number;
-  private _interestRate: number;
-  private _principal: number;
-
-  private _totalAmount: number = null;
-  private _monthlyPayment: number = null;
-
-  constructor(config: LoanConfig, private onChange: (loan: Loan) => void) {
-    Object.assign(this, config);
-  }
-
-  get months(): number {
-    return this._months;
-  }
-
-  set months(value: number) {
-    this._months = value;
-    this.notifyOnChange();
-  }
-
-  get interestRate(): number {
-    return this._interestRate;
-  }
-
-  set interestRate(value: number) {
-    this._interestRate = value;
-    this.notifyOnChange();
-  }
-
-  get principal(): number {
-    return this._principal;
-  }
-
-  set principal(value: number) {
-    this._principal = value;
-    this.notifyOnChange();
-  }
-
-  get totalAmount(): number {
-    if (this._totalAmount !== null) {
-      return this._totalAmount;
-    }
-
-    return this._totalAmount = this.monthlyPayment * this.months;
-  }
-
-  get monthlyPayment(): number {
-    if (this._monthlyPayment !== null) {
-      return this._monthlyPayment;
-    }
-    return this._monthlyPayment =  Math.floor(pmt(this.interestRate, 12, this.months, this.principal));
-  }
-
-  private notifyOnChange() {
-    this._totalAmount = null;
-    this._monthlyPayment = null;
-    this.onChange(this);
-  }
-}
-
-function calcCompound(initialBalance: number, interestRate: number, nPeriods: number, nCompound: number = 1): number {
-  return futureValue({
-    yearlyInterestRate: interestRate,
-    paymentsPerYear: nCompound,
-    paymentCount: nPeriods,
-    payment: 0,
-    initialValue: initialBalance
-  })
-}
-
-function pmt(rate: number, per: number, nper: number, principal: number) { 
-  const pRate = rate/(per * 100); 
-  const x = Math.pow(1 + pRate,nper); 
-  return (pRate * (x * principal))/(-1 + x)
-}
-
-function futureValue({yearlyInterestRate, paymentsPerYear = 12, paymentCount, payment = 0, initialValue = 0}: { yearlyInterestRate: number, paymentsPerYear?: number, paymentCount: number, payment?: number, initialValue?: number}): number {
-  const pRate = yearlyInterestRate/(paymentsPerYear * 100); 
-  const x = Math.pow(1 + pRate,paymentCount); 
-  //return (payment * (x - 1) + pRate * x * initialValue ) /pRate;
-  return initialValue * x + payment * (x - 1) / pRate;
+function getSavingsChartData(yearsData: ChartData, capitalGainsTax: number): [string, number, number][] {
+  return yearsData.map(yearData => [
+    yearData.year.toString(),
+    yearData.solventMortgageAmount, 
+    subtractCapitalGainsTax(yearData.totalRentInvestmentSum, yearData.totalRentSavings - yearData.totalRentInvestmentSum, capitalGainsTax)
+  ]);
 }

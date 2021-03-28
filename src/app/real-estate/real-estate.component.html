@@ -2,267 +2,248 @@
     <h1>Rent vs Ownership</h1>
     <div class="calc-form-contents">
         <div class="calc-form">
-            <mat-accordion class="calc-accordion" multi>
-                <mat-expansion-panel [expanded]="true">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Savings
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Initial sum
-                            <mat-icon>savings</mat-icon>
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
+            <div class="margin-bottom-1">
+                <mat-accordion class="calc-accordion " multi>
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Savings
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Initial sum
+                                <mat-icon>savings</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
 
-                    <mat-form-field class="calc-full-width">
-                        <mat-label>Initial Sum</mat-label>
-                        <input type="number" matInput placeholder="Your initial available sum" [(ngModel)]="initialSum"
-                            (ngModelChange)="calcTotalSavings()" name="initialSum" #ctrl="ngModel">
-                    </mat-form-field>
+                        <div class="calc-flex-horizontal sum-inputs">
+                            <mat-form-field class="calc-flex-1">
+                                <mat-label>Initial Sum</mat-label>
+                                <input type="number" matInput placeholder="Your initial available sum"
+                                    [(ngModel)]="initialSum" (ngModelChange)="calcTotalSavings()" name="initialSum"
+                                    #ctrl="ngModel">
+                                <span matSuffix>{{currencySymbol}}</span>
+                            </mat-form-field>
 
-                    <mat-form-field class="calc-full-width">
-                        <mat-label>Investment interest rate</mat-label>
-                        <input type="number" matInput placeholder="Average interest rate from investment"
-                            [(ngModel)]="investmentInterest" (ngModelChange)="calcTotalSavings()"
-                            name="investmentInterest" #ctrl="ngModel">
-                    </mat-form-field>
-                </mat-expansion-panel>
-
-                <mat-expansion-panel [expanded]="true">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Buy Property
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Mortgage, housing rate
-                            <mat-icon>account_balance</mat-icon>
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <mat-form-field>
-                        <mat-label>Asset Price</mat-label>
-                        <input type="number" matInput placeholder="The total price for the asset" [(ngModel)]="price"
-                            name="price" #ctrl="ngModel">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Annual value increase rate</mat-label>
-                        <input type="number" matInput placeholder="Increase in value for the property, annually"
-                            [(ngModel)]="annualAssetInterest" name="annualAssetInterest" #ctrl="ngModel">
-                    </mat-form-field>
-                    <table mat-table [dataSource]="mortgage.loans"
-                        class="mat-elevation-z2 calc-full-width margin-bottom-1">
-                        <ng-container matColumnDef="name">
-                            <th mat-header-cell *matHeaderCellDef> Name </th>
-                            <td mat-cell *matCellDef="let loan"> {{loan.name}} </td>
-                            <td mat-footer-cell *matFooterCellDef>Total</td>
-                        </ng-container>
-                        <ng-container matColumnDef="principal">
-                            <th mat-header-cell *matHeaderCellDef> Principal </th>
-                            <td mat-cell *matCellDef="let loan; let i = index;">
-                                <input [(ngModel)]="mortgage.loans[i].principal" class="calc-medium-width"
-                                    type="number" />
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-                                <calc-money [amount]="mortgage.principal"></calc-money>
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="interestRate">
-                            <th mat-header-cell *matHeaderCellDef> Interest Rate </th>
-                            <td mat-cell *matCellDef="let loan; let i = index;">
-                                <input [(ngModel)]="mortgage.loans[i].interestRate" type="number" step="0.1" min="0"
-                                    max="15" style="width: 40px" class="calc-medium-width" />%
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef> {{mortgage.avgInterestRate | number}}% </td>
-                        </ng-container>
-                        <ng-container matColumnDef="months">
-                            <th mat-header-cell *matHeaderCellDef> Months </th>
-                            <td mat-cell *matCellDef="let loan; let i = index;">
-                                <input [(ngModel)]="mortgage.loans[i].months" class="calc-medium-width" type="number"
-                                    min="1" />
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef> {{mortgage.totalMonths}} </td>
-                        </ng-container>
-                        <ng-container matColumnDef="monthlyPayment">
-                            <th mat-header-cell *matHeaderCellDef> Monthly payment </th>
-                            <td mat-cell *matCellDef="let loan">
-                                <calc-money [amount]="loan.monthlyPayment"></calc-money>
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-                                <calc-money [amount]="mortgage.maxMonthlyPayment"></calc-money>
-                                |
-                                <calc-money [amount]="mortgage.weightedAvgPayment"></calc-money>
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="total">
-                            <th mat-header-cell *matHeaderCellDef>Total amount</th>
-                            <td mat-cell *matCellDef="let loan">
-                                <calc-money [amount]="loan.totalAmount"></calc-money>
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-                                <calc-money [amount]="mortgage.totalAmount"></calc-money>
-                            </td>
-                        </ng-container>
-                        <tr mat-header-row *matHeaderRowDef="displayedMortgageLoanColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedMortgageLoanColumns;"></tr>
-                        <tr mat-footer-row *matFooterRowDef="displayedMortgageLoanColumns"></tr>
-                    </table>
-                    <dl>
-                        <dt>Property value after mortgage</dt>
-                        <dd>
-                            <calc-money type="good" [amount]="futurePropertyValue"></calc-money>
-                            (In {{mortgage.totalYears.toFixed(1)}} years)
-                        </dd>
-                        <dt>Investments value after mortgage</dt>
-                        <dd>
-                            <calc-money type="good" [amount]="totalMortgageInvestmentGainsAfterTax"></calc-money>
-                            (<calc-money [amount]="totalMortgageSavings"></calc-money> before {{capitalGainsTax * 100}}%
-                            capital gains tax)
-                        </dd>
-                        <dt>Total assets after mortgage</dt>
-                        <dd>
-                            <calc-money type="good"
-                                [amount]="futurePropertyValue + totalMortgageInvestmentGainsAfterTax"></calc-money>
-                        </dd>
-                    </dl>
-
-                </mat-expansion-panel>
-
-                <mat-expansion-panel [expanded]="true">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Rent
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Don't buy a property
-                            <mat-icon>hotel</mat-icon>
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <div class="calc-flex-horizontal calc-flex-300">
-                        <div class="calc-flex-1">
-                            <mat-form-field class="calc-full-width">
+                            <mat-form-field class="calc-flex-1">
                                 <mat-label>Current Rent</mat-label>
                                 <input type="number" matInput placeholder="What you're paying for rent now"
-                                    [(ngModel)]="rent.initialRent" (ngModelChange)="calcTotalSavings()"
-                                    name="currentRent" #ctrl="ngModel">
+                                    [(ngModel)]="rent.initialRent" (ngModelChange)="calcTotalSavings()" name="currentRent"
+                                    #ctrl="ngModel">
+                                <span matSuffix>{{currencySymbol}}</span>
                             </mat-form-field>
-                            <mat-form-field class="calc-full-width">
-                                <mat-label>Rent annual increase rate</mat-label>
+                        </div>
+                        <mat-form-field style="width: 200px" class="margin-bottom-1">
+                            <mat-label>Investment interest rate</mat-label>
+                            <input type="number" matInput placeholder="Average interest rate from investment"
+                                [(ngModel)]="investmentInterest" (ngModelChange)="calcTotalSavings()"
+                                name="investmentInterest" #ctrl="ngModel">
+                            <span matSuffix>%</span>
+                            <mat-hint align="start"><strong>Expected interest rate for investments</strong> </mat-hint>
+                        </mat-form-field>
+                        <div class="calc-flex-horizontal rate-inputs">
+                            <mat-form-field class="calc-flex-1">
+                                <mat-label>Rent annual increase</mat-label>
                                 <input type="number" matInput placeholder="In percent, how much rent increases per year"
                                     [(ngModel)]="rent.annualIncreaseRate" (ngModelChange)="calcTotalSavings()"
                                     name="rentAnnualIncreaseRate" #ctrl="ngModel">
+                                <span matSuffix>%</span>
+                            </mat-form-field>
+
+                            <mat-form-field class="calc-flex-1">
+                                <mat-label>Property value annual increase</mat-label>
+                                <input type="number" matInput placeholder="Increase in value for the property, annually"
+                                    [(ngModel)]="annualAssetInterest" name="annualAssetInterest" #ctrl="ngModel">
+                                <span matSuffix>%</span>
                             </mat-form-field>
                         </div>
-                        <div class="calc-flex-1">
-                            <dl>
-                                <dt>Total rent</dt>
-                                <dd>
-                                    <calc-money [amount]="rent.totalRent(mortgage.totalMonths)"></calc-money>
-                                </dd>
+                    </mat-expansion-panel>
 
-                                <dt>Total rent, with increase</dt>
-                                <dd>
-                                    <calc-money [amount]="rent.totalRentWithIncrease(mortgage.totalMonths)">
-                                    </calc-money>
-                                </dd>
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Buy Property
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Mortgage, housing rate
+                                <mat-icon>account_balance</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <mat-form-field>
+                            <mat-label>Asset Price</mat-label>
+                            <input type="number" matInput placeholder="The total price for the asset"
+                                [(ngModel)]="price" name="price" #ctrl="ngModel">
+                        </mat-form-field>
+                        
+                        <table mat-table [dataSource]="mortgage.loans"
+                            class="calc-full-width">
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef> Name </th>
+                                <td mat-cell *matCellDef="let loan"> {{loan.name}} </td>
+                                <td mat-footer-cell *matFooterCellDef>Total</td>
+                            </ng-container>
+                            <ng-container matColumnDef="principal">
+                                <th mat-header-cell *matHeaderCellDef> Principal </th>
+                                <td mat-cell *matCellDef="let loan; let i = index;">
+                                    <input [(ngModel)]="mortgage.loans[i].principal" 
+                                        class="calc-medium-width"
+                                        style="width: 70px"
+                                        type="number" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money [amount]="mortgage.principal"></calc-money>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="interestRate">
+                                <th mat-header-cell *matHeaderCellDef> Interest Rate </th>
+                                <td mat-cell *matCellDef="let loan; let i = index;">
+                                    <input [(ngModel)]="mortgage.loans[i].interestRate" type="number" step="0.1" min="0"
+                                        max="15" style="width: 40px" class="calc-medium-width" />%
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{mortgage.avgInterestRate | number}}% </td>
+                            </ng-container>
+                            <ng-container matColumnDef="months">
+                                <th mat-header-cell *matHeaderCellDef> Months </th>
+                                <td mat-cell *matCellDef="let loan; let i = index;">
+                                    <input [(ngModel)]="mortgage.loans[i].months" 
+                                        class="calc-medium-width"
+                                        type="number" 
+                                        min="1" />
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef> {{mortgage.totalMonths}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="monthlyPayment">
+                                <th mat-header-cell *matHeaderCellDef> Monthly payment </th>
+                                <td mat-cell *matCellDef="let loan">
+                                    <calc-money [amount]="loan.monthlyPayment"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money [amount]="mortgage.maxMonthlyPayment"></calc-money>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="total">
+                                <th mat-header-cell *matHeaderCellDef>Total amount</th>
+                                <td mat-cell *matCellDef="let loan">
+                                    <calc-money [amount]="loan.totalAmount"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money [amount]="mortgage.totalAmount"></calc-money>
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedMortgageLoanColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedMortgageLoanColumns;"></tr>
+                            <tr mat-footer-row *matFooterRowDef="displayedMortgageLoanColumns"></tr>
+                        </table>
+                    </mat-expansion-panel>
 
-                                <dt>Total investment</dt>
-                                <dd>
-                                    <calc-money [amount]="totalRentInvestmentSum"></calc-money>
-                                </dd>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Data per year
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                ...
+                                <mat-icon>table_chart</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <table mat-table [dataSource]="yearsData" class="calc-full-width">
+                            <ng-container matColumnDef="year">
+                                <th mat-header-cell *matHeaderCellDef>Year</th>
+                                <td mat-cell *matCellDef="let item"> {{item.year}} </td>
+                                <td mat-footer-cell *matFooterCellDef>{{totalTime}}</td>
+                            </ng-container>
+                            <ng-container matColumnDef="rent">
+                                <th mat-header-cell *matHeaderCellDef>Rent</th>
+                                <td mat-cell *matCellDef="let item">
+                                    <calc-money [type]="item.rent > item.mortgageMonthlyPayment ? 'bad' : null"
+                                        [amount]="item.rent"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money type="bad" [amount]="rent.totalRent(mortgage.totalMonths)"></calc-money>
+                                </td>
+                            </ng-container>
 
-                                <dt>Total savings</dt>
-                                <dd>
-                                    <calc-money [amount]="totalRentSavings"></calc-money>
-                                </dd>
+                            <ng-container matColumnDef="monthlyRentInvestment">
+                                <th mat-header-cell *matHeaderCellDef>Rent invest/month</th>
+                                <td mat-cell *matCellDef="let item">
+                                    <calc-money *ngIf="item.monthlyRentInvestment; else empty" type="good"
+                                        [amount]="item.monthlyRentInvestment"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money type="good" [amount]="totalRentInvestmentSum"></calc-money>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="totalRentSavings">
+                                <th mat-header-cell *matHeaderCellDef>Rent savings</th>
+                                <td mat-cell *matCellDef="let item">
+                                    <calc-money [amount]="item.totalRentSavings"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money type="good" [amount]="totalRentSavings"></calc-money>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="mortgageMonthlyPayment">
+                                <th mat-header-cell *matHeaderCellDef>Mortgage/month</th>
+                                <td mat-cell *matCellDef="let item">
+                                    <calc-money [type]="item.rent < item.mortgageMonthlyPayment ? 'bad' : null"
+                                        [amount]="item.mortgageMonthlyPayment"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money type="bad" [amount]="mortgage.totalAmount"></calc-money>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="mortgageInvestments">
+                                <th mat-header-cell *matHeaderCellDef>Mortgage savings</th>
+                                <td mat-cell *matCellDef="let item">
+                                    <calc-money *ngIf="item.mortgageInvestments; else empty" type="good"
+                                        [amount]="item.mortgageInvestments"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money type="good" [amount]="totalMortgageSavings"></calc-money>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="mortgageAmountLeft">
+                                <th mat-header-cell *matHeaderCellDef>Mortgage left</th>
+                                <td mat-cell *matCellDef="let item">
+                                    <calc-money [amount]="item.mortgageAmountLeft"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
 
-                                <dt>Total savings (after {{capitalGainsTax * 100}}% capital gains tax)</dt>
-                                <dd>
-                                    <calc-money type="good" [amount]="totalRentInvestmentGainsAfterTax"></calc-money>
-                                </dd>
-                            </dl>
+                                </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedChartDataTableColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedChartDataTableColumns;"></tr>
+                            <tr mat-footer-row *matFooterRowDef="displayedChartDataTableColumns"></tr>
+                        </table>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div class="calc-flex-horizontal calc-flex-800">
+                <mat-card class="calc-flex-1">
+                    <mat-card-header>
+                        <div mat-card-avatar>
+                            <mat-icon aria-hidden="false" aria-label="Summary">hotel</mat-icon>
                         </div>
-                    </div>
-                </mat-expansion-panel>
-                <mat-expansion-panel expanded="true">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Data per year
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            ...
-                            <mat-icon>table_chart</mat-icon>
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <table mat-table [dataSource]="chartData" class="mat-elevation-z2 calc-full-width">
-                        <ng-container matColumnDef="year">
-                            <th mat-header-cell *matHeaderCellDef>Year</th>
-                            <td mat-cell *matCellDef="let item"> {{item.year}} </td>
-                            <td mat-footer-cell *matFooterCellDef>{{mortgage.totalYears}}</td>
-                        </ng-container>
-                        <ng-container matColumnDef="rent">
-                            <th mat-header-cell *matHeaderCellDef>Rent</th>
-                            <td mat-cell *matCellDef="let item">
-                                <calc-money [type]="item.rent > item.mortgageMonthlyPayment ? 'bad' : null"
-                                    [amount]="item.rent"></calc-money>
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-                                <calc-money type="bad" [amount]="rent.totalRent(mortgage.totalMonths)"></calc-money>
-                            </td>
-                        </ng-container>
+                        <mat-card-title>Rent Summary</mat-card-title>
+                        <mat-card-subtitle>Summary after {{totalTime}} years</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <calc-summary-table [items]="rentSummaryItems"></calc-summary-table>
+                    </mat-card-content>
+                </mat-card>
 
-                        <ng-container matColumnDef="monthlyRentInvestment">
-                            <th mat-header-cell *matHeaderCellDef>Rent invest/month</th>
-                            <td mat-cell *matCellDef="let item">
-                                <calc-money *ngIf="item.monthlyRentInvestment; else empty" type="good"
-                                    [amount]="item.monthlyRentInvestment"></calc-money>
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-                                <calc-money type="good" [amount]="totalRentInvestmentSum"></calc-money>
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="totalRentSavings">
-                            <th mat-header-cell *matHeaderCellDef>Rent savings</th>
-                            <td mat-cell *matCellDef="let item">
-                                <calc-money [amount]="item.totalRentSavings"></calc-money>
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-                                <calc-money type="good" [amount]="totalRentSavings"></calc-money>
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="mortgageMonthlyPayment">
-                            <th mat-header-cell *matHeaderCellDef>Mortgage/month</th>
-                            <td mat-cell *matCellDef="let item">
-                                <calc-money [type]="item.rent < item.mortgageMonthlyPayment ? 'bad' : null"
-                                    [amount]="item.mortgageMonthlyPayment"></calc-money>
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-                                <calc-money type="bad" [amount]="mortgage.totalAmount"></calc-money>
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="mortgageInvestments">
-                            <th mat-header-cell *matHeaderCellDef>Mortgage savings</th>
-                            <td mat-cell *matCellDef="let item">
-                                <calc-money *ngIf="item.mortgageInvestments; else empty" type="good"
-                                    [amount]="item.mortgageInvestments"></calc-money>
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-                                <calc-money type="good" [amount]="totalMortgageSavings"></calc-money>
-                            </td>
-                        </ng-container>
-                        <ng-container matColumnDef="mortgageAmountLeft">
-                            <th mat-header-cell *matHeaderCellDef>Mortgage left</th>
-                            <td mat-cell *matCellDef="let item">
-                                <calc-money [amount]="item.mortgageAmountLeft"></calc-money>
-                            </td>
-                            <td mat-footer-cell *matFooterCellDef>
-
-                            </td>
-                        </ng-container>
-                        <tr mat-header-row *matHeaderRowDef="displayedChartDataTableColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedChartDataTableColumns;"></tr>
-                        <tr mat-footer-row *matFooterRowDef="displayedChartDataTableColumns"></tr>
-                    </table>
-                </mat-expansion-panel>
-            </mat-accordion>
+                <mat-card class="calc-flex-1">
+                    <mat-card-header>
+                        <div mat-card-avatar>
+                            <mat-icon aria-hidden="false" aria-label="Summary">account_balance</mat-icon>
+                        </div>
+                        <mat-card-title>Mortgage Summary</mat-card-title>
+                        <mat-card-subtitle>Summary after {{totalTime}} years</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <calc-summary-table [items]="mortgageSummaryItems"></calc-summary-table>
+                    </mat-card-content>
+                </mat-card>
+            </div>
         </div>
         <div class="calc-results">
             <mat-card class="calc-full-width">
@@ -271,10 +252,10 @@
                         <mat-icon aria-hidden="false" aria-label="Summary">science</mat-icon>
                     </div>
                     <mat-card-title>Results</mat-card-title>
-                    <mat-card-subtitle>Summary after {{mortgage.totalYears}} years</mat-card-subtitle>
+                    <mat-card-subtitle>Summary after {{totalTime}} years</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <table class="mat-table mat-elevation-z2 calc-full-width">
+                    <table class="mat-table calc-full-width">
                         <thead>
                             <tr class="mat-header-row">
                                 <th class="mat-header-cell"></th>
@@ -288,59 +269,115 @@
                                     <strong>Total assets value</strong>
                                 </td>
                                 <td class="mat-cell">
-                                    <calc-money 
-                                        [type]="totalRentInvestmentGainsAfterTax > totalMortgageFutureValue ? 'good' : null" 
+                                    <calc-money
+                                        [type]="totalRentInvestmentGainsAfterTax > totalMortgageFutureValue ? 'good' : null"
                                         [amount]="totalRentInvestmentGainsAfterTax"></calc-money>
                                 </td>
                                 <td class="mat-cell">
                                     <calc-money
-                                        [type]="totalRentInvestmentGainsAfterTax < totalMortgageFutureValue ? 'good' : null" 
+                                        [type]="totalRentInvestmentGainsAfterTax < totalMortgageFutureValue ? 'good' : null"
                                         [amount]="totalMortgageFutureValue">
                                     </calc-money>
                                 </td>
                             </tr>
                             <tr class="mat-row">
-                                <td class="mat-cell">Total gains</td>
+                                <td class="mat-cell">Total gains (after tax)</td>
                                 <td class="mat-cell">
-                                    <calc-money 
-                                        [type]="totalRentGain > totalMortgageGain ? 'good' : null" 
+                                    <calc-money [type]="totalRentGain > totalMortgageGain ? 'good' : null"
                                         [amount]="totalRentGain"></calc-money>
                                 </td>
                                 <td class="mat-cell">
-                                    <calc-money
-                                        [type]="totalMortgageGain > totalRentGain ? 'good' : null" 
+                                    <calc-money [type]="totalMortgageGain > totalRentGain ? 'good' : null"
                                         [amount]="totalMortgageGain">
+                                    </calc-money>
+                                </td>
+                            </tr>
+                            <tr class="mat-row">
+                                <td class="mat-cell">
+                                    Capital gains tax
+                                </td>
+                                <td class="mat-cell">
+                                    <calc-money type="bad" [amount]="totalRentInvestmentGainsTax"></calc-money>
+                                </td>
+                                <td class="mat-cell">
+                                    <calc-money type="bad" [amount]="totalMortgageInvestmentTax">
+                                    </calc-money>
+                                </td>
+                            </tr>
+                            <tr class="mat-row">
+                                <td class="mat-cell">
+                                    Investments value
+                                </td>
+                                <td class="mat-cell">
+                                    <calc-money [amount]="totalRentSavings"></calc-money>
+                                </td>
+                                <td class="mat-cell">
+                                    <calc-money [amount]="totalMortgageSavings">
                                     </calc-money>
                                 </td>
                             </tr>
                             <tr class="mat-row">
                                 <td class="mat-cell">Total invested</td>
                                 <td class="mat-cell">
-                                    <calc-money 
-                                        [amount]="totalRentInvestmentSum"></calc-money>
+                                    <calc-money [amount]="totalRentInvestmentSum"></calc-money>
                                 </td>
                                 <td class="mat-cell">
-                                    <calc-money
-                                        [amount]="totalMortgageInvestmentGainsAfterTax">
+                                    <calc-money [amount]="totalMortgageInvestmentSum">
                                     </calc-money>
                                 </td>
                             </tr>
                             <tr class="mat-row">
                                 <td class="mat-cell">Total amount paid</td>
                                 <td class="mat-cell">
-                                    <calc-money 
-                                        [type]="totalRentPaid > mortgage.totalAmount + initialSum ? 'bad' : null" 
+                                    <calc-money
+                                        [type]="totalRentPaid > mortgage.totalAmount + initialSum ? 'bad' : null"
                                         [amount]="totalRentPaid"></calc-money>
                                 </td>
                                 <td class="mat-cell">
                                     <calc-money
-                                        [type]="mortgage.totalAmount + initialSum > totalRentPaid ? 'bad' : null" 
+                                        [type]="mortgage.totalAmount + initialSum > totalRentPaid ? 'bad' : null"
                                         [amount]="mortgage.totalAmount + initialSum">
                                     </calc-money>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="calc-full-width">
+                <mat-card-header>
+                    <div mat-card-avatar>
+                        <mat-icon aria-hidden="false" aria-label="Summary">show_chart</mat-icon>
+                    </div>
+                    <mat-card-title>Payments per time</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <google-chart 
+                    style="width: 100%;"
+                        [dynamicResize]="true"
+                        [data]="chartData"
+                        [columns]="chartColumns"
+                        type="LineChart"
+                        [options]="chartOptions"
+                    ></google-chart>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="calc-full-width">
+                <mat-card-header>
+                    <div mat-card-avatar>
+                        <mat-icon aria-hidden="false" aria-label="Summary">savings</mat-icon>
+                    </div>
+                    <mat-card-title>Savings per time</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <google-chart 
+                    style="width: 100%;"
+                        [dynamicResize]="true"
+                        [data]="savingsChartData"
+                        [columns]="chartColumns"
+                        type="LineChart"
+                        [options]="chartOptions"
+                    ></google-chart>
                 </mat-card-content>
             </mat-card>
         </div>

@@ -17,8 +17,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: flex;
     flex-direction: row;
 
-    .calc-flex-1 +   .calc-flex-1 {
-        margin-inline-start: 8px;
+    .calc-flex-1 + .calc-flex-1 {
+        margin-inline-start: 1rem;
     }
 }
 
@@ -26,14 +26,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex: 1;
 }
 
+@mixin undo-flex {
+    display: block;
+
+    .calc-flex-1 + .calc-flex-1 {
+        margin-inline-start: 0;
+        margin-block-start: 1rem;
+    }
+}
+
 @media screen and (max-width: 300px) {
   .calc-flex-300 {
-      display: block;
+      @include undo-flex;
   }
 }
 
+@media screen and (max-width: 800px) {
+    .calc-flex-800 {
+        @include undo-flex;
+    }
+  }
+
 @media screen and (max-width: 1200px) {
     .calc-flex-1200 {
-        display: block;
+        @include undo-flex;
     }
   }

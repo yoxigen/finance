@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,13 +19,15 @@ import {NgxMaterialToolsModule} from 'ngx-material-tools';
 import {MatTableModule} from '@angular/material/table';
 import { TextComponent } from './text/text.component';
 import { MoneyComponent } from './money/money.component';
+import { SummaryTableComponent } from './summary-table/summary-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RealEstateComponent,
     TextComponent,
-    MoneyComponent
+    MoneyComponent,
+    SummaryTableComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { MoneyComponent } from './money/money.component';
     MatToolbarModule,
     MatExpansionModule,
     NgxMaterialToolsModule,
-    MatTableModule
+    MatTableModule,
+    GoogleChartsModule
   ],
   providers: [
     {provide: DEFAULT_CURRENCY_CODE, useValue: 'ILS'}
