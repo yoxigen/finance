@@ -20,6 +20,7 @@ import {MatTableModule} from '@angular/material/table';
 import { TextComponent } from './text/text.component';
 import { MoneyComponent } from './money/money.component';
 import { SummaryTableComponent } from './summary-table/summary-table.component';
+import { RootComponent } from './root/root.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SummaryTableComponent } from './summary-table/summary-table.component';
     RealEstateComponent,
     TextComponent,
     MoneyComponent,
-    SummaryTableComponent
+    SummaryTableComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,

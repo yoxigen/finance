@@ -15,9 +15,11 @@ export class Loan {
   
     private _totalAmount: number = null;
     private _monthlyPayment: number = null;
-  
+    private isInit = false;
+
     constructor(config: LoanConfig, private onChange: (loan: Loan) => void) {
       Object.assign(this, config);
+      this.isInit = true;
     }
   
     get months(): number {
@@ -63,8 +65,10 @@ export class Loan {
     }
   
     private notifyOnChange() {
-      this._totalAmount = null;
-      this._monthlyPayment = null;
-      this.onChange(this);
+      if (this.isInit) {
+        this._totalAmount = null;
+        this._monthlyPayment = null;
+        this.onChange(this);
+      }
     }
   }

@@ -18,24 +18,38 @@
                         <div class="calc-flex-horizontal sum-inputs">
                             <mat-form-field class="calc-flex-1">
                                 <mat-label>Initial Sum</mat-label>
-                                <input type="number" matInput placeholder="Your initial available sum"
-                                    [(ngModel)]="initialSum" (ngModelChange)="calcTotalSavings()" name="initialSum"
+                                <input 
+                                    type="number" 
+                                    matInput 
+                                    placeholder="Your initial available sum"
+                                    [(ngModel)]="initialSum"
+                                    (ngModelChange)="update()"
+                                    name="initialSum"
                                     #ctrl="ngModel">
                                 <span matSuffix>{{currencySymbol}}</span>
                             </mat-form-field>
 
                             <mat-form-field class="calc-flex-1">
                                 <mat-label>Current Rent</mat-label>
-                                <input type="number" matInput placeholder="What you're paying for rent now"
-                                    [(ngModel)]="rent.initialRent" (ngModelChange)="calcTotalSavings()" name="currentRent"
+                                <input 
+                                    type="number" 
+                                    matInput 
+                                    placeholder="What you're paying for rent now"
+                                    [(ngModel)]="rent.initialRent" 
+                                    (ngModelChange)="update()" 
+                                    name="currentRent"
                                     #ctrl="ngModel">
                                 <span matSuffix>{{currencySymbol}}</span>
                             </mat-form-field>
                         </div>
                         <mat-form-field style="width: 200px" class="margin-bottom-1">
                             <mat-label>Investment interest rate</mat-label>
-                            <input type="number" matInput placeholder="Average interest rate from investment"
-                                [(ngModel)]="investmentInterest" (ngModelChange)="calcTotalSavings()"
+                            <input 
+                                type="number" 
+                                matInput 
+                                placeholder="Average interest rate from investment"
+                                [(ngModel)]="investmentInterest" 
+                                (ngModelChange)="update()"
                                 name="investmentInterest" #ctrl="ngModel">
                             <span matSuffix>%</span>
                             <mat-hint align="start"><strong>Expected interest rate for investments</strong> </mat-hint>
@@ -43,19 +57,40 @@
                         <div class="calc-flex-horizontal rate-inputs">
                             <mat-form-field class="calc-flex-1">
                                 <mat-label>Rent annual increase</mat-label>
-                                <input type="number" matInput placeholder="In percent, how much rent increases per year"
-                                    [(ngModel)]="rent.annualIncreaseRate" (ngModelChange)="calcTotalSavings()"
-                                    name="rentAnnualIncreaseRate" #ctrl="ngModel">
+                                <input 
+                                    type="number" 
+                                    matInput 
+                                    placeholder="In percent, how much rent increases per year"
+                                    [(ngModel)]="rent.annualIncreaseRate" 
+                                    (ngModelChange)="update()"
+                                    name="rentAnnualIncreaseRate"
+                                    #ctrl="ngModel">
                                 <span matSuffix>%</span>
                             </mat-form-field>
 
                             <mat-form-field class="calc-flex-1">
                                 <mat-label>Property value annual increase</mat-label>
-                                <input type="number" matInput placeholder="Increase in value for the property, annually"
-                                    [(ngModel)]="annualAssetInterest" name="annualAssetInterest" #ctrl="ngModel">
+                                <input 
+                                    type="number" 
+                                    matInput 
+                                    placeholder="Increase in value for the property, annually"
+                                    [(ngModel)]="annualAssetInterest" 
+                                    (ngModelChange)="update()"
+                                    name="annualAssetInterest" 
+                                    #ctrl="ngModel">
                                 <span matSuffix>%</span>
                             </mat-form-field>
                         </div>
+                        <mat-form-field style="width: 200px" class="margin-bottom-1">
+                            <mat-label>Extra years</mat-label>
+                            <input type="number" 
+                                matInput placeholder="Years to add"
+                                min="0"
+                                [(ngModel)]="extraYears" 
+                                (ngModelChange)="update()"
+                                name="extraYears" #ctrl="ngModel">
+                            <mat-hint align="start"><strong>See calculations for years after the end of the mortgage</strong> </mat-hint>
+                        </mat-form-field>
                     </mat-expansion-panel>
 
                     <mat-expansion-panel [expanded]="true">
@@ -145,6 +180,7 @@
                                 <mat-icon>table_chart</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
+                        <div style="height: 600px; max-height: calc(100vh - 100px); overflow: auto">
                         <table mat-table [dataSource]="yearsData" class="calc-full-width">
                             <ng-container matColumnDef="year">
                                 <th mat-header-cell *matHeaderCellDef>Year</th>
@@ -210,10 +246,11 @@
 
                                 </td>
                             </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="displayedChartDataTableColumns"></tr>
+                            <tr mat-header-row *matHeaderRowDef="displayedChartDataTableColumns; sticky: true"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedChartDataTableColumns;"></tr>
                             <tr mat-footer-row *matFooterRowDef="displayedChartDataTableColumns"></tr>
                         </table>
+                    </div>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
