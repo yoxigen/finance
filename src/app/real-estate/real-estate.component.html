@@ -10,7 +10,7 @@
                                 Savings
                             </mat-panel-title>
                             <mat-panel-description>
-                                Initial sum
+                                &nbsp;
                                 <mat-icon>savings</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
@@ -96,10 +96,10 @@
                     <mat-expansion-panel [expanded]="true">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                Buy Property
+                                Mortgage
                             </mat-panel-title>
                             <mat-panel-description>
-                                Mortgage, housing rate
+                                &nbsp;
                                 <mat-icon>account_balance</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
@@ -126,7 +126,7 @@
                                 Data per year
                             </mat-panel-title>
                             <mat-panel-description>
-                                ...
+                                &nbsp;
                                 <mat-icon>table_chart</mat-icon>
                             </mat-panel-description>
                         </mat-expansion-panel-header>
@@ -144,7 +144,7 @@
                                         [amount]="item.rent"></calc-money>
                                 </td>
                                 <td mat-footer-cell *matFooterCellDef>
-                                    <calc-money type="bad" [amount]="rent.totalRent(mortgage.totalMonths)"></calc-money>
+                                    <calc-money type="bad" [amount]="totalRentPaid"></calc-money>
                                 </td>
                             </ng-container>
 
@@ -159,12 +159,12 @@
                                 </td>
                             </ng-container>
                             <ng-container matColumnDef="totalRentSavings">
-                                <th mat-header-cell *matHeaderCellDef>Rent savings</th>
+                                <th mat-header-cell *matHeaderCellDef>Rent solvency</th>
                                 <td mat-cell *matCellDef="let item">
-                                    <calc-money [amount]="item.totalRentSavings"></calc-money>
+                                    <calc-money [amount]="item.solventRentAmount"></calc-money>
                                 </td>
                                 <td mat-footer-cell *matFooterCellDef>
-                                    <calc-money type="good" [amount]="totalRentSavings"></calc-money>
+                                    <calc-money type="good" [amount]="totalRentInvestmentGainsAfterTax"></calc-money>
                                 </td>
                             </ng-container>
                             <ng-container matColumnDef="mortgageMonthlyPayment">
@@ -185,6 +185,15 @@
                                 </td>
                                 <td mat-footer-cell *matFooterCellDef>
                                     <calc-money type="good" [amount]="totalMortgageSavings"></calc-money>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="mortgageSolvency">
+                                <th mat-header-cell *matHeaderCellDef>Mortgage solvency</th>
+                                <td mat-cell *matCellDef="let item">
+                                    <calc-money type="good" [amount]="item.solventMortgageAmount"></calc-money>
+                                </td>
+                                <td mat-footer-cell *matFooterCellDef>
+                                    <calc-money type="good" [amount]="totalMortgageInvestmentGainsAfterTax"></calc-money>
                                 </td>
                             </ng-container>
                             <ng-container matColumnDef="mortgageAmountLeft">

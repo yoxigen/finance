@@ -23,7 +23,8 @@ interface ChartDataItem {
   mortgageMonthlyInvestments: number,
   mortgageAmountLeft: number,
   propertyValue: number,
-  solventMortgageAmount: number
+  solventMortgageAmount: number,
+  solventRentAmount: number,
 }
 
 interface RentVsOwnershipQueryParams {
@@ -85,7 +86,16 @@ export class RealEstateComponent implements OnInit {
   mortgage: Mortgage;
   rent: Rent;
 
-  displayedChartDataTableColumns = ['year', 'rent', 'monthlyRentInvestment', 'totalRentSavings', 'mortgageMonthlyPayment', 'mortgageInvestments', 'mortgageAmountLeft'];
+  displayedChartDataTableColumns = [
+    'year', 
+    'rent', 
+    'monthlyRentInvestment', 
+    'totalRentSavings', 
+    'mortgageMonthlyPayment', 
+    'mortgageInvestments', 
+    'mortgageAmountLeft',
+    'mortgageSolvency'
+  ];
 
   currency: 'ILS';
   currencyFormat: '0.0-0';
@@ -282,7 +292,8 @@ export class RealEstateComponent implements OnInit {
         mortgageMonthlyInvestments: 0,
         mortgageAmountLeft: this.mortgage.totalAmount,
         propertyValue: this.price,
-        solventMortgageAmount: this.initialSum
+        solventMortgageAmount: this.initialSum,
+        solventRentAmount: this.initialSum
       }
     ];
 
@@ -338,7 +349,8 @@ export class RealEstateComponent implements OnInit {
         mortgageMonthlyInvestments: mortgageToRentDifference < 0 ? -mortgageToRentDifference : 0,
         mortgageAmountLeft,
         propertyValue,
-        solventMortgageAmount: propertyValue + subtractCapitalGainsTax(mortgageInvestmentSum, mortgageInvestments - mortgageInvestmentSum, this.capitalGainsTax) - mortgageAmountLeft
+        solventMortgageAmount: Math.floor(propertyValue + subtractCapitalGainsTax(mortgageInvestmentSum, mortgageInvestments - mortgageInvestmentSum, this.capitalGainsTax) - mortgageAmountLeft),
+        solventRentAmount: Math.floor(subtractCapitalGainsTax(rentInvestmentSum, rentSavings - rentInvestmentSum, this.capitalGainsTax))
       });
     }
 
@@ -488,6 +500,6 @@ function getSavingsChartData(yearsData: ChartData, capitalGainsTax: number): [st
   return yearsData.map(yearData => [
     yearData.year.toString(),
     yearData.solventMortgageAmount,
-    subtractCapitalGainsTax(yearData.totalRentInvestmentSum, yearData.totalRentSavings - yearData.totalRentInvestmentSum, capitalGainsTax)
+    yearData.solventRentAmount
   ]);
 }

@@ -41,3 +41,7 @@ td.mat-cell:first-of-type, th.mat-header-cell:first-of-type, td.mat-footer-cell:
 td.mat-cell:last-of-type, th.mat-header-cell:last-of-type, td.mat-footer-cell:last-of-type {
   padding-inline-end: 0 !important;
 }
+
+.mat-expansion-panel-header-title {
+  font-weight: bold;
+}
