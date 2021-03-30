@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -21,6 +22,7 @@ import { TextComponent } from './text/text.component';
 import { MoneyComponent } from './money/money.component';
 import { SummaryTableComponent } from './summary-table/summary-table.component';
 import { RootComponent } from './root/root.component';
+import { MortgageComponent } from './mortgage/mortgage.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { RootComponent } from './root/root.component';
     TextComponent,
     MoneyComponent,
     SummaryTableComponent,
-    RootComponent
+    RootComponent,
+    MortgageComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { RootComponent } from './root/root.component';
     MatExpansionModule,
     NgxMaterialToolsModule,
     MatTableModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    MatTooltipModule
   ],
   providers: [
     {provide: DEFAULT_CURRENCY_CODE, useValue: 'ILS'}

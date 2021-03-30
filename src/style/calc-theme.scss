@@ -29,3 +29,15 @@ $calc-app-theme: mat-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($calc-app-theme);
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
+
+td.mat-cell:first-of-type, th.mat-header-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-inline-start: 0 !important;
+}
+
+td.mat-cell:last-of-type, th.mat-header-cell:last-of-type, td.mat-footer-cell:last-of-type {
+  padding-inline-end: 0 !important;
+}

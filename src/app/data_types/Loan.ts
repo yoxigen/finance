@@ -1,14 +1,19 @@
 import { pmt } from "../math/payments";
 
+let lastLoanId = 0;
+
 export interface LoanConfig {
   name: string,
   months: number,
   interestRate: number,
   principal: number,
+  id?: string | number
 }
 
 export class Loan {
     name: string;
+    id: string | number;
+
     private _months: number;
     private _interestRate: number;
     private _principal: number;
@@ -20,6 +25,10 @@ export class Loan {
     constructor(config: LoanConfig, private onChange: (loan: Loan) => void) {
       Object.assign(this, config);
       this.isInit = true;
+
+      if (!this.id) {
+        this.id = ++lastLoanId;
+      }
     }
   
     get months(): number {
@@ -61,7 +70,11 @@ export class Loan {
       if (this._monthlyPayment !== null) {
         return this._monthlyPayment;
       }
-      return this._monthlyPayment =  Math.floor(pmt(this.interestRate, 12, this.months, this.principal));
+      if (!this.months || !this.principal) {
+        return this._monthlyPayment = 0;
+      }
+
+      return this._monthlyPayment = Math.floor(pmt(this.interestRate, 12, this.months, this.principal));
     }
   
     private notifyOnChange() {
@@ -70,5 +83,20 @@ export class Loan {
         this._monthlyPayment = null;
         this.onChange(this);
       }
+    }
+
+    serialize(): string {
+      return `${this.name.replace(/[_,]/g, ' ')}_${this.principal}_${this.interestRate}_${this.months}`;
+    }
+
+    static deserialize(serialized: string): LoanConfig {
+      const [name, ...values] = serialized.split("_");
+      const [principal, interestRate, months] = values.map(value => parseFloat(value));
+      return {
+        name,
+        principal,
+        interestRate, 
+        months
+      };
     }
   }

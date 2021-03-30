@@ -1,11 +1,13 @@
 import { getCurrencySymbol } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Params, NavigationEnd } from '@angular/router';
+import { LoanConfig } from '../data_types/Loan';
 import { Mortgage } from '../data_types/Mortgage';
 import { Rent } from '../data_types/Rent';
 import { calculatCapitalGainsTax, futureValue, subtractCapitalGainsTax } from '../math/payments';
 import { SummaryItem } from '../summary-table/summary-table.component';
 import { CalcTextType } from '../text/text.component';
+import { filter, skip } from 'rxjs/operators';
 
 const LOCAL_STORAGE_KEY = "rent-vs-ownership";
 
@@ -31,7 +33,8 @@ interface RentVsOwnershipQueryParams {
   investmentInterest: number,
   extraYears: number,
   capitalGainsTax: number,
-  rentAnnualIncreaseRate: number
+  rentAnnualIncreaseRate: number,
+  mortgage: string
 }
 
 type ChartData = ChartDataItem[];
@@ -47,6 +50,8 @@ export class RealEstateComponent implements OnInit {
   private _totalRentInvestmentSum: number;
   private _totalMortgageInvestmentSum: number;
   private _totalRentPaid: number;
+
+  private isInit = false;
 
   yearsData: ChartData = [];
   chartData: [string, number, number][] = [];
@@ -71,10 +76,15 @@ export class RealEstateComponent implements OnInit {
   extraYears = 0;
   capitalGainsTax = .25;
 
+  loansConfig: Array<LoanConfig> = [
+    { name: 'Prime', months: 20 * 12, interestRate: 1, principal: 360000 },
+    { name: 'Mishtana', months: 20 * 12, interestRate: 2.6, principal: 440000 },
+    { name: 'Fixed', months: 7 * 12, interestRate: 1.15, principal: 400000 },
+  ];
+
   mortgage: Mortgage;
   rent: Rent;
 
-  displayedMortgageLoanColumns = ['principal', 'interestRate', 'months', 'monthlyPayment', 'total'];
   displayedChartDataTableColumns = ['year', 'rent', 'monthlyRentInvestment', 'totalRentSavings', 'mortgageMonthlyPayment', 'mortgageInvestments', 'mortgageAmountLeft'];
 
   currency: 'ILS';
@@ -140,38 +150,48 @@ export class RealEstateComponent implements OnInit {
     return this.totalRentInvestmentGainsAfterTax - this.totalRentInvestmentSum;
   }
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.rent = new Rent({ initialRent: 4500, annualIncreaseRate: 3 });
-    this.mortgage = new Mortgage([
-      { name: 'Prime', months: 20 * 12, interestRate: 1, principal: 360000 },
-      { name: 'Mishtana', months: 20 * 12, interestRate: 2.6, principal: 440000 },
-      { name: 'Fixed', months: 7 * 12, interestRate: 1.15, principal: 400000 },
-    ], () => this.update());
 
-    this.route.queryParams.subscribe(params => {
-      const currentValuesQueryParams = this.getQueryParams();
-      const queryParams = this.getDataFromQueryParams(params);
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(
+      () => {
+          const currentValuesQueryParams = this.getQueryParams();
+          const queryParams = this.getDataFromQueryParams(this.activatedRoute.snapshot.queryParams);
 
-      if (JSON.stringify(currentValuesQueryParams) !== JSON.stringify(queryParams)) {
-        this.setDataFromQueryParams(queryParams);
-        this.calcTotalSavings();
+          if (JSON.stringify(currentValuesQueryParams) !== JSON.stringify(queryParams)) {
+            this.setDataFromQueryParams(queryParams);
+            this.calcTotalSavings();
+          }
+
+          this.isInit = true;
+          this.calcTotalSavings();
       }
-    });
+    );
 
-    this.calcTotalSavings();
+  }
+
+  setMortgage(mortgage: Mortgage) {
+    this.mortgage = mortgage;
+    this.update();
   }
 
   /**
    * Calculates results and summaries, updates the URL query params
    */
   update() {
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: this.getQueryParams(),
-      replaceUrl: true
-    })
+    if (this.isInit) {
+      this.router.navigate([], {
+        relativeTo: this.activatedRoute,
+        queryParams: this.getQueryParams(),
+        replaceUrl: true
+      })
+    }
     this.calcTotalSavings();
   }
 
@@ -183,19 +203,26 @@ export class RealEstateComponent implements OnInit {
       investmentInterest: this.investmentInterest,
       extraYears: this.extraYears,
       capitalGainsTax: this.capitalGainsTax,
-      rentAnnualIncreaseRate: this.rent.annualIncreaseRate
+      rentAnnualIncreaseRate: this.rent.annualIncreaseRate,
+      mortgage: this.mortgage ? this.mortgage.serialize() : undefined
     };
   }
 
   private getDataFromQueryParams(queryParams: Params): Params {
     const params = ['initialSum', 'rent', 'annualAssetInterest', 'investmentInterest', 'extraYears', 'capitalGainsTax', 'rentAnnualIncreaseRate'];
-    return params.reduce((numericParams, param) => {
+    const data = params.reduce((numericParams, param) => {
       const numericValue = getNumberFromParam(param);
-        return numericValue !== null ? {
-          ...numericParams,
-          [param]: numericValue
-        } : numericParams;
+      return numericValue !== null ? {
+        ...numericParams,
+        [param]: numericValue
+      } : numericParams;
     }, {});
+
+    if (queryParams.mortgage) {
+      data["mortgage"] = Mortgage.deserialize(queryParams.mortgage);
+    }
+
+    return data;
 
     function getNumberFromParam(param: string): number {
       const value = queryParams[param];
@@ -222,6 +249,10 @@ export class RealEstateComponent implements OnInit {
 
     if (numericParams.rentAnnualIncreaseRate !== undefined) {
       this.rent.annualIncreaseRate = numericParams.rentAnnualIncreaseRate;
+    }
+
+    if (numericParams.mortgage) {
+      this.loansConfig = numericParams.mortgage;
     }
   }
 

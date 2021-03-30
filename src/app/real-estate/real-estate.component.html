@@ -105,69 +105,19 @@
                         </mat-expansion-panel-header>
                         <mat-form-field>
                             <mat-label>Asset Price</mat-label>
-                            <input type="number" matInput placeholder="The total price for the asset"
-                                [(ngModel)]="price" name="price" #ctrl="ngModel">
+                            <input 
+                                type="number" 
+                                matInput 
+                                placeholder="The total price for the asset"
+                                [(ngModel)]="price" 
+                                name="price" 
+                                #ctrl="ngModel">
+                            <span matSuffix>{{currencySymbol}}</span>
                         </mat-form-field>
-                        
-                        <table mat-table [dataSource]="mortgage.loans"
-                            class="calc-full-width">
-                            <ng-container matColumnDef="name">
-                                <th mat-header-cell *matHeaderCellDef> Name </th>
-                                <td mat-cell *matCellDef="let loan"> {{loan.name}} </td>
-                                <td mat-footer-cell *matFooterCellDef>Total</td>
-                            </ng-container>
-                            <ng-container matColumnDef="principal">
-                                <th mat-header-cell *matHeaderCellDef> Principal </th>
-                                <td mat-cell *matCellDef="let loan; let i = index;">
-                                    <input [(ngModel)]="mortgage.loans[i].principal" 
-                                        class="calc-medium-width"
-                                        style="width: 70px"
-                                        type="number" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef>
-                                    <calc-money [amount]="mortgage.principal"></calc-money>
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="interestRate">
-                                <th mat-header-cell *matHeaderCellDef> Interest Rate </th>
-                                <td mat-cell *matCellDef="let loan; let i = index;">
-                                    <input [(ngModel)]="mortgage.loans[i].interestRate" type="number" step="0.1" min="0"
-                                        max="15" style="width: 40px" class="calc-medium-width" />%
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{mortgage.avgInterestRate | number}}% </td>
-                            </ng-container>
-                            <ng-container matColumnDef="months">
-                                <th mat-header-cell *matHeaderCellDef> Months </th>
-                                <td mat-cell *matCellDef="let loan; let i = index;">
-                                    <input [(ngModel)]="mortgage.loans[i].months" 
-                                        class="calc-medium-width"
-                                        type="number" 
-                                        min="1" />
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef> {{mortgage.totalMonths}} </td>
-                            </ng-container>
-                            <ng-container matColumnDef="monthlyPayment">
-                                <th mat-header-cell *matHeaderCellDef> Monthly payment </th>
-                                <td mat-cell *matCellDef="let loan">
-                                    <calc-money [amount]="loan.monthlyPayment"></calc-money>
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef>
-                                    <calc-money [amount]="mortgage.maxMonthlyPayment"></calc-money>
-                                </td>
-                            </ng-container>
-                            <ng-container matColumnDef="total">
-                                <th mat-header-cell *matHeaderCellDef>Total amount</th>
-                                <td mat-cell *matCellDef="let loan">
-                                    <calc-money [amount]="loan.totalAmount"></calc-money>
-                                </td>
-                                <td mat-footer-cell *matFooterCellDef>
-                                    <calc-money [amount]="mortgage.totalAmount"></calc-money>
-                                </td>
-                            </ng-container>
-                            <tr mat-header-row *matHeaderRowDef="displayedMortgageLoanColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedMortgageLoanColumns;"></tr>
-                            <tr mat-footer-row *matFooterRowDef="displayedMortgageLoanColumns"></tr>
-                        </table>
+                        <calc-mortgage 
+                            (mortgageChange)="setMortgage($event)" 
+                            [loans]="loansConfig"
+                            [totalAmount]="price - initialSum"></calc-mortgage>
                     </mat-expansion-panel>
 
                     <mat-expansion-panel>

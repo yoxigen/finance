@@ -1,3 +1,4 @@
+import { Observable, Observer } from "rxjs";
 import { Loan, LoanConfig } from "./Loan";
 
 export interface AmountPerMonths {
@@ -9,9 +10,17 @@ export interface AmountPerMonths {
 export class Mortgage {
     loans: Array<Loan>;
     private _paymentPerMonths: AmountPerMonths[];
+    loans$: Observable<Array<Loan>>;
 
-    constructor(loans: Array<LoanConfig>, private onChange?: (mortgage: Mortgage) => void) {
-        this.loans = loans.map(loan => new Loan(loan, () => this.reset()));
+    private loansObserver: Observer<Array<Loan>>;
+
+    constructor(loansConfig: Array<LoanConfig>, private onChange?: (mortgage: Mortgage) => void) {
+        const loans = loansConfig.map(loan => new Loan(loan, () => this.reset()));
+        this.loans = loans;
+        this.loans$ = new Observable<Array<Loan>>(observer => {
+            this.loansObserver = observer;
+            observer.next(loans);
+        });
     }
 
     get totalMonths(): number {
@@ -77,9 +86,29 @@ export class Mortgage {
         }));
     }
 
+    addLoan(loanConfig?: LoanConfig) {
+        const newLoan = new Loan(loanConfig ?? {
+            name: `Loan #${this.loans.length}`,
+            principal: 0,
+            months: 0,
+            interestRate: 3
+        }, () => this.reset());
+
+        this.loans = [...this.loans, newLoan]
+        this.reset();
+    }
+
+    removeLoan(loan: Loan) {
+        const loanIndex = this.loans.indexOf(loan);
+        this.loans.splice(loanIndex, 1);
+        this.loans = Array.from(this.loans);
+        this.reset();
+    }
+
     reset() {
         this._paymentPerMonths = null;
         this.onChange && this.onChange(this);
+        this.loansObserver.next(this.loans);
     }
 
     paymentAtMonth(month: number): number {
@@ -105,5 +134,14 @@ export class Mortgage {
             }
         }
         return yearPayment;
+    }
+
+    serialize(): string {
+        return this.loans.map(loan => loan.serialize()).join(',');
+    }
+
+    static deserialize(serialized: string): Array<LoanConfig> {
+        const serializedLoans = serialized.split(',');
+        return serializedLoans.map(Loan.deserialize);
     }
 }

@@ -19,4 +19,8 @@ export class SummaryTableComponent {
   @Input() items:SummaryItem[];
 
   columns = ['title', 'value'];
+
+  trackByTitle(item: SummaryItem): string {
+    return item.title;
+  }
 }
