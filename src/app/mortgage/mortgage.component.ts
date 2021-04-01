@@ -1,7 +1,9 @@
 import { Component, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/internal/operators/debounceTime';
+import { CurrencyService } from '../currency.service';
 import { Loan, LoanConfig } from '../data_types/Loan';
-import { Mortgage } from '../data_types/Mortgage';
+import { Mortgage, MortgageConfig } from '../data_types/Mortgage';
 
 @Component({
   selector: 'calc-mortgage',
@@ -9,26 +11,46 @@ import { Mortgage } from '../data_types/Mortgage';
   styleUrls: ['./mortgage.component.scss']
 })
 export class MortgageComponent implements OnDestroy {
+  @Input() requiredPrincipal: number;
+
   @Input() 
-  set loans(loansConfig: Array<LoanConfig>) {
+  set config(config: MortgageConfig) {
     if (this.loansSubscription) {
       this.loansSubscription.unsubscribe();
     }
 
-    this.mortgage = new Mortgage(loansConfig ?? []);
-    this.mortgageChange.emit(this.mortgage);
-    this.loansSubscription = this.mortgage.loans$.subscribe(() => this.mortgageChange.emit(this.mortgage));
+    this.mortgage = new Mortgage(config);
+    
+    this.update();
+
+    this.loansSubscription = this.mortgage.loans$.subscribe(() => {
+      if (this.isInit) {
+        this.update();
+      }
+    });
+
+    this.isInit = true;
   }
-  @Input() totalAmount: number;
 
   @Output() mortgageChange = new EventEmitter<Mortgage>();
 
-  displayedMortgageLoanColumns = ['principal', 'interestRate', 'months', 'monthlyPayment', 'total', 'removeLoan'];
+  displayedMortgageLoanColumns = ['principal', 'portion', 'interestRate', 'months', 'monthlyPayment', 'total', 'removeLoan'];
   mortgage: Mortgage;
+  portions: number[];
 
+  private isInit = false;
   private loansSubscription: Subscription;
   
-  constructor() { }
+  constructor(public currencyService: CurrencyService) { }
+
+  private update() {
+    this.mortgageChange.emit(this.mortgage);
+    this.setPortions();
+  }
+
+  get totalPercentageCovered(): number {
+    return Math.floor(100 * this.mortgage.principal / this.mortgage.requiredPrincipal);
+  }
 
   ngOnDestroy(): void {
     if (this.loansSubscription) {
@@ -37,7 +59,7 @@ export class MortgageComponent implements OnDestroy {
   }
 
   addLoan() {
-    const uncoveredPrice = this.totalAmount - this.mortgage.principal;
+    const uncoveredPrice = this.mortgage.requiredPrincipal - this.mortgage.principal;
     this.mortgage.addLoan({
       name: `Loan #${this.mortgage.loans.length + 1}`,
       principal: uncoveredPrice,
@@ -48,5 +70,23 @@ export class MortgageComponent implements OnDestroy {
 
   trackByLoanId(loan: Loan): string | number {
     return loan.id;
+  }
+
+  onLoanPrincipalChange() {
+    this.setPortions();
+  }
+
+  onLoanPortionChange(loanIndex: number) {
+    const portion = this.portions[loanIndex];
+    const principalForPortion = Math.floor(this.mortgage.requiredPrincipal * portion / 100);
+    this.mortgage.loans[loanIndex].principal = principalForPortion;
+  }
+
+  private getOtherLoans(loan: Loan): Loan[] {
+    return this.mortgage.loans.filter(_loan => _loan !== loan);
+  }
+
+  private setPortions() {
+    this.portions = this.mortgage.loans.map(({principal}) => Math.floor(100 * principal / this.mortgage.requiredPrincipal));
   }
 }

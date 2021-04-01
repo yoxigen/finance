@@ -1,4 +1,3 @@
-import { getCurrencySymbol } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, Params, NavigationEnd } from '@angular/router';
 import { LoanConfig } from '../data_types/Loan';
@@ -8,6 +7,7 @@ import { calculatCapitalGainsTax, futureValue, subtractCapitalGainsTax } from '.
 import { SummaryItem } from '../summary-table/summary-table.component';
 import { CalcTextType } from '../text/text.component';
 import { filter, skip } from 'rxjs/operators';
+import { CurrencyService } from '../currency.service';
 
 const LOCAL_STORAGE_KEY = "rent-vs-ownership";
 
@@ -17,7 +17,7 @@ interface ChartDataItem {
   mortgageMonthlyPayment: number,
   monthlyRentInvestment: number,
   yearlyRentInvestment: number,
-  totalRentSavings: number,
+  totalRentEquity: number,
   totalRentInvestmentSum: number,
   mortgageInvestments: number,
   mortgageMonthlyInvestments: number,
@@ -46,7 +46,7 @@ type ChartData = ChartDataItem[];
   styleUrls: ['./real-estate.component.scss']
 })
 export class RealEstateComponent implements OnInit {
-  private _totalRentSavings: number;
+  private _totalRentEquity: number;
   private _totalMortgageSavings: number;
   private _totalRentInvestmentSum: number;
   private _totalMortgageInvestmentSum: number;
@@ -90,16 +90,15 @@ export class RealEstateComponent implements OnInit {
     'year', 
     'rent', 
     'monthlyRentInvestment', 
-    'totalRentSavings', 
+    'totalRentEquity', 
     'mortgageMonthlyPayment', 
     'mortgageInvestments', 
     'mortgageAmountLeft',
-    'mortgageSolvency'
+    'mortgageEquity'
   ];
 
   currency: 'ILS';
   currencyFormat: '0.0-0';
-  currencySymbol = getCurrencySymbol('ILS', 'wide');
 
   rentSummaryItems: SummaryItem[] = [];
   mortgageSummaryItems: SummaryItem[] = [];
@@ -112,8 +111,8 @@ export class RealEstateComponent implements OnInit {
     return this.price - this.initialSum;
   }
 
-  get totalRentSavings(): number {
-    return this._totalRentSavings;
+  get totalRentEquity(): number {
+    return this._totalRentEquity;
   }
 
   get totalRentInvestmentSum(): number {
@@ -137,11 +136,11 @@ export class RealEstateComponent implements OnInit {
   }
 
   get totalRentInvestmentGainsTax(): number {
-    return (this.totalRentSavings - this.totalRentInvestmentSum) * this.capitalGainsTax;
+    return (this.totalRentEquity - this.totalRentInvestmentSum) * this.capitalGainsTax;
   }
 
   get totalRentInvestmentGainsAfterTax(): number {
-    return this.totalRentSavings - this.totalRentInvestmentGainsTax;
+    return this.totalRentEquity - this.totalRentInvestmentGainsTax;
   }
 
   get totalRentPaid(): number {
@@ -160,7 +159,10 @@ export class RealEstateComponent implements OnInit {
     return this.totalRentInvestmentGainsAfterTax - this.totalRentInvestmentSum;
   }
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(
+    private activatedRoute: ActivatedRoute, 
+    private router: Router,
+    public currencyService: CurrencyService) {
 
   }
 
@@ -176,7 +178,6 @@ export class RealEstateComponent implements OnInit {
 
           if (JSON.stringify(currentValuesQueryParams) !== JSON.stringify(queryParams)) {
             this.setDataFromQueryParams(queryParams);
-            this.calcTotalSavings();
           }
 
           this.isInit = true;
@@ -285,7 +286,7 @@ export class RealEstateComponent implements OnInit {
         year: 0,
         monthlyRentInvestment: 0,
         yearlyRentInvestment: this.initialSum,
-        totalRentSavings: Math.floor(rentSavings),
+        totalRentEquity: Math.floor(rentSavings),
         totalRentInvestmentSum: this.initialSum,
         mortgageMonthlyPayment: this.mortgage.paymentAtMonth(0),
         mortgageInvestments: 0,
@@ -342,7 +343,7 @@ export class RealEstateComponent implements OnInit {
         year: year + 1,
         monthlyRentInvestment: Math.floor(monthlySavings),
         yearlyRentInvestment: Math.floor(monthlySavings) * 12,
-        totalRentSavings: Math.floor(rentSavings),
+        totalRentEquity: Math.floor(rentSavings),
         totalRentInvestmentSum: rentInvestmentSum,
         mortgageMonthlyPayment,
         mortgageInvestments,
@@ -355,8 +356,9 @@ export class RealEstateComponent implements OnInit {
     }
 
     this.yearsData = yearsData;
-    console.table(yearsData);
-    this._totalRentSavings = rentSavings;
+    console.log("CALC")
+    //console.table(yearsData);
+    this._totalRentEquity = rentSavings;
     this._totalMortgageSavings = mortgageInvestments;
     this._totalRentInvestmentSum = rentInvestmentSum;
     this._totalMortgageInvestmentSum = mortgageInvestmentSum;

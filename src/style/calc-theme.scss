@@ -34,6 +34,10 @@ tr.mat-footer-row {
   font-weight: bold;
 }
 
+td.mat-cell, th.mat-header-cell, td.mat-footer-cell {
+  padding-inline-end: 1em !important;
+}
+
 td.mat-cell:first-of-type, th.mat-header-cell:first-of-type, td.mat-footer-cell:first-of-type {
   padding-inline-start: 0 !important;
 }

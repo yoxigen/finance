@@ -8,6 +8,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-bottom: 1rem;
 }
 
+.margin-bottom-2 {
+    margin-bottom: 2rem;
+}
+
 .margin-top-half {
     margin-top: .5rem;
 }
@@ -21,6 +25,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     box-sizing: border-box;
   }
   
+  .calc-at-least-full-width {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
 .calc-flex-horizontal {
     display: flex;
     flex-direction: row;
@@ -32,6 +41,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .calc-flex-1 {
     flex: 1;
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 @mixin undo-flex {

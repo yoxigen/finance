@@ -7,20 +7,31 @@ export interface AmountPerMonths {
     monthCount: number,
 }
 
+export interface MortgageConfig {
+    loans: LoanConfig[],
+    requiredPrincipal: number,
+}
+
 export class Mortgage {
     loans: Array<Loan>;
     private _paymentPerMonths: AmountPerMonths[];
     loans$: Observable<Array<Loan>>;
-
+    
     private loansObserver: Observer<Array<Loan>>;
+    private _requiredPrincipal: number;
 
-    constructor(loansConfig: Array<LoanConfig>, private onChange?: (mortgage: Mortgage) => void) {
-        const loans = loansConfig.map(loan => new Loan(loan, () => this.reset()));
+    constructor(config: MortgageConfig) {
+        const loans = config.loans.map(loan => new Loan(loan, () => this.reset()));
         this.loans = loans;
         this.loans$ = new Observable<Array<Loan>>(observer => {
             this.loansObserver = observer;
             observer.next(loans);
         });
+        this._requiredPrincipal = config.requiredPrincipal;
+    }
+
+    get requiredPrincipal(): number {
+        return this._requiredPrincipal;
     }
 
     get totalMonths(): number {
@@ -107,7 +118,6 @@ export class Mortgage {
 
     reset() {
         this._paymentPerMonths = null;
-        this.onChange && this.onChange(this);
         this.loansObserver.next(this.loans);
     }
 
