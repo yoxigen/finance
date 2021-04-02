@@ -47,6 +47,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     white-space: nowrap;
 }
 
+.calc-table-nowrap-contents {
+    tbody {
+        white-space: nowrap;
+    }
+}
+
 @mixin undo-flex {
     display: block;
 
@@ -74,4 +80,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
   }
 
- 
+ .calc-buttons-row {
+     button {
+         margin-inline-end: 8px;
+         margin-block-end: 8px;
+     }
+ }

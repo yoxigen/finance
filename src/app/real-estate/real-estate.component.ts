@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, Params, NavigationEnd } from '@angular/router';
 import { LoanConfig } from '../data_types/Loan';
-import { Mortgage } from '../data_types/Mortgage';
+import { Mortgage, MortgageConfig } from '../data_types/Mortgage';
 import { Rent } from '../data_types/Rent';
 import { calculatCapitalGainsTax, futureValue, subtractCapitalGainsTax } from '../math/payments';
 import { SummaryItem } from '../summary-table/summary-table.component';
@@ -77,11 +77,14 @@ export class RealEstateComponent implements OnInit {
   extraYears = 0;
   capitalGainsTax = .25;
 
-  loansConfig: Array<LoanConfig> = [
-    { name: 'Prime', months: 20 * 12, interestRate: 1, principal: 360000 },
-    { name: 'Mishtana', months: 20 * 12, interestRate: 2.6, principal: 440000 },
-    { name: 'Fixed', months: 7 * 12, interestRate: 1.15, principal: 400000 },
-  ];
+  mortgageConfig: MortgageConfig = { 
+    loans: [
+      { name: 'Prime', months: 20 * 12, interestRate: 1, principal: 360000 },
+      { name: 'Mishtana', months: 20 * 12, interestRate: 2.6, principal: 440000 },
+      { name: 'Fixed', months: 7 * 12, interestRate: 1.15, principal: 400000 },
+    ], 
+    requiredPrincipal: this.price - this.initialSum 
+  };
 
   mortgage: Mortgage;
   rent: Rent;
@@ -263,7 +266,7 @@ export class RealEstateComponent implements OnInit {
     }
 
     if (numericParams.mortgage) {
-      this.loansConfig = numericParams.mortgage;
+      this.mortgageConfig = { loans: numericParams.mortgage, requiredPrincipal: this.price - this.initialSum };
     }
   }
 
@@ -356,7 +359,6 @@ export class RealEstateComponent implements OnInit {
     }
 
     this.yearsData = yearsData;
-    console.log("CALC")
     //console.table(yearsData);
     this._totalRentEquity = rentSavings;
     this._totalMortgageSavings = mortgageInvestments;

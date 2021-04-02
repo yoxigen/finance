@@ -118,7 +118,7 @@
                         </mat-form-field>
                         <calc-mortgage 
                             (mortgageChange)="setMortgage($event)" 
-                            [config]="{ loans: loansConfig, requiredPrincipal: price - initialSum }">
+                            [config]="mortgageConfig">
                         </calc-mortgage>
                     </mat-expansion-panel>
 

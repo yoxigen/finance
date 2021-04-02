@@ -7,12 +7,12 @@ export interface LoanConfig {
   months: number,
   interestRate: number,
   principal: number,
-  id?: string | number
+  id?: number
 }
 
 export class Loan {
     name: string;
-    id: string | number;
+    id: number;
 
     private _months: number;
     private _interestRate: number;
@@ -86,17 +86,18 @@ export class Loan {
     }
 
     serialize(): string {
-      return `${this.name.replace(/[_,]/g, ' ')}_${this.principal}_${this.interestRate}_${this.months}`;
+      return `${this.name.replace(/[_,]/g, ' ')}_${this.principal}_${this.interestRate}_${this.months}_${this.id}`;
     }
 
     static deserialize(serialized: string): LoanConfig {
       const [name, ...values] = serialized.split("_");
-      const [principal, interestRate, months] = values.map(value => parseFloat(value));
+      const [principal, interestRate, months, id] = values.map(value => parseFloat(value));
       return {
         name,
         principal,
         interestRate, 
-        months
+        months,
+        id
       };
     }
   }

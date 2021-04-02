@@ -22,7 +22,7 @@ export class Mortgage {
 
     constructor(config: MortgageConfig) {
         const loans = config.loans.map(loan => new Loan(loan, () => this.reset()));
-        this.loans = loans;
+        this.loans = loans.sort((a, b) => a.id > b.id ? 1 : -1);
         this.loans$ = new Observable<Array<Loan>>(observer => {
             this.loansObserver = observer;
             observer.next(loans);
@@ -109,9 +109,22 @@ export class Mortgage {
         this.reset();
     }
 
-    removeLoan(loan: Loan) {
-        const loanIndex = this.loans.indexOf(loan);
-        this.loans.splice(loanIndex, 1);
+    addLoans(loanConfig: LoanConfig[]): Loan[] {
+        const newLoans = loanConfig.map(loanConfig => new Loan(loanConfig ?? {
+            name: `Loan #${this.loans.length}`,
+            principal: 0,
+            months: 0,
+            interestRate: 3
+        }, () => this.reset()));
+
+        this.loans = this.loans.concat(newLoans);
+        this.reset();
+        return newLoans;
+    }
+
+    removeLoans(loans: Loan[]) {
+        const loanIndexes = loans.map(loan => this.loans.indexOf(loan)).filter(index => index !== -1).sort().reverse();
+        loanIndexes.forEach((loanIndex) => this.loans.splice(loanIndex, 1));
         this.loans = Array.from(this.loans);
         this.reset();
     }
