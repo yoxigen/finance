@@ -35,49 +35,49 @@
         <source> Portion </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="980448807882091874" datatype="html">
         <source> Interest Rate </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="599081784120842333" datatype="html">
         <source> Months </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7148982607227495473" datatype="html">
         <source> Monthly payment </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5004550577313573215" datatype="html">
         <source>Total amount</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8032197124253726104" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {Autofix selected loan} other {Autofix selected loans}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="897716669306863082" datatype="html">
         <source> <x id="ICU" equiv-text="{selection.selected.length, plural, =1 {Autofix selected loan} other {Autofix selected loans}}"/> </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">103,104</context>
+          <context context-type="linenumber">107,108</context>
         </context-group>
         <note priority="1" from="description">Text for button to automatically set the amount of the selected loans in a mortgage</note>
         <note priority="1" from="meaning">button text</note>
@@ -86,14 +86,14 @@
         <source>Remove <x id="INTERPOLATION" equiv-text="{{selection.selected.length}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7706038171323817325" datatype="html">
         <source>Add Loan</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4888629553778195010" datatype="html">
@@ -260,7 +260,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7046115772612173683" datatype="html">
@@ -372,7 +372,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4212873139972842578" datatype="html">
@@ -383,7 +383,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2745026848959581821" datatype="html">
@@ -453,228 +453,244 @@
         <source>Prime</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8407462606405526805" datatype="html">
         <source>Mishtana</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4108478337308251505" datatype="html">
         <source>Fixed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2658718701633481817" datatype="html">
         <source>Total rent paid</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">377</context>
+          <context context-type="linenumber">384</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2790461653126153079" datatype="html">
         <source>All the rent payments combined</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">380</context>
+          <context context-type="linenumber">387</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2430888288470200112" datatype="html">
         <source>Total money invested</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">383</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">434</context>
+          <context context-type="linenumber">390</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8327757357746123923" datatype="html">
         <source>How much money was invested</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">385</context>
+          <context context-type="linenumber">392</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3359638349121005144" datatype="html">
         <source>Total money gained from investments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">388</context>
+          <context context-type="linenumber">395</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">439</context>
+          <context context-type="linenumber">446</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2542323058669580081" datatype="html">
         <source>The gain from investments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">390</context>
+          <context context-type="linenumber">397</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">441</context>
+          <context context-type="linenumber">448</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3487026367694697788" datatype="html">
         <source>Assets available (before tax)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">393</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">444</context>
+          <context context-type="linenumber">400</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8278732521280147489" datatype="html">
         <source>How much all invested assets are worth, before capital gains tax</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">395</context>
+          <context context-type="linenumber">402</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6867547898579654666" datatype="html">
         <source>Capital gains tax</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">398</context>
+          <context context-type="linenumber">405</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">449</context>
+          <context context-type="linenumber">456</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7640200205963650753" datatype="html">
         <source>Tax money to pay</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">401</context>
+          <context context-type="linenumber">408</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2408214100753513139" datatype="html">
-        <source>Assets available (after tax)</source>
+      <trans-unit id="9139840606837045200" datatype="html">
+        <source>Equity (after tax)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">404</context>
+          <context context-type="linenumber">411</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">455</context>
+          <context context-type="linenumber">462</context>
         </context-group>
+        <note priority="1" from="description">Invested money while renting, after deducting capital gains tax</note>
       </trans-unit>
       <trans-unit id="851870490904265842" datatype="html">
         <source>Soluble assets in investments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">407</context>
+          <context context-type="linenumber">414</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">413</context>
+          <context context-type="linenumber">420</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">458</context>
+          <context context-type="linenumber">465</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1962466865976609891" datatype="html">
         <source>Assets available minus rent paid</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">411</context>
+          <context context-type="linenumber">418</context>
         </context-group>
       </trans-unit>
       <trans-unit id="268114129741546002" datatype="html">
         <source>Total mortgage paid</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">423</context>
+          <context context-type="linenumber">430</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3709388429611653764" datatype="html">
         <source>Total money paid to return the mortgage</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">426</context>
+          <context context-type="linenumber">433</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2138415480463255219" datatype="html">
         <source>Avg. monthly payment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">429</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8830980096883180649" datatype="html">
-        <source>How much money was invested, when the mortgage payment was lower than the rent payment</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
           <context context-type="linenumber">436</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="256584434460808124" datatype="html">
+        <source>The average mortgage monthly payment for the period of the mortgage</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">438</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3388180355279461025" datatype="html">
+        <source>Total money invested (not on the property)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">441</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5534267329564198612" datatype="html">
+        <source>How much money was invested in assets different than the mortgaged property, when the mortgage payment was lower than the rent payment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">443</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="786177733579111869" datatype="html">
+        <source>Equity (before tax)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">451</context>
+        </context-group>
+        <note priority="1" from="description">Invested money while renting, before deducting capital gains tax</note>
       </trans-unit>
       <trans-unit id="3327641557657753424" datatype="html">
         <source>How much all invested assets (not including the property!) are worth, before capital gains tax</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">446</context>
+          <context context-type="linenumber">453</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1230154178689655530" datatype="html">
         <source>Tax money to pay for investments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">452</context>
+          <context context-type="linenumber">459</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6945085742607234417" datatype="html">
         <source>Property value</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">462</context>
+          <context context-type="linenumber">469</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9161730797401426013" datatype="html">
         <source>Value of the property at the end of the period</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">465</context>
+          <context context-type="linenumber">472</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6823790006433887158" datatype="html">
         <source>Total assets value (after tax)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">468</context>
+          <context context-type="linenumber">475</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4944442139447379129" datatype="html">
         <source>Property value + investments value</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">471</context>
+          <context context-type="linenumber">478</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3663426968066619754" datatype="html">
-        <source>Total value - money paid</source>
+      <trans-unit id="2082184418220549071" datatype="html">
+        <source>Total value minus money paid</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">475</context>
+          <context context-type="linenumber">482</context>
         </context-group>
+        <note priority="1" from="description">Value minus payments on mortgage</note>
       </trans-unit>
-      <trans-unit id="4326903417623492301" datatype="html">
-        <source>Money gained minus money paid</source>
+      <trans-unit id="394857983282135697" datatype="html">
+        <source>Sum of all the monetary value of the property + equity, minus money paid on the mortgage</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">477</context>
+          <context context-type="linenumber">484</context>
         </context-group>
       </trans-unit>
     </body>

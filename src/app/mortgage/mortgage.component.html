@@ -5,7 +5,7 @@
         [trackBy]="trackByLoanId" 
         class="calc-at-least-full-width calc-table-nowrap-contents">
         <!-- Checkbox Column -->
-        <ng-container matColumnDef="select">
+        <ng-container matColumnDef="select" sticky>
             <th mat-header-cell *matHeaderCellDef>
                 <mat-checkbox (change)="$event ? masterToggle() : null"
                     [checked]="selection.hasValue() && isAllSelected()"
@@ -33,8 +33,12 @@
         <ng-container matColumnDef="principal">
             <th mat-header-cell *matHeaderCellDef i18n> Principal </th>
             <td mat-cell *matCellDef="let loan; let i = index;">
-                <input [(ngModel)]="mortgage.loans[i].principal" class="calc-medium-width" style="width: 6em"
-                    (ngModelChange)="onLoanPrincipalChange(loan)" type="number" />
+                <input 
+                    [(ngModel)]="mortgage.loans[i].principal" 
+                    class="calc-medium-width" 
+                    style="width: 6em"
+                    type="number"
+                    (ngModelChange)="onLoanPrincipalChange(loan)" />
                 <span class="calc-input-unit">{{currencyService.currencySymbol}}</span>
             </td>
             <td mat-footer-cell *matFooterCellDef>
@@ -92,7 +96,7 @@
         <tr mat-footer-row *matFooterRowDef="displayedMortgageLoanColumns"></tr>
     </table>
     <div class="margin-top-half calc-buttons-row">
-        <span *ngIf="selection.hasValue()">
+        <div *ngIf="selection.hasValue()">
             <button 
                 *ngIf="principalCoverageDifference"
                 mat-raised-button 
@@ -111,7 +115,7 @@
                 <mat-icon aria-hidden="false" aria-label="Plus">delete</mat-icon>
                 <ng-container i18n>Remove {{selection.selected.length}}</ng-container>
             </button>
-        </span>
+        </div>
         <button mat-raised-button color="primary" (click)="addLoan()">
             <mat-icon aria-hidden="false" aria-label="Plus">add</mat-icon>
             <ng-container i18n>Add Loan</ng-container>

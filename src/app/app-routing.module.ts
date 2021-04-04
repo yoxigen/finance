@@ -5,7 +5,6 @@ import { RootComponent } from './root/root.component';
 
 const routes: Routes = [
   { path: 'rent-vs-ownership', component: RealEstateComponent },
-  { path: '',   redirectTo: '/rent-vs-ownership', pathMatch: 'full' },
   { path: '**', component: RootComponent },
 ];
 

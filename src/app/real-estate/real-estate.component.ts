@@ -40,6 +40,17 @@ interface RentVsOwnershipQueryParams {
 
 type ChartData = ChartDataItem[];
 
+const DEFAULT_INITIAL_SUM = 600000;
+const DEFAULT_PROPERTY_PRICE = 1800000;
+const DEFAULT_LOAN_PRINCIPAL = (DEFAULT_PROPERTY_PRICE - DEFAULT_INITIAL_SUM) / 3;
+const DEFAULT_LOAN_MONTHS = 20 * 12;
+
+const DEFAULT_LOANS = [
+  { name: $localize `Prime`, months: DEFAULT_LOAN_MONTHS, interestRate: 1.6, principal: DEFAULT_LOAN_PRINCIPAL },
+  { name: $localize `Mishtana`, months: DEFAULT_LOAN_MONTHS, interestRate: 3, principal: DEFAULT_LOAN_PRINCIPAL },
+  { name: $localize `Fixed`, months: DEFAULT_LOAN_MONTHS, interestRate: 3, principal: DEFAULT_LOAN_PRINCIPAL },
+];
+
 @Component({
   selector: 'app-real-estate',
   templateUrl: './real-estate.component.html',
@@ -70,19 +81,15 @@ export class RealEstateComponent implements OnInit {
     height: 280,
   };
 
-  initialSum = 920000;
-  price = 2120000;
+  initialSum = DEFAULT_INITIAL_SUM;
+  price = DEFAULT_PROPERTY_PRICE;
   annualAssetInterest = 3;
   investmentInterest = 7;
   extraYears = 0;
   capitalGainsTax = .25;
 
   mortgageConfig: MortgageConfig = { 
-    loans: [
-      { name: $localize `Prime`, months: 20 * 12, interestRate: 1, principal: 360000 },
-      { name: $localize `Mishtana`, months: 20 * 12, interestRate: 2.6, principal: 440000 },
-      { name: $localize `Fixed`, months: 7 * 12, interestRate: 1.15, principal: 400000 },
-    ], 
+    loans: DEFAULT_LOANS, 
     requiredPrincipal: this.price - this.initialSum 
   };
 
@@ -401,7 +408,7 @@ export class RealEstateComponent implements OnInit {
         description: $localize `Tax money to pay`
       },
       {
-        title: $localize `Assets available (after tax)`,
+        title: $localize `:Invested money while renting, after deducting capital gains tax:Equity (after tax)`,
         valueType: CalcTextType.good,
         value: rentSavings - rentInvestmentsTax,
         description: $localize `Soluble assets in investments`,
@@ -428,12 +435,12 @@ export class RealEstateComponent implements OnInit {
       {
         title: $localize `Avg. monthly payment`,
         value: this.mortgage.weightedAvgPayment,
-        description: "The avg payment for the while period of the mortgage"
+        description: $localize `The average mortgage monthly payment for the period of the mortgage`
       },
       {
-        title: $localize `Total money invested`,
+        title: $localize `Total money invested (not on the property)`,
         value: mortgageInvestmentSum,
-        description: $localize `How much money was invested, when the mortgage payment was lower than the rent payment`
+        description: $localize `How much money was invested in assets different than the mortgaged property, when the mortgage payment was lower than the rent payment`
       },
       {
         title: $localize `Total money gained from investments`,
@@ -441,7 +448,7 @@ export class RealEstateComponent implements OnInit {
         description: $localize `The gain from investments`
       },
       {
-        title: $localize `Assets available (before tax)`,
+        title: $localize `:Invested money while renting, before deducting capital gains tax:Equity (before tax)`,
         value: mortgageInvestments,
         description: $localize `How much all invested assets (not including the property!) are worth, before capital gains tax`
       },
@@ -452,7 +459,7 @@ export class RealEstateComponent implements OnInit {
         description: $localize `Tax money to pay for investments`
       },
       {
-        title: $localize `Assets available (after tax)`,
+        title: $localize `:Invested money while renting, after deducting capital gains tax:Equity (after tax)`,
         valueType: CalcTextType.good,
         value: mortgageInvestments - mortgageInvestmentsTax,
         description: $localize `Soluble assets in investments`,
@@ -472,9 +479,9 @@ export class RealEstateComponent implements OnInit {
         isHighlight: true
       },
       {
-        title: $localize `Total value - money paid`,
+        title: $localize `:Value minus payments on mortgage:Total value minus money paid`,
         value: futurePropertyValue + mortgageInvestments - mortgageInvestmentsTax - (this.mortgage.totalAmount + this.initialSum),
-        description: $localize `Money gained minus money paid`
+        description: $localize `Sum of all the monetary value of the property + equity, minus money paid on the mortgage`
       },
     ];
   }

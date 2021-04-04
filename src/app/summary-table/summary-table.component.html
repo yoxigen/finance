@@ -1,10 +1,15 @@
 <table mat-table [dataSource]="items" [trackBy]="trackByTitle" class="calc-full-width">
     <ng-container matColumnDef="title">
         <td mat-cell *matCellDef="let item">
-            <strong *ngIf="item.isHighlight; else regular">{{item.title}}</strong> 
-            <ng-template #regular>
-                {{item.title}}
-            </ng-template>
+            <calc-expand-text [text]="item.description">
+                <calc-expand-text-label>
+                    <strong *ngIf="item.isHighlight; else regular">{{item.title}}</strong> 
+                    <ng-template #regular>
+                    {{item.title}}
+                </ng-template>
+                </calc-expand-text-label>
+                <calc-expand-text-details>{{item.description}}</calc-expand-text-details>
+            </calc-expand-text>
         </td>
     </ng-container>
     <ng-container matColumnDef="value">

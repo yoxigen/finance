@@ -11,6 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxMaterialToolsModule } from 'ngx-material-tools';
 import { MatTableModule } from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
     exports: [
@@ -25,7 +26,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         NgxMaterialToolsModule,
         MatTableModule,
         MatTooltipModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        OverlayModule
     ]
 })
 export class MaterialModule { }

@@ -13,6 +13,9 @@ import { SummaryTableComponent } from './summary-table/summary-table.component';
 import { RootComponent } from './root/root.component';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { MaterialModule } from './material-module';
+import { CurrencyInputDirective } from './inputs/currency-input/currency-input.directive';
+import { HelpComponent } from './help/help.component';
+import { ExpandTextComponent } from './expand-text/expand-text.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { MaterialModule } from './material-module';
     MoneyComponent,
     SummaryTableComponent,
     RootComponent,
-    MortgageComponent
+    MortgageComponent,
+    CurrencyInputDirective,
+    HelpComponent,
+    ExpandTextComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,48 @@
+@import '/src/style/calc-theme.scss';
+
+details {
+    outline: none;
+    border: none;
+    position: relative;
+
+    mat-icon {
+        opacity: .67;
+    }
+
+    &[open] {
+        mat-icon {
+            transform: rotateZ(180deg);
+        }
+
+        summary {
+            color: mat-color($calc-app-accent);
+        }
+    }
+
+    & > summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            color: mat-color($calc-app-accent);
+        }
+        
+        &::marker, &::-webkit-details-marker {
+            display: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    & > p {
+        position: absolute;
+        background: white;
+        padding: 1em;
+        box-shadow: 0px 1px 4px rgb(0 0 0 / 30%);
+        z-index: 10;
+    }
+}
