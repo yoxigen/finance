@@ -57,7 +57,7 @@ export class RealEstateComponent implements OnInit {
   yearsData: ChartData = [];
   chartData: [string, number, number][] = [];
   savingsChartData: [string, number, number][] = [];
-  chartColumns = ['Year', 'Mortgage', 'Rent'];
+  chartColumns = [$localize `Year`, $localize `Mortgage`, $localize `Rent`];
   chartOptions = {
     legend: {
       position: 'bottom',
@@ -79,9 +79,9 @@ export class RealEstateComponent implements OnInit {
 
   mortgageConfig: MortgageConfig = { 
     loans: [
-      { name: 'Prime', months: 20 * 12, interestRate: 1, principal: 360000 },
-      { name: 'Mishtana', months: 20 * 12, interestRate: 2.6, principal: 440000 },
-      { name: 'Fixed', months: 7 * 12, interestRate: 1.15, principal: 400000 },
+      { name: $localize `Prime`, months: 20 * 12, interestRate: 1, principal: 360000 },
+      { name: $localize `Mishtana`, months: 20 * 12, interestRate: 2.6, principal: 440000 },
+      { name: $localize `Fixed`, months: 7 * 12, interestRate: 1.15, principal: 400000 },
     ], 
     requiredPrincipal: this.price - this.initialSum 
   };
@@ -374,43 +374,43 @@ export class RealEstateComponent implements OnInit {
 
     this.rentSummaryItems = [
       {
-        title: "Total rent paid",
+        title: $localize `Total rent paid`,
         valueType: CalcTextType.bad,
         value: totalRentPaid,
-        description: `All the rent payments combined`
+        description: $localize `All the rent payments combined`
       },
       {
-        title: "Total money invested",
+        title: $localize `Total money invested`,
         value: rentInvestmentSum,
-        description: `How much money was invested`
+        description: $localize `How much money was invested`
       },
       {
-        title: "Total money gained from investments",
+        title: $localize `Total money gained from investments`,
         value: rentInvestmentsGains,
-        description: `The gain from investments`
+        description: $localize `The gain from investments`
       },
       {
-        title: "Assets available (before tax)",
+        title: $localize `Assets available (before tax)`,
         value: rentSavings,
-        description: `How much all invested assets are worth, before capital gains tax`
+        description: $localize `How much all invested assets are worth, before capital gains tax`
       },
       {
-        title: "Capital gains tax",
+        title: $localize `Capital gains tax`,
         valueType: CalcTextType.bad,
         value: rentInvestmentsTax,
-        description: `Tax money to pay`
+        description: $localize `Tax money to pay`
       },
       {
-        title: "Assets available (after tax)",
+        title: $localize `Assets available (after tax)`,
         valueType: CalcTextType.good,
         value: rentSavings - rentInvestmentsTax,
-        description: `Soluble assets in investments`,
+        description: $localize `Soluble assets in investments`,
         isHighlight: true
       },
       {
-        title: "Assets available minus rent paid",
+        title: $localize `Assets available minus rent paid`,
         value: rentSavings - rentInvestmentsTax - totalRentPaid,
-        description: `Soluble assets in investments`
+        description: $localize `Soluble assets in investments`
       },
     ];
 
@@ -420,61 +420,61 @@ export class RealEstateComponent implements OnInit {
 
     this.mortgageSummaryItems = [
       {
-        title: "Total mortgage paid",
+        title: $localize `Total mortgage paid`,
         valueType: CalcTextType.bad,
         value: this.mortgage.totalAmount + this.initialSum,
-        description: `Total money paid to return the mortgage`
+        description: $localize `Total money paid to return the mortgage`
       },
       {
-        title: "Avg. monthly payment",
+        title: $localize `Avg. monthly payment`,
         value: this.mortgage.weightedAvgPayment,
         description: "The avg payment for the while period of the mortgage"
       },
       {
-        title: "Total money invested",
+        title: $localize `Total money invested`,
         value: mortgageInvestmentSum,
-        description: `How much money was invested, when the mortgage payment was lower than the rent payment`
+        description: $localize `How much money was invested, when the mortgage payment was lower than the rent payment`
       },
       {
-        title: "Total money gained from investments",
+        title: $localize `Total money gained from investments`,
         value: mortgageInvestmentsGains,
-        description: `The gain from investments`
+        description: $localize `The gain from investments`
       },
       {
-        title: "Assets available (before tax)",
+        title: $localize `Assets available (before tax)`,
         value: mortgageInvestments,
-        description: `How much all invested assets (not including the property!) are worth, before capital gains tax`
+        description: $localize `How much all invested assets (not including the property!) are worth, before capital gains tax`
       },
       {
-        title: "Capital gains tax",
+        title: $localize `Capital gains tax`,
         valueType: CalcTextType.bad,
         value: mortgageInvestmentsTax,
-        description: `Tax money to pay for investments`
+        description: $localize `Tax money to pay for investments`
       },
       {
-        title: "Assets available (after tax)",
+        title: $localize `Assets available (after tax)`,
         valueType: CalcTextType.good,
         value: mortgageInvestments - mortgageInvestmentsTax,
-        description: `Soluble assets in investments`,
+        description: $localize `Soluble assets in investments`,
         isHighlight: true
       },
       {
-        title: "Property value",
+        title: $localize `Property value`,
         valueType: CalcTextType.good,
         value: futurePropertyValue,
-        description: `Value of the property at the end of the period`,
+        description: $localize `Value of the property at the end of the period`,
       },
       {
-        title: "Total assets value (after tax)",
+        title: $localize `Total assets value (after tax)`,
         valueType: CalcTextType.good,
         value: futurePropertyValue + mortgageInvestments - mortgageInvestmentsTax,
-        description: `Property value + investments value`,
+        description: $localize `Property value + investments value`,
         isHighlight: true
       },
       {
-        title: "Total value - money paid",
+        title: $localize `Total value - money paid`,
         value: futurePropertyValue + mortgageInvestments - mortgageInvestmentsTax - (this.mortgage.totalAmount + this.initialSum),
-        description: `Money gained minus money paid`
+        description: $localize `Money gained minus money paid`
       },
     ];
   }

@@ -1,5 +1,9 @@
 <div style="overflow: auto">
-    <table mat-table [dataSource]="loansDataSource" [trackBy]="trackByLoanId" class="calc-at-least-full-width calc-table-nowrap-contents">
+    <table 
+        mat-table 
+        [dataSource]="loansDataSource" 
+        [trackBy]="trackByLoanId" 
+        class="calc-at-least-full-width calc-table-nowrap-contents">
         <!-- Checkbox Column -->
         <ng-container matColumnDef="select">
             <th mat-header-cell *matHeaderCellDef>
@@ -20,14 +24,14 @@
         </ng-container>
 
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef i18n> Name </th>
             <td mat-cell *matCellDef="let loan"> {{loan.name}} </td>
-            <td mat-footer-cell *matFooterCellDef>Total</td>
+            <td mat-footer-cell *matFooterCellDef i18n>Total</td>
         </ng-container>
 
         <!-- Principal Column -->
         <ng-container matColumnDef="principal">
-            <th mat-header-cell *matHeaderCellDef> Principal </th>
+            <th mat-header-cell *matHeaderCellDef i18n> Principal </th>
             <td mat-cell *matCellDef="let loan; let i = index;">
                 <input [(ngModel)]="mortgage.loans[i].principal" class="calc-medium-width" style="width: 6em"
                     (ngModelChange)="onLoanPrincipalChange(loan)" type="number" />
@@ -39,7 +43,7 @@
             </td>
         </ng-container>
         <ng-container matColumnDef="portion">
-            <th mat-header-cell *matHeaderCellDef> Portion </th>
+            <th mat-header-cell *matHeaderCellDef i18n> Portion </th>
             <td mat-cell *matCellDef="let i = index;">
                 <input [(ngModel)]="portions[i]" (ngModelChange)="onLoanPortionChange(i)" class="calc-medium-width"
                     style="width: 3em" type="number" />
@@ -50,7 +54,7 @@
             </td>
         </ng-container>
         <ng-container matColumnDef="interestRate">
-            <th mat-header-cell *matHeaderCellDef> Interest Rate </th>
+            <th mat-header-cell *matHeaderCellDef i18n> Interest Rate </th>
             <td mat-cell *matCellDef="let loan; let i = index;">
                 <input [(ngModel)]="mortgage.loans[i].interestRate" type="number" step="0.1" min="0" max="15"
                     style="width: 3em" class="calc-medium-width" />
@@ -59,14 +63,14 @@
             <td mat-footer-cell *matFooterCellDef> {{mortgage.avgInterestRate | number}}% </td>
         </ng-container>
         <ng-container matColumnDef="months">
-            <th mat-header-cell *matHeaderCellDef> Months </th>
+            <th mat-header-cell *matHeaderCellDef i18n> Months </th>
             <td mat-cell *matCellDef="let loan; let i = index;">
                 <input [(ngModel)]="mortgage.loans[i].months" class="calc-medium-width" type="number" min="1" />
             </td>
             <td mat-footer-cell *matFooterCellDef> {{mortgage.totalMonths}} </td>
         </ng-container>
         <ng-container matColumnDef="monthlyPayment">
-            <th mat-header-cell *matHeaderCellDef> Monthly payment </th>
+            <th mat-header-cell *matHeaderCellDef i18n> Monthly payment </th>
             <td mat-cell *matCellDef="let loan">
                 <calc-money [amount]="loan.monthlyPayment"></calc-money>
             </td>
@@ -75,7 +79,7 @@
             </td>
         </ng-container>
         <ng-container matColumnDef="total">
-            <th mat-header-cell *matHeaderCellDef>Total amount</th>
+            <th mat-header-cell *matHeaderCellDef i18n>Total amount</th>
             <td mat-cell *matCellDef="let loan">
                 <calc-money [amount]="loan.totalAmount"></calc-money>
             </td>
@@ -95,7 +99,9 @@
                 color="primary" 
                 (click)="fixPrincipals()">
                 <mat-icon aria-hidden="false" aria-label="Plus">auto_fix_normal</mat-icon>
-                Autofix selected loan{{selection.selected.length > 1 ? 's' : ''}}
+                <ng-container i18n="button text|Text for button to automatically set the amount of the selected loans in a mortgage">
+                    {selection.selected.length, plural, =1 {Autofix selected loan} other {Autofix selected loans}}
+                </ng-container>
             </button>
             <button 
                 mat-raised-button 
@@ -103,12 +109,12 @@
                 [disabled]="selection.selected.length === mortgage.loans.length"
                 (click)="removeSelectedLoans()">
                 <mat-icon aria-hidden="false" aria-label="Plus">delete</mat-icon>
-                Remove {{selection.selected.length}} selected
+                <ng-container i18n>Remove {{selection.selected.length}}</ng-container>
             </button>
         </span>
         <button mat-raised-button color="primary" (click)="addLoan()">
             <mat-icon aria-hidden="false" aria-label="Plus">add</mat-icon>
-            Add Loan
+            <ng-container i18n>Add Loan</ng-container>
         </button>
     </div>
 </div>
