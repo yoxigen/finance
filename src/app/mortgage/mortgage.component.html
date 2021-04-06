@@ -1,8 +1,5 @@
 <div style="overflow: auto">
-    <table 
-        mat-table 
-        [dataSource]="loansDataSource" 
-        [trackBy]="trackByLoanId" 
+    <table mat-table [dataSource]="loansDataSource" [trackBy]="trackByLoanId"
         class="calc-at-least-full-width calc-table-nowrap-contents">
         <!-- Checkbox Column -->
         <ng-container matColumnDef="select" sticky>
@@ -13,11 +10,8 @@
                 </mat-checkbox>
             </th>
             <td mat-cell *matCellDef="let loan" data-id="{{loan.id}}">
-                <mat-checkbox 
-                    (click)="$event.stopPropagation()" 
-                    (change)="$event ? selection.toggle(loan) : null"
-                    [checked]="selection.isSelected(loan)" 
-                    [aria-label]="checkboxLabel(loan)">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(loan) : null"
+                    [checked]="selection.isSelected(loan)" [aria-label]="checkboxLabel(loan)">
                 </mat-checkbox>
             </td>
             <td mat-footer-cell *matFooterCellDef></td>
@@ -33,12 +27,8 @@
         <ng-container matColumnDef="principal">
             <th mat-header-cell *matHeaderCellDef i18n> Principal </th>
             <td mat-cell *matCellDef="let loan; let i = index;">
-                <input 
-                    [(ngModel)]="mortgage.loans[i].principal" 
-                    class="calc-medium-width" 
-                    style="width: 6em"
-                    type="number"
-                    (ngModelChange)="onLoanPrincipalChange(loan)" />
+                <input [(ngModel)]="mortgage.loans[i].principal" class="calc-medium-width" style="width: 6em"
+                    type="number" (ngModelChange)="onLoanPrincipalChange(loan)" />
                 <span class="calc-input-unit">{{currencyService.currencySymbol}}</span>
             </td>
             <td mat-footer-cell *matFooterCellDef>
@@ -95,30 +85,24 @@
         <tr mat-row *matRowDef="let row; columns: displayedMortgageLoanColumns;"></tr>
         <tr mat-footer-row *matFooterRowDef="displayedMortgageLoanColumns"></tr>
     </table>
-    <div class="margin-top-half calc-buttons-row">
-        <div *ngIf="selection.hasValue()">
-            <button 
-                *ngIf="principalCoverageDifference"
-                mat-raised-button 
-                color="primary" 
-                (click)="fixPrincipals()">
-                <mat-icon aria-hidden="false" aria-label="Plus">auto_fix_normal</mat-icon>
-                <ng-container i18n="button text|Text for button to automatically set the amount of the selected loans in a mortgage">
-                    {selection.selected.length, plural, =1 {Autofix selected loan} other {Autofix selected loans}}
-                </ng-container>
-            </button>
-            <button 
-                mat-raised-button 
-                color="warn" 
-                [disabled]="selection.selected.length === mortgage.loans.length"
-                (click)="removeSelectedLoans()">
-                <mat-icon aria-hidden="false" aria-label="Plus">delete</mat-icon>
-                <ng-container i18n>Remove {{selection.selected.length}}</ng-container>
-            </button>
-        </div>
-        <button mat-raised-button color="primary" (click)="addLoan()">
-            <mat-icon aria-hidden="false" aria-label="Plus">add</mat-icon>
-            <ng-container i18n>Add Loan</ng-container>
+</div>
+<div class="margin-top-half calc-buttons-row">
+    <span *ngIf="selection.hasValue()">
+        <button *ngIf="principalCoverageDifference" mat-raised-button color="primary" (click)="fixPrincipals()">
+            <mat-icon aria-hidden="false" aria-label="Plus">auto_fix_normal</mat-icon>
+            <ng-container
+                i18n="button text|Text for button to automatically set the amount of the selected loans in a mortgage">
+                {selection.selected.length, plural, =1 {Autofix selected loan} other {Autofix selected loans}}
+            </ng-container>
         </button>
-    </div>
+        <button mat-raised-button color="warn" [disabled]="selection.selected.length === mortgage.loans.length"
+            (click)="removeSelectedLoans()">
+            <mat-icon aria-hidden="false" aria-label="Plus">delete</mat-icon>
+            <ng-container i18n>Remove {{selection.selected.length}}</ng-container>
+        </button>
+    </span>
+    <button mat-raised-button color="primary" (click)="addLoan()">
+        <mat-icon aria-hidden="false" aria-label="Plus">add</mat-icon>
+        <ng-container i18n>Add Loan</ng-container>
+    </button>
 </div>

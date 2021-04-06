@@ -8,6 +8,7 @@ import { SummaryItem } from '../summary-table/summary-table.component';
 import { CalcTextType } from '../text/text.component';
 import { filter, skip } from 'rxjs/operators';
 import { CurrencyService } from '../currency.service';
+import { Title } from '@angular/platform-browser';
 
 const LOCAL_STORAGE_KEY = "rent-vs-ownership";
 
@@ -51,6 +52,8 @@ const DEFAULT_LOANS = [
   { name: $localize `Fixed`, months: DEFAULT_LOAN_MONTHS, interestRate: 3, principal: DEFAULT_LOAN_PRINCIPAL },
 ];
 
+const PAGE_TITLE = $localize `Rent vs Home Ownership Calculator`;
+
 @Component({
   selector: 'app-real-estate',
   templateUrl: './real-estate.component.html',
@@ -64,6 +67,8 @@ export class RealEstateComponent implements OnInit {
   private _totalRentPaid: number;
 
   private isInit = false;
+
+  readonly title = PAGE_TITLE;
 
   yearsData: ChartData = [];
   chartData: [string, number, number][] = [];
@@ -172,8 +177,10 @@ export class RealEstateComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute, 
     private router: Router,
-    public currencyService: CurrencyService) {
-
+    public currencyService: CurrencyService,
+    titleService: Title
+  ) {
+      titleService.setTitle(PAGE_TITLE);
   }
 
   ngOnInit(): void {
@@ -384,17 +391,17 @@ export class RealEstateComponent implements OnInit {
         title: $localize `Total rent paid`,
         valueType: CalcTextType.bad,
         value: totalRentPaid,
-        description: $localize `All the rent payments combined`
+        description: $localize `All the rent payments for ${yearsCount} years combined`
       },
       {
         title: $localize `Total money invested`,
         value: rentInvestmentSum,
-        description: $localize `How much money was invested`
+        description: $localize `Sum of all the money invested in yield-generating assets over the ${yearsCount} period`
       },
       {
         title: $localize `Total money gained from investments`,
         value: rentInvestmentsGains,
-        description: $localize `The gain from investments`
+        description: $localize `The profit from investments, calculated as the current value of all assets minus the money invested`
       },
       {
         title: $localize `Assets available (before tax)`,
@@ -402,22 +409,22 @@ export class RealEstateComponent implements OnInit {
         description: $localize `How much all invested assets are worth, before capital gains tax`
       },
       {
-        title: $localize `Capital gains tax`,
+        title: $localize `Capital gains tax (${this.capitalGainsTax * 100}%)`,
         valueType: CalcTextType.bad,
         value: rentInvestmentsTax,
-        description: $localize `Tax money to pay`
+        description: $localize `Tax money to pay for capital gains on investments`
       },
       {
         title: $localize `:Invested money while renting, after deducting capital gains tax:Equity (after tax)`,
         valueType: CalcTextType.good,
         value: rentSavings - rentInvestmentsTax,
-        description: $localize `Soluble assets in investments`,
+        description: $localize `After paying taxes, the net value of investments`,
         isHighlight: true
       },
       {
-        title: $localize `Assets available minus rent paid`,
+        title: $localize `Equity minus rent paid`,
         value: rentSavings - rentInvestmentsTax - totalRentPaid,
-        description: $localize `Soluble assets in investments`
+        description: $localize `Sum of all the monetary value of equity, minus the total money paid on rent and taxes`
       },
     ];
 
@@ -427,10 +434,10 @@ export class RealEstateComponent implements OnInit {
 
     this.mortgageSummaryItems = [
       {
-        title: $localize `Total mortgage paid`,
+        title: $localize `Total money paid for the property`,
         valueType: CalcTextType.bad,
         value: this.mortgage.totalAmount + this.initialSum,
-        description: $localize `Total money paid to return the mortgage`
+        description: $localize `All the money that was paid to buy the property (down-payment + mortgage)`
       },
       {
         title: $localize `Avg. monthly payment`,
@@ -440,12 +447,12 @@ export class RealEstateComponent implements OnInit {
       {
         title: $localize `Total money invested (not on the property)`,
         value: mortgageInvestmentSum,
-        description: $localize `How much money was invested in assets different than the mortgaged property, when the mortgage payment was lower than the rent payment`
+        description: $localize `Sum of all the money invested in yield-generating assets (not including the mortgaged property!) over the ${yearsCount} years period, when the mortgage payment was lower than the rent payment`
       },
       {
-        title: $localize `Total money gained from investments`,
+        title: $localize `Total profit from investments`,
         value: mortgageInvestmentsGains,
-        description: $localize `The gain from investments`
+        description: $localize `The difference between the value of the investments at the end of the period and the total sum invested`
       },
       {
         title: $localize `:Invested money while renting, before deducting capital gains tax:Equity (before tax)`,
@@ -453,23 +460,19 @@ export class RealEstateComponent implements OnInit {
         description: $localize `How much all invested assets (not including the property!) are worth, before capital gains tax`
       },
       {
-        title: $localize `Capital gains tax`,
-        valueType: CalcTextType.bad,
+        title: $localize `Capital gains tax (${this.capitalGainsTax * 100}%)`,
         value: mortgageInvestmentsTax,
-        description: $localize `Tax money to pay for investments`
+        description: $localize `Tax money to pay for capital gains on investments`
       },
       {
         title: $localize `:Invested money while renting, after deducting capital gains tax:Equity (after tax)`,
-        valueType: CalcTextType.good,
         value: mortgageInvestments - mortgageInvestmentsTax,
-        description: $localize `Soluble assets in investments`,
-        isHighlight: true
+        description: $localize `After paying taxes, the net value of investments (other than the property)`,
       },
       {
         title: $localize `Property value`,
-        valueType: CalcTextType.good,
         value: futurePropertyValue,
-        description: $localize `Value of the property at the end of the period`,
+        description: $localize `Expected value of the property at the end of the period, calculated by compounding the price of the property by the annual property value increase rate for ${yearsCount} years.`,
       },
       {
         title: $localize `Total assets value (after tax)`,

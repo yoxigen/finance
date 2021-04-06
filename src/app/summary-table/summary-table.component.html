@@ -13,7 +13,7 @@
         </td>
     </ng-container>
     <ng-container matColumnDef="value">
-        <td mat-cell *matCellDef="let item">
+        <td mat-cell *matCellDef="let item" class="summary-table-value-cell">
             <calc-money [type]="item.valueType" [amount]="item.value"></calc-money>
         </td>
     </ng-container>

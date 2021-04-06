@@ -1,8 +1,25 @@
 <div class="calc-app" dir="{{direction}}">
   <mat-toolbar color="primary">
-    <span i18n="Title for the app@@appTitle">Financial Learning</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Show/hide menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span i18n="Title for the app@@appTitle" class="app-title">Financial Learning</span>
+    <button mat-icon-button aria-label="Share" (click)="share()">
+      <mat-icon>share</mat-icon>
+    </button>
   </mat-toolbar>
   <div class="app-contents">
     <app-real-estate></app-real-estate>
   </div>
 </div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="locales">
+    <mat-icon>language</mat-icon>
+    Language
+  </button>
+</mat-menu>
+<mat-menu #locales="matMenu">
+  <a *ngFor="let language of languages" mat-menu-item [href]="getLocaleHref(language)">
+    {{language.name}}
+  </a>
+</mat-menu>

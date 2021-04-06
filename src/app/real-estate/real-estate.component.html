@@ -1,9 +1,11 @@
 <article class="calc-container">
-    <h1 i18n>What is better financially, rent or home ownership?</h1>
+    <h2>{{title}}</h2>
     <div class="calc-form-contents">
         <div class="calc-form">
             <div class="margin-bottom-1">
                 <mat-accordion class="calc-accordion " multi>
+
+                    <!-- Setup -->
                     <mat-expansion-panel [expanded]="true">
                         <mat-expansion-panel-header>
                             <mat-panel-title i18n="section header|Header for a Setup section">
@@ -29,22 +31,9 @@
                                     #ctrl="ngModel">
                                 <span matSuffix>{{currencyService.currencySymbol}}</span>
                             </mat-form-field>
-
-                            <mat-form-field class="calc-flex-1">
-                                <mat-label i18n>Initial Rent</mat-label>
-                                <input 
-                                    type="number" 
-                                    matInput 
-                                    i18n-placeholder
-                                    placeholder="What you're paying for rent now"
-                                    [(ngModel)]="rent.initialRent" 
-                                    (ngModelChange)="update()" 
-                                    name="currentRent"
-                                    #ctrl="ngModel">
-                                <span matSuffix>{{currencyService.currencySymbol}}</span>
-                            </mat-form-field>
                         </div>
-                        <mat-form-field style="width: 200px" class="margin-bottom-1 margin-bottom-2">
+                        <div class="margin-bottom-2">
+                        <mat-form-field style="width: 200px">
                             <mat-label i18n>Investment interest rate</mat-label>
                             <input 
                                 type="number" 
@@ -59,41 +48,7 @@
                                 <strong i18n>Expected average annual interest rate for investments</strong>
                             </mat-hint>
                         </mat-form-field>
-                        <div class="calc-flex-horizontal rate-inputs">
-                            <mat-form-field class="calc-flex-1 margin-bottom-2">
-                                <mat-label i18n>Rent annual increase</mat-label>
-                                <input 
-                                    type="number" 
-                                    matInput 
-                                    i18n-placeholder
-                                    placeholder="In percent, how much rent increases per year"
-                                    [(ngModel)]="rent.annualIncreaseRate" 
-                                    (ngModelChange)="update()"
-                                    name="rentAnnualIncreaseRate"
-                                    #ctrl="ngModel">
-                                <span matSuffix>%</span>
-                                <mat-hint align="start">
-                                    <strong i18n>Expected average annual increase in rent payments</strong>
-                                </mat-hint>
-                            </mat-form-field>
-
-                            <mat-form-field class="calc-flex-1 margin-bottom-2">
-                                <mat-label i18n>Property value annual increase</mat-label>
-                                <input 
-                                    type="number" 
-                                    matInput 
-                                    i18n-placeholder
-                                    placeholder="Increase in value for the property, annually"
-                                    [(ngModel)]="annualAssetInterest" 
-                                    (ngModelChange)="update()"
-                                    name="annualAssetInterest" 
-                                    #ctrl="ngModel">
-                                <span matSuffix>%</span>
-                                <mat-hint align="start">
-                                    <strong i18n>Expected average annual increase in property value</strong>
-                                </mat-hint>
-                            </mat-form-field>
-                        </div>
+                    </div>
                         <mat-form-field style="width: 200px" class="margin-bottom-1">
                             <mat-label i18n>Extra years</mat-label>
                             <input type="number" 
@@ -110,6 +65,53 @@
                         </mat-form-field>
                     </mat-expansion-panel>
 
+                    <!-- Rent -->
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title i18n>
+                                Rent
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                &nbsp;
+                                <mat-icon>hotel</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div>
+                            <mat-form-field>
+                                <mat-label i18n>Initial Rent</mat-label>
+                                <input 
+                                    type="number" 
+                                    matInput 
+                                    i18n-placeholder
+                                    placeholder="What you're paying for rent now"
+                                    [(ngModel)]="rent.initialRent" 
+                                    (ngModelChange)="update()" 
+                                    name="currentRent"
+                                    #ctrl="ngModel">
+                                <span matSuffix>{{currencyService.currencySymbol}}</span>
+                            </mat-form-field>
+                        </div>
+                        <div class="rate-inputs">
+                            <mat-form-field class="calc-flex-1 margin-bottom-2">
+                                <mat-label i18n>Rent annual increase</mat-label>
+                                <input 
+                                    type="number" 
+                                    matInput 
+                                    i18n-placeholder
+                                    placeholder="In percent, how much rent increases per year"
+                                    [(ngModel)]="rent.annualIncreaseRate" 
+                                    (ngModelChange)="update()"
+                                    name="rentAnnualIncreaseRate"
+                                    #ctrl="ngModel">
+                                <span matSuffix>%</span>
+                                <mat-hint align="start">
+                                    <strong i18n>Expected average annual increase in rent payments</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                    </mat-expansion-panel>
+
+                    <!-- Mortgage -->
                     <mat-expansion-panel [expanded]="true">
                         <mat-expansion-panel-header>
                             <mat-panel-title i18n>
@@ -132,12 +134,31 @@
                                 #ctrl="ngModel">
                             <span matSuffix>{{currencyService.currencySymbol}}</span>
                         </mat-form-field>
+                        <div>
+                            <mat-form-field class="calc-flex-1 margin-bottom-2">
+                                <mat-label i18n>Property value annual increase</mat-label>
+                                <input 
+                                    type="number" 
+                                    matInput 
+                                    i18n-placeholder
+                                    placeholder="Increase in value for the property, annually"
+                                    [(ngModel)]="annualAssetInterest" 
+                                    (ngModelChange)="update()"
+                                    name="annualAssetInterest" 
+                                    #ctrl="ngModel">
+                                <span matSuffix>%</span>
+                                <mat-hint align="start">
+                                    <strong i18n>Expected average annual increase in property value</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
                         <calc-mortgage 
                             (mortgageChange)="setMortgage($event)" 
                             [config]="mortgageConfig">
                         </calc-mortgage>
                     </mat-expansion-panel>
 
+                    <!-- Data per year table -->
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title i18n>
@@ -231,44 +252,23 @@
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
-            <div class="calc-flex-horizontal calc-flex-800">
-                <mat-card class="calc-flex-1">
-                    <mat-card-header>
-                        <div mat-card-avatar>
-                            <mat-icon aria-hidden="false" aria-label="Summary">hotel</mat-icon>
-                        </div>
-                        <mat-card-title i18n>Rent Summary</mat-card-title>
-                        <mat-card-subtitle i18n>Summary after {totalTime, plural, =1 {one year} other {{{totalTime}} years}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <calc-summary-table [items]="rentSummaryItems"></calc-summary-table>
-                    </mat-card-content>
-                </mat-card>
-
-                <mat-card class="calc-flex-1">
-                    <mat-card-header>
-                        <div mat-card-avatar>
-                            <mat-icon aria-hidden="false" aria-label="Summary">account_balance</mat-icon>
-                        </div>
-                        <mat-card-title i18n>Mortgage Summary</mat-card-title>
-                        <mat-card-subtitle i18n>Summary after {totalTime, plural, =1 {one year} other {{{totalTime}} years}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <calc-summary-table [items]="mortgageSummaryItems"></calc-summary-table>
-                    </mat-card-content>
-                </mat-card>
-            </div>
         </div>
         <div class="calc-results">
-            <mat-card class="calc-full-width">
-                <mat-card-header>
-                    <div mat-card-avatar>
-                        <mat-icon aria-hidden="false" aria-label="Summary">science</mat-icon>
-                    </div>
-                    <mat-card-title i18n>Results</mat-card-title>
-                    <mat-card-subtitle i18n>Summary after {totalTime, plural, =1 {one year} other {{{totalTime}} years}}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
+            <div class="margin-bottom-2">
+            <mat-accordion class="calc-accordion" multi>
+
+                <!-- Results -->
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title i18n>
+                            Results
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            &nbsp;
+                            <mat-icon>science</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-card-subtitle i18n>Comparison of rent vs mortgage after {totalTime, plural, =1 {one year} other {{{totalTime}} years}}</mat-card-subtitle>
                     <table class="mat-table calc-full-width">
                         <thead>
                             <tr class="mat-header-row">
@@ -311,10 +311,10 @@
                                     Capital gains tax
                                 </td>
                                 <td class="mat-cell">
-                                    <calc-money type="bad" [amount]="totalRentInvestmentGainsTax"></calc-money>
+                                    <calc-money [amount]="totalRentInvestmentGainsTax"></calc-money>
                                 </td>
                                 <td class="mat-cell">
-                                    <calc-money type="bad" [amount]="totalMortgageInvestmentTax">
+                                    <calc-money [amount]="totalMortgageInvestmentTax">
                                     </calc-money>
                                 </td>
                             </tr>
@@ -356,8 +356,40 @@
                             </tr>
                         </tbody>
                     </table>
-                </mat-card-content>
-            </mat-card>
+                </mat-expansion-panel>
+
+                <!-- Mortgage summary -->
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title i18n>
+                            Mortgage Summary
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            &nbsp;
+                            <mat-icon>account_balance</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-card-subtitle i18n>Summary after {totalTime, plural, =1 {one year} other {{{totalTime}} years}}</mat-card-subtitle>
+                    <calc-summary-table [items]="mortgageSummaryItems"></calc-summary-table>
+                </mat-expansion-panel>
+
+                <!-- Rent summary -->
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title i18n>
+                            Rent Summary
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            &nbsp;
+                            <mat-icon>hotel</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <mat-card-subtitle i18n>Summary after {totalTime, plural, =1 {one year} other {{{totalTime}} years}}</mat-card-subtitle>
+                    <calc-summary-table [items]="rentSummaryItems"></calc-summary-table>
+                </mat-expansion-panel>
+
+            </mat-accordion>
+        </div>
             <mat-card class="calc-full-width">
                 <mat-card-header>
                     <div mat-card-avatar>

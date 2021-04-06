@@ -87,7 +87,8 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "calc:build"
+            "browserTarget": "calc:build",
+            "outputPath": "src/locale"
           }
         },
         "test": {
@@ -135,7 +136,9 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "baseHref": "/finance/"
+          }
         }
       }
     }

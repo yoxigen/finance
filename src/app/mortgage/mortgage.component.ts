@@ -99,7 +99,7 @@ export class MortgageComponent implements OnDestroy {
    */
   fixPrincipals() {
     const amountToDivide = this.principalCoverageDifference;
-    const amountPerLoan = amountToDivide / this.selection.selected.length;
+    const amountPerLoan = Math.floor(amountToDivide / this.selection.selected.length);
     this.selection.selected.forEach(loan => loan.principal += amountPerLoan);
   }
 

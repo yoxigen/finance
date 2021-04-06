@@ -89,3 +89,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
          margin-block-end: 8px;
      }
  }
+
+ .mat-cell details {
+     margin: 11px 0;
+ }
+
+ google-chart svg + div {
+     display: none;
+ }
