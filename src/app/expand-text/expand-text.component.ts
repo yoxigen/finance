@@ -5,9 +5,4 @@ import { Component, Input } from '@angular/core';
   templateUrl: './expand-text.component.html',
   styleUrls: ['./expand-text.component.scss']
 })
-export class ExpandTextComponent {
-  @Input() label: string;
-  @Input() text: string;
-
-  isExpanded = false;
-}
+export class ExpandTextComponent {}

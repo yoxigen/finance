@@ -1,4 +1,5 @@
 import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { TrackingService } from './analytics/tracking.service';
 
 const RTL_LOCALES = ["he", "ar"];
 
@@ -19,7 +20,7 @@ export class AppComponent {
     { locale: 'he', name: 'עברית' }
   ];
 
-  constructor(@Inject(LOCALE_ID) public locale: string) {}
+  constructor(@Inject(LOCALE_ID) public locale: string, private trackingService: TrackingService) {}
 
   get direction(): string {
     return RTL_LOCALES.includes(this.locale) ? 'rtl' : 'ltr';
@@ -30,10 +31,16 @@ export class AppComponent {
       url: document.location.href,
       title: document.title
     });
+
+    this.trackingService.trackEvent('share', { content_id: document.title, content_type: 'page' })
   }
 
   getLocaleHref(language: Language) {
     const baseHrefLangRegExp = new RegExp(`/${this.locale}/$`);
     return `${document.baseURI.replace(baseHrefLangRegExp, '/' + language.locale)}`
+  }
+
+  onLanguageSelect({locale}: Language) {
+    this.trackingService.trackEvent('language_change', { locale })
   }
 }

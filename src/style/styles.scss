@@ -23,6 +23,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-top: 1rem;
 }
 
+.calc-center-vertical {
+    display: flex;
+    align-items: center;
+}
+
 .calc-full-width {
     width: 100%;
     box-sizing: border-box;
@@ -96,4 +101,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
  google-chart svg + div {
      display: none;
+ }
+ 
+ .mat-expansion-panel-header-description.mat-expansion-panel-header-description-icon-only {
+     flex-grow: 0;
+ }
+
+ .calc-page-description-title {
+     margin : 0 !important;
+
+     mat-icon {
+         margin-inline-end: .5em;
+     }
+ }
+
+ .calc-page-description-text {
+     width: 600px;
+     max-width: 100%;
+     margin-bottom: 2em;
+ }
+
+ .rotate-90-end {
+    transform: rotateZ(-90deg);
+
+    @at-root [dir=rtl] #{&} {
+        transform: rotateZ(90deg);
+    }
  }

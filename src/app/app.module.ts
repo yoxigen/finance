@@ -16,6 +16,8 @@ import { MaterialModule } from './material-module';
 import { CurrencyInputDirective } from './inputs/currency-input/currency-input.directive';
 import { HelpComponent } from './help/help.component';
 import { ExpandTextComponent } from './expand-text/expand-text.component';
+import { TrackOnBlurDirective } from './analytics/directives/track-on-blur/track-on-blur.directive';
+import { TrackOnClickDirective } from './analytics/directives/track-on-click/track-on-click.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ExpandTextComponent } from './expand-text/expand-text.component';
     MortgageComponent,
     CurrencyInputDirective,
     HelpComponent,
-    ExpandTextComponent
+    ExpandTextComponent,
+    TrackOnBlurDirective,
+    TrackOnClickDirective
   ],
   imports: [
     BrowserModule,

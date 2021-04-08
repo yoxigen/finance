@@ -19,7 +19,10 @@
   </button>
 </mat-menu>
 <mat-menu #locales="matMenu">
-  <a *ngFor="let language of languages" mat-menu-item [href]="getLocaleHref(language)">
+  <a 
+    *ngFor="let language of languages" 
+    (click)="onLanguageSelect(language)"
+    mat-menu-item [href]="getLocaleHref(language)">
     {{language.name}}
   </a>
 </mat-menu>

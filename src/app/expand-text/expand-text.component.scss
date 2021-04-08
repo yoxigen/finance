@@ -11,11 +11,12 @@ details {
         display: flex;
         align-items: center;
         justify-content: center;
+        transition-duration: 160ms;
     }
 
     &[open] {
         mat-icon {
-            transform: rotateZ(180deg);
+            transform: rotateZ(0);
         }
 
     }

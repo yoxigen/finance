@@ -88,20 +88,31 @@
 </div>
 <div class="margin-top-half calc-buttons-row">
     <span *ngIf="selection.hasValue()">
-        <button *ngIf="principalCoverageDifference" mat-raised-button color="primary" (click)="fixPrincipals()">
+        <button 
+            *ngIf="principalCoverageDifference"
+            mat-raised-button color="primary" 
+            calcTrackOnClick="mortgageFixPrincipals"
+            (click)="fixPrincipals()">
             <mat-icon aria-hidden="false" aria-label="Plus">auto_fix_normal</mat-icon>
             <ng-container
                 i18n="button text|Text for button to automatically set the amount of the selected loans in a mortgage">
                 {selection.selected.length, plural, =1 {Autofix selected loan} other {Autofix selected loans}}
             </ng-container>
         </button>
-        <button mat-raised-button color="warn" [disabled]="selection.selected.length === mortgage.loans.length"
+        <button 
+            mat-raised-button 
+            color="warn" 
+            [disabled]="selection.selected.length === mortgage.loans.length"
+            calcTrackOnClick="mortgageRemoveSelectedLoans"
             (click)="removeSelectedLoans()">
             <mat-icon aria-hidden="false" aria-label="Plus">delete</mat-icon>
             <ng-container i18n>Remove {{selection.selected.length}}</ng-container>
         </button>
     </span>
-    <button mat-raised-button color="primary" (click)="addLoan()">
+    <button 
+        mat-raised-button color="primary" 
+        calcTrackOnClick="mortgageAddLoan"
+        (click)="addLoan()">
         <mat-icon aria-hidden="false" aria-label="Plus">add</mat-icon>
         <ng-container i18n>Add Loan</ng-container>
     </button>

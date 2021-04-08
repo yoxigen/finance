@@ -31,7 +31,7 @@
             "localize": ["he"],
             "aot": true,
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.svg",
               "src/assets",
               "src/404.html"
             ],

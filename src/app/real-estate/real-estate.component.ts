@@ -174,6 +174,14 @@ export class RealEstateComponent implements OnInit {
     return this.totalRentInvestmentGainsAfterTax - this.totalRentInvestmentSum;
   }
 
+  get capitalGainsTaxPercentage(): number {
+    return this.capitalGainsTax * 100;
+  }
+
+  set capitalGainsTaxPercentage(value: number) {
+    this.capitalGainsTax = value / 100;
+  }
+  
   constructor(
     private activatedRoute: ActivatedRoute, 
     private router: Router,

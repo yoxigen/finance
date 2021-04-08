@@ -1,5 +1,25 @@
 <article class="calc-container">
     <h2>{{title}}</h2>
+    <div class="margin-bottom-2">
+        <calc-expand-text>
+            <h3 calc-expand-text-label i18n class="calc-page-description-title">
+                Description
+            </h3>
+            <div calc-expand-text-details class="calc-page-description-text">
+                <p i18n>
+                    This calculator aims to help you answer the question 
+                    "which is preferable for me - renting a house and investing or 
+                    taking a mortage and buying a property?".
+                </p>
+                <p i18n>
+                    To make the comparison, we assume that for any given month, the difference between the mortgage and the rent is invested.
+                    For example - if the monthly mortgage payment for a given month is $1000, but were we to rent instead, the rent payment for the same month
+                    was $700, then the calculator counts an investment of $300 on the rent option for that month. For months when the mortgage payment is lower
+                    than the rent payment, it'd be reversed and the investment would be added to the mortgage option.
+                </p>
+            </div>
+        </calc-expand-text>
+    </div>
     <div class="calc-form-contents">
         <div class="calc-form">
             <div class="margin-bottom-1">
@@ -27,42 +47,64 @@
                                     placeholder="Your initial available sum"
                                     [(ngModel)]="initialSum"
                                     (ngModelChange)="update()"
+                                    calcTrackOnBlur
                                     name="initialSum"
                                     #ctrl="ngModel">
                                 <span matSuffix>{{currencyService.currencySymbol}}</span>
                             </mat-form-field>
                         </div>
                         <div class="margin-bottom-2">
-                        <mat-form-field style="width: 200px">
-                            <mat-label i18n>Investment interest rate</mat-label>
-                            <input 
-                                type="number" 
-                                matInput 
-                                placeholder="Average interest rate from investment"
-                                i18n-placeholder
-                                [(ngModel)]="investmentInterest" 
-                                (ngModelChange)="update()"
-                                name="investmentInterest" #ctrl="ngModel">
-                            <span matSuffix>%</span>
-                            <mat-hint align="start">
-                                <strong i18n>Expected average annual interest rate for investments</strong>
-                            </mat-hint>
-                        </mat-form-field>
-                    </div>
-                        <mat-form-field style="width: 200px" class="margin-bottom-1">
-                            <mat-label i18n>Extra years</mat-label>
-                            <input type="number" 
-                                matInput 
-                                i18n-placeholder
-                                placeholder="Years to add"
-                                min="0"
-                                [(ngModel)]="extraYears" 
-                                (ngModelChange)="update()"
-                                name="extraYears" #ctrl="ngModel">
-                            <mat-hint align="start">
-                                <strong i18n>See calculations for years after the end of the mortgage</strong> 
-                            </mat-hint>
-                        </mat-form-field>
+                            <mat-form-field style="width: 200px">
+                                <mat-label i18n>Investment interest rate</mat-label>
+                                <input 
+                                    type="number" 
+                                    matInput 
+                                    placeholder="Average interest rate from investment"
+                                    i18n-placeholder
+                                    calcTrackOnBlur
+                                    [(ngModel)]="investmentInterest" 
+                                    (ngModelChange)="update()"
+                                    name="investmentInterest" #ctrl="ngModel" />
+                                <span matSuffix>%</span>
+                                <mat-hint align="start">
+                                    <strong i18n>Expected average annual interest rate for investments</strong>
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="margin-bottom-2">
+                            <mat-form-field style="width: 200px">
+                                <mat-label i18n>Capital gains tax</mat-label>
+                                <input type="number" 
+                                    matInput 
+                                    min="0"
+                                    max="100"
+                                    calcTrackOnBlur
+                                    [(ngModel)]="capitalGainsTaxPercentage" 
+                                    (ngModelChange)="update()"
+                                    name="extraYears" #ctrl="ngModel" />
+                                <span matSuffix>%</span>
+                                <mat-hint align="start">
+                                    <strong i18n>The tax on profits from investments</strong> 
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="margin-bottom-2">
+                            <mat-form-field style="width: 200px">
+                                <mat-label i18n>Extra years</mat-label>
+                                <input type="number" 
+                                    matInput 
+                                    i18n-placeholder
+                                    placeholder="Years to add"
+                                    min="0"
+                                    calcTrackOnBlur
+                                    [(ngModel)]="extraYears" 
+                                    (ngModelChange)="update()"
+                                    name="extraYears" #ctrl="ngModel">
+                                <mat-hint align="start">
+                                    <strong i18n>See calculations for years after the end of the mortgage</strong> 
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
                     </mat-expansion-panel>
 
                     <!-- Rent -->
@@ -86,6 +128,7 @@
                                     placeholder="What you're paying for rent now"
                                     [(ngModel)]="rent.initialRent" 
                                     (ngModelChange)="update()" 
+                                    calcTrackOnBlur
                                     name="currentRent"
                                     #ctrl="ngModel">
                                 <span matSuffix>{{currencyService.currencySymbol}}</span>
@@ -101,6 +144,7 @@
                                     placeholder="In percent, how much rent increases per year"
                                     [(ngModel)]="rent.annualIncreaseRate" 
                                     (ngModelChange)="update()"
+                                    calcTrackOnBlur
                                     name="rentAnnualIncreaseRate"
                                     #ctrl="ngModel">
                                 <span matSuffix>%</span>
@@ -131,6 +175,7 @@
                                 placeholder="The total price for the asset"
                                 [(ngModel)]="price" 
                                 name="price" 
+                                calcTrackOnBlur
                                 #ctrl="ngModel">
                             <span matSuffix>{{currencyService.currencySymbol}}</span>
                         </mat-form-field>
@@ -145,6 +190,7 @@
                                     [(ngModel)]="annualAssetInterest" 
                                     (ngModelChange)="update()"
                                     name="annualAssetInterest" 
+                                    calcTrackOnBlur
                                     #ctrl="ngModel">
                                 <span matSuffix>%</span>
                                 <mat-hint align="start">
@@ -364,7 +410,7 @@
                         <mat-panel-title i18n>
                             Mortgage Summary
                         </mat-panel-title>
-                        <mat-panel-description>
+                        <mat-panel-description class="mat-expansion-panel-header-description-icon-only">
                             &nbsp;
                             <mat-icon>account_balance</mat-icon>
                         </mat-panel-description>
@@ -379,7 +425,7 @@
                         <mat-panel-title i18n>
                             Rent Summary
                         </mat-panel-title>
-                        <mat-panel-description>
+                        <mat-panel-description class="mat-expansion-panel-header-description-icon-only">
                             &nbsp;
                             <mat-icon>hotel</mat-icon>
                         </mat-panel-description>
