@@ -28,7 +28,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "localize": true,
+            "localize": ["he"],
             "aot": true,
             "assets": [
               "src/favicon.svg",

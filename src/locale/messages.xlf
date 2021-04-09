@@ -35,49 +35,49 @@
         <source> Portion </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="980448807882091874" datatype="html">
         <source> Interest Rate </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="599081784120842333" datatype="html">
         <source> Months </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7148982607227495473" datatype="html">
         <source> Monthly payment </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5004550577313573215" datatype="html">
         <source>Total amount</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8032197124253726104" datatype="html">
-        <source>{VAR_PLURAL, plural, =1 {Autofix selected loan} other {Autofix selected loans}}</source>
+      <trans-unit id="8256341317382833009" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {Autofix loans} =1 {Autofix selected loan} other {Autofix selected loans}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">95</context>
+          <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="897716669306863082" datatype="html">
-        <source> <x id="ICU" equiv-text="{selection.selected.length, plural, =1 {Autofix selected loan} other {Autofix selected loans}}"/> </source>
+        <source> <x id="ICU" equiv-text="{selection.selected.length, plural, =0 {Autofix loans} =1 {Autofix selected loan} other {Autofix selected loans}}"/> </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">95,96</context>
+          <context context-type="linenumber">119,120</context>
         </context-group>
         <note priority="1" from="description">Text for button to automatically set the amount of the selected loans in a mortgage</note>
         <note priority="1" from="meaning">button text</note>
@@ -86,14 +86,14 @@
         <source>Remove <x id="INTERPOLATION" equiv-text="{{selection.selected.length}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">130</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7706038171323817325" datatype="html">
         <source>Add Loan</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/mortgage/mortgage.component.html</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3563823504206575540" datatype="html">
@@ -144,154 +144,154 @@
         <source>Investment interest rate</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="830898210655344715" datatype="html">
         <source>Average interest rate from investment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9071106579748483644" datatype="html">
         <source>Expected average annual interest rate for investments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6867547898579654666" datatype="html">
         <source>Capital gains tax</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6524633562844470080" datatype="html">
         <source>The tax on profits from investments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3014539781674359787" datatype="html">
         <source>Extra years</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3393420785475243549" datatype="html">
         <source>Years to add</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5009134284826273846" datatype="html">
         <source>See calculations for years after the end of the mortgage</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">100</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4604170007808946939" datatype="html">
         <source> Rent </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">110,111</context>
+          <context context-type="linenumber">118,119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5527820942182337049" datatype="html">
         <source>Initial Rent</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">127</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7538204733785707131" datatype="html">
         <source>What you're paying for rent now</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">132</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6126618961786980021" datatype="html">
         <source>Rent annual increase</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">134</context>
+          <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit>
       <trans-unit id="180633312971050733" datatype="html">
         <source>In percent, how much rent increases per year</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">149</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2795689526877802701" datatype="html">
         <source>Expected average annual increase in rent payments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">146</context>
+          <context context-type="linenumber">158</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2818149315156088575" datatype="html">
         <source> Mortgage </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">156,157</context>
+          <context context-type="linenumber">168,169</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3864457582224287658" datatype="html">
         <source>Asset Price</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">164</context>
+          <context context-type="linenumber">176</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7161918154702515343" datatype="html">
         <source>The total price for the asset</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">169</context>
+          <context context-type="linenumber">181</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4543666498003708762" datatype="html">
         <source>Property value annual increase</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">177</context>
+          <context context-type="linenumber">191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2916087208171738529" datatype="html">
         <source>Increase in value for the property, annually</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">182</context>
+          <context context-type="linenumber">196</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6370155055800373964" datatype="html">
         <source>Expected average annual increase in property value</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">189</context>
+          <context context-type="linenumber">205</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4928527284953292199" datatype="html">
         <source> Data per year </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">203,204</context>
+          <context context-type="linenumber">220,221</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1464072562214937907" datatype="html">
         <source>Year</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">213</context>
+          <context context-type="linenumber">230</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
@@ -302,14 +302,14 @@
         <source>Monthly rent</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">218</context>
+          <context context-type="linenumber">235</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4794429753404890765" datatype="html">
         <source>Rent invest/month</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">229</context>
+          <context context-type="linenumber">246</context>
         </context-group>
         <note priority="1" from="description">Column header text for amount of investment per month when renting</note>
       </trans-unit>
@@ -317,71 +317,71 @@
         <source>Rent equity</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">239</context>
+          <context context-type="linenumber">256</context>
         </context-group>
       </trans-unit>
       <trans-unit id="66688609405341704" datatype="html">
         <source>Mortgage monthly payment</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">248</context>
+          <context context-type="linenumber">265</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4990399110119650293" datatype="html">
         <source>Mortgage investments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">258</context>
+          <context context-type="linenumber">275</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4821507072077424460" datatype="html">
         <source>Mortgage equity</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">268</context>
+          <context context-type="linenumber">285</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4301313130924651932" datatype="html">
         <source>Mortgage left</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">277</context>
+          <context context-type="linenumber">294</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6036308268629413664" datatype="html">
         <source> Results </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">302,303</context>
+          <context context-type="linenumber">319,320</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8503221987953922866" datatype="html">
         <source>Comparison of rent vs mortgage after <x id="ICU" equiv-text="{totalTime, plural, =1 {one year} other {{{totalTime}} years}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">309</context>
+          <context context-type="linenumber">326</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2491856936575413915" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {one year} other {<x id="INTERPOLATION"/> years}}</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">309</context>
+          <context context-type="linenumber">326</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">410</context>
+          <context context-type="linenumber">475</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">425</context>
+          <context context-type="linenumber">490</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3504008095976461399" datatype="html">
         <source>Rent</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">314</context>
+          <context context-type="linenumber">331</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
@@ -392,7 +392,7 @@
         <source>Mortgage</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">315</context>
+          <context context-type="linenumber">332</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
@@ -403,88 +403,136 @@
         <source>Total assets value</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">321</context>
+          <context context-type="linenumber">340</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1571164672850944427" datatype="html">
-        <source>Total gains (after tax)</source>
+      <trans-unit id="4933346537130752948" datatype="html">
+        <source> Total sum of after-tax assets value. For rent, this includes equity in investments and for mortgage property value (after gains) and equity in investements (if any). </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">336</context>
+          <context context-type="linenumber">343,344</context>
         </context-group>
+        <note priority="1" from="description">Description for Total assets value of rent vs mortgage</note>
+      </trans-unit>
+      <trans-unit id="3735175662884294222" datatype="html">
+        <source> Total profit (after tax) </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">363,364</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2735854814595385009" datatype="html">
+        <source> All after-tax profit from investments - for rent this includes the yield from investments and for mortgage the increase in property value + yield from any investments (if any). </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">366,367</context>
+        </context-group>
+        <note priority="1" from="description">Description for Total profit (after tax) of rent vs mortgage</note>
+      </trans-unit>
+      <trans-unit id="6475109529226497335" datatype="html">
+        <source> Total amount paid </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">384,385</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7664148575222498577" datatype="html">
+        <source> For rent - the sum of all monthly rent payments, for mortgage - down payment (your initial savings) + sum of all mortgage payments. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">387,388</context>
+        </context-group>
+        <note priority="1" from="description">Description for Total amount invested of rent vs mortgage</note>
       </trans-unit>
       <trans-unit id="73930010260130800" datatype="html">
         <source> Capital gains tax </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">349,350</context>
+          <context context-type="linenumber">407,408</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5826586560467287275" datatype="html">
-        <source> Investments value </source>
+      <trans-unit id="1746884962148815896" datatype="html">
+        <source> Tax to pay for any capital gains (not property tax). </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">361,362</context>
+          <context context-type="linenumber">410,411</context>
+        </context-group>
+        <note priority="1" from="description">Description for Capital gains tax of rent vs mortgage</note>
+      </trans-unit>
+      <trans-unit id="899647259096112435" datatype="html">
+        <source> Investments equity </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">426,427</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="869404228117474029" datatype="html">
-        <source>Total amount invested</source>
+      <trans-unit id="893993003798989277" datatype="html">
+        <source> Value of invested assets (not including the mortgaged property) at the end of the period, not including tax. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">372</context>
+          <context context-type="linenumber">429,430</context>
+        </context-group>
+        <note priority="1" from="description">Description for Investments value of rent vs mortgage</note>
+      </trans-unit>
+      <trans-unit id="3961549094639245725" datatype="html">
+        <source> Total amount invested </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">445,446</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="796503244419077544" datatype="html">
-        <source>Total amount paid</source>
+      <trans-unit id="2508531717047333411" datatype="html">
+        <source> Total amount of money invested in assets, not including the mortgaged property. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">382</context>
+          <context context-type="linenumber">448,449</context>
         </context-group>
+        <note priority="1" from="description">Description for Total amount invested of rent vs mortgage</note>
       </trans-unit>
       <trans-unit id="2036545592609733998" datatype="html">
         <source> Mortgage Summary </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">403,404</context>
+          <context context-type="linenumber">468,469</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1854039828934852735" datatype="html">
         <source>Summary after <x id="ICU" equiv-text="{totalTime, plural, =1 {one year} other {{{totalTime}} years}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">410</context>
+          <context context-type="linenumber">475</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">425</context>
+          <context context-type="linenumber">490</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5599221472774926431" datatype="html">
         <source> Rent Summary </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">418,419</context>
+          <context context-type="linenumber">483,484</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6217275515246382204" datatype="html">
         <source>Monthly Payment Per Year</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">436</context>
+          <context context-type="linenumber">501</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8341380725336912070" datatype="html">
         <source>Equity Over Time</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">454</context>
+          <context context-type="linenumber">519</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5900165224811454746" datatype="html">
         <source>Equity owned by the home owner/renter, by years</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">455</context>
+          <context context-type="linenumber">520</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1959979480361689878" datatype="html">
@@ -579,7 +627,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">471</context>
+          <context context-type="linenumber">492</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1712275308997279173" datatype="html">
@@ -590,7 +638,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">473</context>
+          <context context-type="linenumber">494</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9139840606837045200" datatype="html">
@@ -601,7 +649,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">476</context>
+          <context context-type="linenumber">497</context>
         </context-group>
         <note priority="1" from="description">Invested money while renting, after deducting capital gains tax</note>
       </trans-unit>
@@ -626,117 +674,53 @@
           <context context-type="linenumber">435</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5980316256391079918" datatype="html">
-        <source>Total money paid for the property</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">445</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8294628418360699428" datatype="html">
-        <source>All the money that was paid to buy the property (down-payment + mortgage)</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">448</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2138415480463255219" datatype="html">
-        <source>Avg. monthly payment</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">451</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="256584434460808124" datatype="html">
-        <source>The average mortgage monthly payment for the period of the mortgage</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">453</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3388180355279461025" datatype="html">
-        <source>Total money invested (not on the property)</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">456</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3958763102888952790" datatype="html">
-        <source>Sum of all the money invested in yield-generating assets (not including the mortgaged property!) over the <x id="PH" equiv-text="yearsCount"/> years period, when the mortgage payment was lower than the rent payment</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">458</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="719513577647441812" datatype="html">
-        <source>Total profit from investments</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">461</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4404249827811672076" datatype="html">
-        <source>The difference between the value of the investments at the end of the period and the total sum invested</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">463</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="786177733579111869" datatype="html">
-        <source>Equity (before tax)</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">466</context>
-        </context-group>
-        <note priority="1" from="description">Invested money while renting, before deducting capital gains tax</note>
-      </trans-unit>
-      <trans-unit id="3327641557657753424" datatype="html">
-        <source>How much all invested assets (not including the property!) are worth, before capital gains tax</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">468</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6933206237705791010" datatype="html">
-        <source>After paying taxes, the net value of investments (other than the property)</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">478</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6945085742607234417" datatype="html">
-        <source>Property value</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">481</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8497891911245105242" datatype="html">
-        <source>Expected value of the property at the end of the period, calculated by compounding the price of the property by the annual property value increase rate for <x id="PH" equiv-text="yearsCount"/> years.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">483</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="6823790006433887158" datatype="html">
         <source>Total assets value (after tax)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">486</context>
+          <context context-type="linenumber">445</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4944442139447379129" datatype="html">
         <source>Property value + investments value</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">489</context>
+          <context context-type="linenumber">448</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5980316256391079918" datatype="html">
+        <source>Total money paid for the property</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">452</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8294628418360699428" datatype="html">
+        <source>All the money that was paid to buy the property (down-payment + mortgage)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">454</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6945085742607234417" datatype="html">
+        <source>Property value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">457</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8497891911245105242" datatype="html">
+        <source>Expected value of the property at the end of the period, calculated by compounding the price of the property by the annual property value increase rate for <x id="PH" equiv-text="yearsCount"/> years.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">459</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2082184418220549071" datatype="html">
         <source>Total value minus money paid</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">493</context>
+          <context context-type="linenumber">462</context>
         </context-group>
         <note priority="1" from="description">Value minus payments on mortgage</note>
       </trans-unit>
@@ -744,7 +728,85 @@
         <source>Sum of all the monetary value of the property + equity, minus money paid on the mortgage</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">495</context>
+          <context context-type="linenumber">464</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8615594155988496710" datatype="html">
+        <source>Total interest rate paid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">467</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8327635114425501235" datatype="html">
+        <source>Total amount of interest paid for the mortgage (in other words, the price you pay for the mortgage).</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">469</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2138415480463255219" datatype="html">
+        <source>Avg. monthly payment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">472</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="256584434460808124" datatype="html">
+        <source>The average mortgage monthly payment for the period of the mortgage</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">474</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3388180355279461025" datatype="html">
+        <source>Total money invested (not on the property)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">477</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3958763102888952790" datatype="html">
+        <source>Sum of all the money invested in yield-generating assets (not including the mortgaged property!) over the <x id="PH" equiv-text="yearsCount"/> years period, when the mortgage payment was lower than the rent payment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">479</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="719513577647441812" datatype="html">
+        <source>Total profit from investments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">482</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4404249827811672076" datatype="html">
+        <source>The difference between the value of the investments at the end of the period and the total sum invested</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">484</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="786177733579111869" datatype="html">
+        <source>Equity (before tax)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">487</context>
+        </context-group>
+        <note priority="1" from="description">Invested money while renting, before deducting capital gains tax</note>
+      </trans-unit>
+      <trans-unit id="3327641557657753424" datatype="html">
+        <source>How much all invested assets (not including the property!) are worth, before capital gains tax</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">489</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6933206237705791010" datatype="html">
+        <source>After paying taxes, the net value of investments (other than the property)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
+          <context context-type="linenumber">499</context>
         </context-group>
       </trans-unit>
     </body>

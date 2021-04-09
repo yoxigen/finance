@@ -63,6 +63,10 @@ export class Mortgage {
         return this.loans.reduce((total, loan) => total + loan.principal * loan.interestRate, 0) / this.principal;
     }
 
+    get totalInterest(): number {
+        return this.totalAmount - this.principal;
+    }
+
     get principal(): number {
         return this.loans.reduce((total, { principal }) => total + principal, 0);
     }

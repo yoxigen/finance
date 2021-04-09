@@ -78,4 +78,8 @@
     align-items: center;
   }
 
-  
+  .results-table tbody .mat-cell + .mat-cell {
+    vertical-align: top;
+    padding-top: 11px;
+    width: 100px;
+}

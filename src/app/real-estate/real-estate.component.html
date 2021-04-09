@@ -48,6 +48,7 @@
                                     [(ngModel)]="initialSum"
                                     (ngModelChange)="update()"
                                     calcTrackOnBlur
+                                    calcSelectOnFocus
                                     name="initialSum"
                                     #ctrl="ngModel">
                                 <span matSuffix>{{currencyService.currencySymbol}}</span>
@@ -62,6 +63,7 @@
                                     placeholder="Average interest rate from investment"
                                     i18n-placeholder
                                     calcTrackOnBlur
+                                    calcSelectOnFocus
                                     [(ngModel)]="investmentInterest" 
                                     (ngModelChange)="update()"
                                     name="investmentInterest" #ctrl="ngModel" />
@@ -79,6 +81,7 @@
                                     min="0"
                                     max="100"
                                     calcTrackOnBlur
+                                    calcSelectOnFocus
                                     [(ngModel)]="capitalGainsTaxPercentage" 
                                     (ngModelChange)="update()"
                                     name="extraYears" #ctrl="ngModel" />
@@ -97,6 +100,7 @@
                                     placeholder="Years to add"
                                     min="0"
                                     calcTrackOnBlur
+                                    calcSelectOnFocus
                                     [(ngModel)]="extraYears" 
                                     (ngModelChange)="update()"
                                     name="extraYears" #ctrl="ngModel">
@@ -129,6 +133,7 @@
                                     [(ngModel)]="rent.initialRent" 
                                     (ngModelChange)="update()" 
                                     calcTrackOnBlur
+                                    calcSelectOnFocus
                                     name="currentRent"
                                     #ctrl="ngModel">
                                 <span matSuffix>{{currencyService.currencySymbol}}</span>
@@ -145,6 +150,7 @@
                                     [(ngModel)]="rent.annualIncreaseRate" 
                                     (ngModelChange)="update()"
                                     calcTrackOnBlur
+                                    calcSelectOnFocus
                                     name="rentAnnualIncreaseRate"
                                     #ctrl="ngModel">
                                 <span matSuffix>%</span>
@@ -176,6 +182,7 @@
                                 [(ngModel)]="price" 
                                 name="price" 
                                 calcTrackOnBlur
+                                calcSelectOnFocus
                                 #ctrl="ngModel">
                             <span matSuffix>{{currencyService.currencySymbol}}</span>
                         </mat-form-field>
@@ -191,6 +198,7 @@
                                     (ngModelChange)="update()"
                                     name="annualAssetInterest" 
                                     calcTrackOnBlur
+                                    calcSelectOnFocus
                                     #ctrl="ngModel">
                                 <span matSuffix>%</span>
                                 <mat-hint align="start">
@@ -200,6 +208,7 @@
                         </div>
                         <calc-mortgage 
                             (mortgageChange)="setMortgage($event)" 
+                            [requiredPrincipal]="price - initialSum"
                             [config]="mortgageConfig">
                         </calc-mortgage>
                     </mat-expansion-panel>
@@ -315,7 +324,7 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                     <mat-card-subtitle i18n>Comparison of rent vs mortgage after {totalTime, plural, =1 {one year} other {{{totalTime}} years}}</mat-card-subtitle>
-                    <table class="mat-table calc-full-width">
+                    <table class="mat-table calc-full-width results-table">
                         <thead>
                             <tr class="mat-header-row">
                                 <th class="mat-header-cell"></th>
@@ -326,7 +335,14 @@
                         <tbody>
                             <tr class="mat-row">
                                 <td class="mat-cell">
-                                    <strong i18n>Total assets value</strong>
+                                    <calc-expand-text>
+                                        <span calc-expand-text-label>
+                                            <strong i18n>Total assets value</strong>
+                                        </span>
+                                        <div calc-expand-text-details i18n="Description for Total assets value of rent vs mortgage">
+                                            Total sum of after-tax assets value. For rent, this includes equity in investments and for mortgage property value (after gains) and equity in investements (if any). 
+                                        </div>
+                                    </calc-expand-text>
                                 </td>
                                 <td class="mat-cell">
                                     <calc-money
@@ -341,7 +357,16 @@
                                 </td>
                             </tr>
                             <tr class="mat-row">
-                                <td class="mat-cell" i18n>Total gains (after tax)</td>
+                                <td class="mat-cell">
+                                    <calc-expand-text>
+                                        <span calc-expand-text-label i18n>
+                                            Total profit (after tax)
+                                        </span>
+                                        <div calc-expand-text-details i18n="Description for Total profit (after tax) of rent vs mortgage">
+                                            All after-tax profit from investments - for rent this includes the yield from investments and for mortgage the increase in property value + yield from any investments (if any).
+                                        </div>
+                                    </calc-expand-text>
+                                </td>
                                 <td class="mat-cell">
                                     <calc-money [type]="totalRentGain > totalMortgageGain ? 'good' : null"
                                         [amount]="totalRentGain"></calc-money>
@@ -353,8 +378,38 @@
                                 </td>
                             </tr>
                             <tr class="mat-row">
-                                <td class="mat-cell" i18n>
-                                    Capital gains tax
+                                <td class="mat-cell">
+                                    <calc-expand-text>
+                                        <span calc-expand-text-label i18n>
+                                            Total amount paid
+                                        </span>
+                                        <div calc-expand-text-details i18n="Description for Total amount invested of rent vs mortgage">
+                                            For rent - the sum of all monthly rent payments, for mortgage - down payment (your initial savings) + sum of all mortgage payments.
+                                        </div>
+                                    </calc-expand-text>
+                                </td>
+                                <td class="mat-cell">
+                                    <calc-money
+                                        [type]="totalRentPaid > mortgage.totalAmount + initialSum ? 'bad' : null"
+                                        [amount]="totalRentPaid"></calc-money>
+                                </td>
+                                <td class="mat-cell">
+                                    <calc-money
+                                        [type]="mortgage.totalAmount + initialSum > totalRentPaid ? 'bad' : null"
+                                        [amount]="mortgage.totalAmount + initialSum">
+                                    </calc-money>
+                                </td>
+                            </tr>
+                            <tr class="mat-row">
+                                <td class="mat-cell">
+                                    <calc-expand-text>
+                                        <span calc-expand-text-label i18n>
+                                            Capital gains tax
+                                        </span>
+                                        <div calc-expand-text-details i18n="Description for Capital gains tax of rent vs mortgage">
+                                            Tax to pay for any capital gains (not property tax).
+                                        </div>
+                                    </calc-expand-text>
                                 </td>
                                 <td class="mat-cell">
                                     <calc-money [amount]="totalRentInvestmentGainsTax"></calc-money>
@@ -365,8 +420,15 @@
                                 </td>
                             </tr>
                             <tr class="mat-row">
-                                <td class="mat-cell" i18n>
-                                    Investments value
+                                <td class="mat-cell">
+                                    <calc-expand-text>
+                                        <span calc-expand-text-label i18n>
+                                            Investments equity
+                                        </span>
+                                        <div calc-expand-text-details i18n="Description for Investments value of rent vs mortgage">
+                                            Value of invested assets (not including the mortgaged property) at the end of the period, not including tax.
+                                        </div>
+                                    </calc-expand-text>
                                 </td>
                                 <td class="mat-cell">
                                     <calc-money [amount]="totalRentEquity"></calc-money>
@@ -377,26 +439,21 @@
                                 </td>
                             </tr>
                             <tr class="mat-row">
-                                <td class="mat-cell" i18n>Total amount invested</td>
+                                <td class="mat-cell">
+                                    <calc-expand-text>
+                                        <span calc-expand-text-label i18n>
+                                            Total amount invested
+                                        </span>
+                                        <div calc-expand-text-details i18n="Description for Total amount invested of rent vs mortgage">
+                                            Total amount of money invested in assets, not including the mortgaged property.
+                                        </div>
+                                    </calc-expand-text>
+                                </td>
                                 <td class="mat-cell">
                                     <calc-money [amount]="totalRentInvestmentSum"></calc-money>
                                 </td>
                                 <td class="mat-cell">
                                     <calc-money [amount]="totalMortgageInvestmentSum">
-                                    </calc-money>
-                                </td>
-                            </tr>
-                            <tr class="mat-row">
-                                <td class="mat-cell" i18n>Total amount paid</td>
-                                <td class="mat-cell">
-                                    <calc-money
-                                        [type]="totalRentPaid > mortgage.totalAmount + initialSum ? 'bad' : null"
-                                        [amount]="totalRentPaid"></calc-money>
-                                </td>
-                                <td class="mat-cell">
-                                    <calc-money
-                                        [type]="mortgage.totalAmount + initialSum > totalRentPaid ? 'bad' : null"
-                                        [amount]="mortgage.totalAmount + initialSum">
                                     </calc-money>
                                 </td>
                             </tr>

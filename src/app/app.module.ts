@@ -18,6 +18,7 @@ import { HelpComponent } from './help/help.component';
 import { ExpandTextComponent } from './expand-text/expand-text.component';
 import { TrackOnBlurDirective } from './analytics/directives/track-on-blur/track-on-blur.directive';
 import { TrackOnClickDirective } from './analytics/directives/track-on-click/track-on-click.directive';
+import { SelectOnFocusDirective } from './shared/select-on-focus.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TrackOnClickDirective } from './analytics/directives/track-on-click/tra
     HelpComponent,
     ExpandTextComponent,
     TrackOnBlurDirective,
-    TrackOnClickDirective
+    TrackOnClickDirective,
+    SelectOnFocusDirective
   ],
   imports: [
     BrowserModule,

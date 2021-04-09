@@ -61,7 +61,7 @@ export class MortgageComponent implements OnDestroy {
   }
 
   get totalPercentageCovered(): number {
-    return Math.floor(100 * this.mortgage.principal / this.mortgage.requiredPrincipal);
+    return Math.floor(100 * this.mortgage.principal / this.requiredPrincipal);
   }
 
   /**
@@ -70,7 +70,7 @@ export class MortgageComponent implements OnDestroy {
    * the value of principalCoverageDifference will be -0.5M
    */
   get principalCoverageDifference(): number {
-    return this.mortgage.requiredPrincipal - this.mortgage.principal;
+    return this.requiredPrincipal - this.mortgage.principal;
   }
 
   ngOnDestroy(): void {
@@ -80,7 +80,7 @@ export class MortgageComponent implements OnDestroy {
   }
 
   addLoan() {
-    const uncoveredPrice = this.mortgage.requiredPrincipal - this.mortgage.principal;
+    const uncoveredPrice = this.requiredPrincipal - this.mortgage.principal;
     this.mortgage.addLoan({
       name: `Loan #${this.mortgage.loans.length + 1}`,
       principal: uncoveredPrice,
@@ -98,9 +98,16 @@ export class MortgageComponent implements OnDestroy {
    * So the mortgage meets the required principal.
    */
   fixPrincipals() {
+    const loansToFix = this.selection.hasValue() ? this.selection.selected : this.mortgage.loans;
+
     const amountToDivide = this.principalCoverageDifference;
-    const amountPerLoan = Math.floor(amountToDivide / this.selection.selected.length);
-    this.selection.selected.forEach(loan => loan.principal += amountPerLoan);
+    const amountPerLoan = Math.round(amountToDivide / loansToFix.length);
+    loansToFix.forEach(loan => loan.principal += amountPerLoan);
+
+    // Accounting for rounding numbers:
+    if (this.principalCoverageDifference) {
+      loansToFix[loansToFix.length - 1].principal += this.principalCoverageDifference;
+    }
   }
 
   onLoanPrincipalChange() {
@@ -109,7 +116,7 @@ export class MortgageComponent implements OnDestroy {
 
   onLoanPortionChange(loanIndex: number) {
     const portion = this.portions[loanIndex];
-    const principalForPortion = Math.floor(this.mortgage.requiredPrincipal * portion / 100);
+    const principalForPortion = Math.floor(this.requiredPrincipal * portion / 100);
     this.mortgage.loans[loanIndex].principal = principalForPortion;
   }
 
@@ -155,6 +162,6 @@ export class MortgageComponent implements OnDestroy {
   }
 
   private setPortions() {
-    this.portions = this.mortgage.loans.map(({principal}) => Math.floor(100 * principal / this.mortgage.requiredPrincipal));
+    this.portions = this.mortgage.loans.map(({principal}) => Math.floor(100 * principal / this.requiredPrincipal));
   }
 }
