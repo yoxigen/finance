@@ -1,5 +1,5 @@
 import { Component, Inject, LOCALE_ID } from '@angular/core';
-import { TrackingService } from './analytics/tracking.service';
+import { TrackingService } from './shared/analytics/tracking.service';
 
 const RTL_LOCALES = ["he", "ar"];
 
@@ -41,6 +41,6 @@ export class AppComponent {
   }
 
   onLanguageSelect({locale}: Language) {
-    this.trackingService.trackEvent('language_change', { locale })
+    this.trackingService.trackEvent('language_change', { label: locale })
   }
 }

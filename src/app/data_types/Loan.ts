@@ -1,4 +1,4 @@
-import { pmt } from "../math/payments";
+import { pmt } from "../shared/math/payments";
 
 let lastLoanId = 0;
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RealEstateComponent } from './real-estate/real-estate.component';
+import { RealEstateComponent } from './pages/rent-vs-mortgage/real-estate.component';
 import { RootComponent } from './root/root.component';
 
 const routes: Routes = [
