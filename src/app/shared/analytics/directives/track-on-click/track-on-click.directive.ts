@@ -15,6 +15,9 @@ export class TrackOnClickDirective {
       throw new Error("Can't track click event, missing event name.");
     }
 
-    this.trackingService.trackEvent(this.trackEventName || 'click', { element: this.trackElement });
+    this.trackingService.trackEvent('click', { 
+      category: this.trackEventName, 
+      label: this.trackElement 
+    });
   }
 }

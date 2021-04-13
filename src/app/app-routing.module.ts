@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RealEstateComponent } from './pages/rent-vs-mortgage/real-estate.component';
+import { RealEstateInvestmentComponent } from './pages/real-estate-investment/real-estate-investment.component';
+import { RentVsMortgageComponent } from './pages/rent-vs-mortgage/rent-vs-mortgage.component';
 import { RootComponent } from './root/root.component';
 
 const routes: Routes = [
-  { path: 'rent-vs-mortgage', component: RealEstateComponent },
-  { path: '', component: RealEstateComponent, pathMatch: 'full' },
+  { path: 'rent-vs-mortgage', component: RentVsMortgageComponent },
+  { path: 'real-estate-investment', component: RealEstateInvestmentComponent },
+  { path: '', component: RentVsMortgageComponent, pathMatch: 'full' },
   { path: '**', component: RootComponent },
 ];
 

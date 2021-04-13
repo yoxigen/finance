@@ -110,157 +110,178 @@
         <source>Your initial available sum</source>
         <target>הון עצמי זמין</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">47</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">47</context></context-group></trans-unit><trans-unit id="7821266418730925828" datatype="html">
+        <source>Down payment for mortgage or initial investment for rent</source>
+        <target state="final">הון עצמי עבור משכנתא או השקעה ראשונית בזמן שכירות</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5527820942182337049" datatype="html">
         <source>Initial Rent</source>
         <target>שכירות נוכחית</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">127</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">130</context></context-group></trans-unit>
       <trans-unit id="7538204733785707131" datatype="html">
         <source>What you're paying for rent now</source>
         <target>גובה השכירות בתחילת התקופה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">132</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">135</context></context-group></trans-unit>
       <trans-unit id="8992516156556675679" datatype="html">
         <source>Investment interest rate</source>
         <target>תשואה שנתית על השקעות</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">59</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">62</context></context-group></trans-unit>
       <trans-unit id="830898210655344715" datatype="html">
         <source>Average interest rate from investment</source>
         <target>ריבית שנתית ממוצעת על השקעות (תשואה)</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">63</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">66</context></context-group></trans-unit>
       <trans-unit id="9071106579748483644" datatype="html">
         <source>Expected average annual interest rate for investments</source>
         <target>תשואה צפויה שנתית ממוצעת, באחוזים, על השקעות</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">72</context></context-group></trans-unit><trans-unit id="6867547898579654666" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">75</context></context-group></trans-unit><trans-unit id="6867547898579654666" datatype="html">
         <source>Capital gains tax</source>
         <target state="final">מס רווחי הון</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">78</context></context-group></trans-unit><trans-unit id="6524633562844470080" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">81</context></context-group></trans-unit><trans-unit id="6524633562844470080" datatype="html">
         <source>The tax on profits from investments</source>
         <target state="final">המס על רווחים מהשקעות</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">90</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">93</context></context-group></trans-unit>
       <trans-unit id="6126618961786980021" datatype="html">
         <source>Rent annual increase</source>
         <target>עליה שנתית בשכירות</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">144</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">147</context></context-group></trans-unit>
       <trans-unit id="180633312971050733" datatype="html">
         <source>In percent, how much rent increases per year</source>
         <target>באחוזים, כמה השכירות החודשית עולה כל שנה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">149</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">152</context></context-group></trans-unit>
       <trans-unit id="2795689526877802701" datatype="html">
         <source>Expected average annual increase in rent payments</source>
         <target>באחוזים, כמה השכירות החודשית צפויה לעלות כל שנה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">158</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">161</context></context-group></trans-unit>
       <trans-unit id="4543666498003708762" datatype="html">
         <source>Property value annual increase</source>
         <target>עליה שנתית במחיר הנכס</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">191</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">195</context></context-group></trans-unit>
       <trans-unit id="2916087208171738529" datatype="html">
         <source>Increase in value for the property, annually</source>
         <target>עליה שנתית בערך הנכס</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">196</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">200</context></context-group></trans-unit>
       <trans-unit id="6370155055800373964" datatype="html">
         <source>Expected average annual increase in property value</source>
         <target>עליה שנתית צפויה, באחוזים, במחיר הנכס</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">205</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">209</context></context-group></trans-unit><trans-unit id="6447862354563057879" datatype="html">
+        <source>With a down payment of </source>
+        <target state="final">עם הון עצמי של </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">214</context>
+        </context-group>
+      </trans-unit><trans-unit id="6611099049237733805" datatype="html">
+        <source>the required financing for the mortgage is:</source>
+        <target state="final">אחוז המימון הדרוש עבור המשכנתא הינו:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
+          <context context-type="linenumber">215</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3014539781674359787" datatype="html">
         <source>Extra years</source>
         <target>שנים נוספות</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">96</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">99</context></context-group></trans-unit>
       <trans-unit id="3393420785475243549" datatype="html">
         <source>Years to add</source>
         <target>שנים להוספה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">100</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">103</context></context-group></trans-unit>
       <trans-unit id="5009134284826273846" datatype="html">
         <source>See calculations for years after the end of the mortgage</source>
         <target>צפיה בנתונים עבור מספר שנים לאחר סוף המשכנתא</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">108</context></context-group></trans-unit><trans-unit id="4604170007808946939" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">111</context></context-group></trans-unit><trans-unit id="4604170007808946939" datatype="html">
         <source> Rent </source><target state="final"> שכירות </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">118</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">121</context></context-group></trans-unit>
       <trans-unit id="2818149315156088575" datatype="html">
         <source> Mortgage </source>
         <target>משכנתא</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">168</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">171</context></context-group></trans-unit>
       <trans-unit id="3864457582224287658" datatype="html">
         <source>Asset Price</source>
         <target>מחיר הנכס</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">176</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">179</context></context-group></trans-unit>
       <trans-unit id="7161918154702515343" datatype="html">
         <source>The total price for the asset</source>
         <target>המחיר הכולל של הנכס</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">181</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">184</context></context-group></trans-unit>
       <trans-unit id="4928527284953292199" datatype="html">
         <source> Data per year </source>
         <target> נתונים שנתיים </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">220</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">229</context></context-group></trans-unit>
       <trans-unit id="1464072562214937907" datatype="html">
         <source>Year</source>
         <target>שנה</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">230</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">76</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">239</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">77</context></context-group></trans-unit>
       <trans-unit id="7046115772612173683" datatype="html">
         <source>Monthly rent</source>
         <target>שכירות חודשית</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">235</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">244</context></context-group></trans-unit>
       <trans-unit id="4794429753404890765" datatype="html">
         <source>Rent invest/month</source>
         <target>השקעה חודשית (שכירות)</target>
         
         <note priority="1" from="description">Column header text for amount of investment per month when renting</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">246</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">255</context></context-group></trans-unit>
       <trans-unit id="5923725958847750423" datatype="html">
         <source>Rent equity</source>
         <target>ערך נכסים (שכירות)</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">256</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">265</context></context-group></trans-unit>
       <trans-unit id="66688609405341704" datatype="html">
         <source>Mortgage monthly payment</source>
         <target>החזר משכנתא חודשי</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">265</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">274</context></context-group></trans-unit>
       <trans-unit id="4990399110119650293" datatype="html">
         <source>Mortgage investments</source>
         <target>השקעות (משכנתא)</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">275</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">284</context></context-group></trans-unit>
       <trans-unit id="4821507072077424460" datatype="html">
         <source>Mortgage equity</source>
         <target>ערך נכסים (משכנתא)</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">285</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">294</context></context-group></trans-unit>
       <trans-unit id="4301313130924651932" datatype="html">
         <source>Mortgage left</source>
         <target>יתרת משכנתא</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">294</context></context-group></trans-unit><trans-unit id="6036308268629413664" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">303</context></context-group></trans-unit><trans-unit id="6036308268629413664" datatype="html">
         <source> Results </source><target state="final"> תוצאות </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">319</context></context-group></trans-unit><trans-unit id="8503221987953922866" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">328</context></context-group></trans-unit><trans-unit id="8503221987953922866" datatype="html">
         <source>Comparison of rent vs mortgage after <x id="ICU" equiv-text="{totalTime, plural, =1 {one year} other {{{totalTime}} years}}"/></source>
         <target state="final">השוואה בין שכירות למשכנתא אחרי <x id="ICU" equiv-text="{totalTime, plural, =1 {שנה} other {{{totalTime}} שנים}}"/></target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">326</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">335</context></context-group></trans-unit>
       
       <trans-unit id="1854039828934852735" datatype="html">
         <source>Summary after <x id="ICU" equiv-text="{totalTime, plural, =1 {one year} other {{{totalTime}} years}}"/></source>
@@ -268,17 +289,17 @@
         
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">475</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">490</context></context-group></trans-unit><trans-unit id="5599221472774926431" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">484</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">499</context></context-group></trans-unit><trans-unit id="5599221472774926431" datatype="html">
         <source> Rent Summary </source><target state="final"> שכירות - סיכום </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">483</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">492</context></context-group></trans-unit>
       <trans-unit id="2491856936575413915" datatype="html">
         <source>{VAR_PLURAL, plural, =1 {one year} other {<x id="INTERPOLATION"/> years}}</source>
         <target>{VAR_PLURAL, plural, =1 {שנה} other {<x id="INTERPOLATION"/> שנים}}</target>
         
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">326</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">475</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">490</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">335</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">484</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">499</context></context-group></trans-unit>
       
       
       <trans-unit id="3504008095976461399" datatype="html">
@@ -286,100 +307,91 @@
         <target>שכירות</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">331</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">76</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">340</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">77</context></context-group></trans-unit>
       <trans-unit id="4212873139972842578" datatype="html">
         <source>Mortgage</source>
         <target>משכנתא</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">332</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">76</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">341</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">77</context></context-group></trans-unit>
       <trans-unit id="2745026848959581821" datatype="html">
         <source>Total assets value</source>
         <target>סה"כ הון עצמי</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">340</context></context-group></trans-unit><trans-unit id="4933346537130752948" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">349</context></context-group></trans-unit><trans-unit id="4933346537130752948" datatype="html">
         <source> Total sum of after-tax assets value. For rent, this includes equity in investments and for mortgage property value (after gains) and equity in investements (if any). </source>
         <target state="final">הון עצמי כולל, אחרי מס. עבור שכירות, ערך ההשקעות בסוף התקופה, ועבור משכנתא ערך הבית (אחרי עליית מחיר) וערך השקעות נוספות (אם יש).</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">343,344</context>
-        </context-group>
+        
         <note priority="1" from="description">Description for Total assets value of rent vs mortgage</note>
-      </trans-unit><trans-unit id="3735175662884294222" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">352</context></context-group></trans-unit><trans-unit id="3735175662884294222" datatype="html">
         <source> Total profit (after tax) </source>
         <target state="final"> סה"כ רווחים (אחרי מס) </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">363,364</context>
-        </context-group>
-      </trans-unit><trans-unit id="2735854814595385009" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">372</context></context-group></trans-unit><trans-unit id="2735854814595385009" datatype="html">
         <source> All after-tax profit from investments - for rent this includes the yield from investments and for mortgage the increase in property value + yield from any investments (if any). </source>
         <target state="final">כל הרווח מנכסים והשקעות, אחרי מס. עבור שכירות זה כולל תשואה מהשקעות ועבור משכנתא את עליית ערך הבית + תשואה מהשקעות אחרות (אם יש). </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context>
-          <context context-type="linenumber">366,367</context>
-        </context-group>
+        
         <note priority="1" from="description">Description for Total profit (after tax) of rent vs mortgage</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">375</context></context-group></trans-unit>
       
       <trans-unit id="73930010260130800" datatype="html">
         <source> Capital gains tax </source>
         <target>מס רווחי הון</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">407</context></context-group></trans-unit><trans-unit id="1746884962148815896" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">416</context></context-group></trans-unit><trans-unit id="1746884962148815896" datatype="html">
         <source> Tax to pay for any capital gains (not property tax). </source>
         <target state="final"> מס לתשלום עבור רווחי הון (לא כולל מס שבח) </target>
         
         <note priority="1" from="description">Description for Capital gains tax of rent vs mortgage</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">410</context></context-group></trans-unit><trans-unit id="899647259096112435" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">419</context></context-group></trans-unit><trans-unit id="899647259096112435" datatype="html">
         <source> Investments equity </source>
         <target state="final"> הון עצמי בהשקעות </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">426</context></context-group></trans-unit><trans-unit id="893993003798989277" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">435</context></context-group></trans-unit><trans-unit id="893993003798989277" datatype="html">
         <source> Value of invested assets (not including the mortgaged property) at the end of the period, not including tax. </source>
         <target state="final"> ערך נכסים מושקעים (לא כולל את הבית הממושכן) בסוף התקןפה, לא כולל מס. </target>
         
         <note priority="1" from="description">Description for Investments value of rent vs mortgage</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">429</context></context-group></trans-unit><trans-unit id="3961549094639245725" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">438</context></context-group></trans-unit><trans-unit id="3961549094639245725" datatype="html">
         <source> Total amount invested </source>
         <target state="final"> סך כל הכסף בהשקעות </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">445</context></context-group></trans-unit><trans-unit id="2508531717047333411" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">454</context></context-group></trans-unit><trans-unit id="2508531717047333411" datatype="html">
         <source> Total amount of money invested in assets, not including the mortgaged property. </source>
         <target state="final"> סכום הכסף המושקע בנכסים, לא כולל את הבית הממושכן. </target>
         
         <note priority="1" from="description">Description for Total amount invested of rent vs mortgage</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">448</context></context-group></trans-unit><trans-unit id="6475109529226497335" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">457</context></context-group></trans-unit><trans-unit id="6475109529226497335" datatype="html">
         <source> Total amount paid </source>
         <target state="final"> סה"כ תשלומים </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">384</context></context-group></trans-unit><trans-unit id="7664148575222498577" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">393</context></context-group></trans-unit><trans-unit id="7664148575222498577" datatype="html">
         <source> For rent - the sum of all monthly rent payments, for mortgage - down payment (your initial savings) + sum of all mortgage payments. </source>
         <target state="final"> עבור שכירות - סכום כל תשלומי השכירות החודשיים, עבור משכנתא - הון עצמי (החסכונות ההתחלתיים) + סכום כל תשלומי המשכנתא.</target>
         
         <note priority="1" from="description">Description for Total amount invested of rent vs mortgage</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">387</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">396</context></context-group></trans-unit>
       
       
       <trans-unit id="2036545592609733998" datatype="html">
         <source> Mortgage Summary </source><target state="final"> משכנתא - סיכום </target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">468</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">477</context></context-group></trans-unit>
       <trans-unit id="6217275515246382204" datatype="html">
         <source>Monthly Payment Per Year</source>
         <target>תשלום חודשי לשנה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">501</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">510</context></context-group></trans-unit>
       <trans-unit id="8341380725336912070" datatype="html">
         <source>Equity Over Time</source>
         <target>הון על פני זמן</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">519</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">528</context></context-group></trans-unit>
       <trans-unit id="5900165224811454746" datatype="html">
         <source>Equity owned by the home owner/renter, by years</source>
         <target>הון עצמי, לפי שנים</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">520</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.html</context><context context-type="linenumber">529</context></context-group></trans-unit>
       <trans-unit id="1464072562214937907" datatype="html">
         <source>Year</source>
         <target>שנה</target>
@@ -392,78 +404,75 @@
         <source>Prime</source>
         <target>פריים</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">50</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">51</context></context-group></trans-unit>
       <trans-unit id="8407462606405526805" datatype="html">
         <source>Mishtana</source>
         <target>משתנה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">51</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">52</context></context-group></trans-unit>
       <trans-unit id="4108478337308251505" datatype="html">
         <source>Fixed</source>
         <target>קבועה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">52</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">53</context></context-group></trans-unit>
       <trans-unit id="6508976780284514850" datatype="html">
         <source>Rent vs Home Ownership Calculator</source>
         <target>מחשבון שכירות מול קניית דירה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">55</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">56</context></context-group></trans-unit>
       <trans-unit id="2658718701633481817" datatype="html">
         <source>Total rent paid</source>
         <target>סה"כ תשלומי שכירות</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">399</context></context-group></trans-unit><trans-unit id="5371675213779960079" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">417</context></context-group></trans-unit><trans-unit id="5371675213779960079" datatype="html">
         <source>All the rent payments for <x id="PH" equiv-text="yearsCount"/> years combined</source>
         <target state="final">סכום כל תשלומי השכירות לאורך <x id="PH" equiv-text="yearsCount"/> שנים</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">402</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">420</context></context-group></trans-unit>
       
       <trans-unit id="2430888288470200112" datatype="html">
         <source>Total money invested</source>
         <target>סה"כ כסף מושקע</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">405</context></context-group></trans-unit><trans-unit id="4397910045814709378" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">423</context></context-group></trans-unit><trans-unit id="4397910045814709378" datatype="html">
         <source>Sum of all the money invested in yield-generating assets over the <x id="PH" equiv-text="yearsCount"/> period</source>
         <target state="final">סך כל הכסף שהושקע בכנסים נושאי תשואה לאורך תקופה של <x id="PH" equiv-text="yearsCount"/> שנים</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">407</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">425</context></context-group></trans-unit>
       
       <trans-unit id="3359638349121005144" datatype="html">
         <source>Total money gained from investments</source>
         <target>כמה כסף הורווח מהשקעות</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">410</context></context-group></trans-unit><trans-unit id="553689089870117680" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">428</context></context-group></trans-unit><trans-unit id="553689089870117680" datatype="html">
         <source>The profit from investments, calculated as the current value of all assets minus the money invested</source>
         <target state="final">הרווח מהשקעות, מחושב כהערך של הכנסים בסוף התקופה פחות כמות הכסף המושקעת</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">412</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">430</context></context-group></trans-unit>
       
       <trans-unit id="3487026367694697788" datatype="html">
         <source>Assets available (before tax)</source>
         <target>הון עצמי (לפני מס)</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">415</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">433</context></context-group></trans-unit>
       <trans-unit id="8278732521280147489" datatype="html">
         <source>How much all invested assets are worth, before capital gains tax</source>
         <target>ערך כלל הנכסים, לפני מס רווחי הון</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">417</context></context-group></trans-unit><trans-unit id="1471085991832398067" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">435</context></context-group></trans-unit><trans-unit id="1471085991832398067" datatype="html">
         <source>Capital gains tax (<x id="PH" equiv-text="this.capitalGainsTax * 100"/>%)</source>
         <target state="final">מס רווחי הון (<x id="PH" equiv-text="this.capitalGainsTax * 100"/>%)</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">420</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">492</context></context-group></trans-unit><trans-unit id="1712275308997279173" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">438</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">498</context></context-group></trans-unit><trans-unit id="1712275308997279173" datatype="html">
         <source>Tax money to pay for capital gains on investments</source>
         <target state="final">מס ששולם עבור רווחי הון על נכסים מושקעים</target>
         
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">423</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">494</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">441</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">500</context></context-group></trans-unit>
       
       
       <trans-unit id="9139840606837045200" datatype="html">
@@ -472,26 +481,26 @@
         
         
         <note priority="1" from="description">Invested money while renting, after deducting capital gains tax</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">426</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">497</context></context-group></trans-unit><trans-unit id="4670113044953204802" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">405</context></context-group><context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">503</context></context-group></trans-unit><trans-unit id="4670113044953204802" datatype="html">
         <source>After paying taxes, the net value of investments</source>
         <target state="final">אחרי תשלום מסים, השווי הנקי של הנכסים המושקעים</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">429</context></context-group></trans-unit><trans-unit id="2767875514555803403" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">408</context></context-group></trans-unit><trans-unit id="2767875514555803403" datatype="html">
         <source>Equity minus rent paid</source>
         <target state="final">הון עצמי פחות שכירות ששולמה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">433</context></context-group></trans-unit><trans-unit id="3608004687731344385" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">412</context></context-group></trans-unit><trans-unit id="3608004687731344385" datatype="html">
         <source>Sum of all the monetary value of equity, minus the total money paid on rent and taxes</source>
         <target state="final">סכום כל הערך הכספי בנכסים, פחות סך כל התשלומים על שכירות ומסים</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">435</context></context-group></trans-unit><trans-unit id="5980316256391079918" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">414</context></context-group></trans-unit><trans-unit id="5980316256391079918" datatype="html">
         <source>Total money paid for the property</source><target state="final">הסכום הכללי ששולם עבור הנכס</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">452</context></context-group></trans-unit><trans-unit id="8294628418360699428" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">458</context></context-group></trans-unit><trans-unit id="8294628418360699428" datatype="html">
         <source>All the money that was paid to buy the property (down-payment + mortgage)</source>
         <target state="final">הון עצמי + סה"כ החזרי המשכנתא</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">454</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">460</context></context-group></trans-unit>
       
       
       
@@ -500,89 +509,83 @@
         <source>Avg. monthly payment</source>
         <target>תשלום חודשי ממוצע</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">472</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">478</context></context-group></trans-unit>
       <trans-unit id="256584434460808124" datatype="html">
         <source>The average mortgage monthly payment for the period of the mortgage</source>
         <target>ההחזר החודשי הממוצע עבור כל תקופה המשכנתא</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">474</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">480</context></context-group></trans-unit>
       <trans-unit id="3388180355279461025" datatype="html">
         <source>Total money invested (not on the property)</source>
         <target>סה"כ כסף שהושקע (לא על הבית)</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">477</context></context-group></trans-unit><trans-unit id="3958763102888952790" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">483</context></context-group></trans-unit><trans-unit id="3958763102888952790" datatype="html">
         <source>Sum of all the money invested in yield-generating assets (not including the mortgaged property!) over the <x id="PH" equiv-text="yearsCount"/> years period, when the mortgage payment was lower than the rent payment</source>
         <target state="final">סך כל הכסף שהושקע בנכסים נושאי תשואה (לא כולל הנכס הבית!) במשך <x id="PH" equiv-text="yearsCount"/> שנים, כשהחזר המשכנתא החודשי היה נמוך מהשכירות לאותה שנה</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">479</context></context-group></trans-unit><trans-unit id="719513577647441812" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">485</context></context-group></trans-unit><trans-unit id="719513577647441812" datatype="html">
         <source>Total profit from investments</source><target state="final">הרווח הכללי מהשקעות</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">482</context></context-group></trans-unit><trans-unit id="4404249827811672076" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">488</context></context-group></trans-unit><trans-unit id="4404249827811672076" datatype="html">
         <source>The difference between the value of the investments at the end of the period and the total sum invested</source>
         <target state="final">ההפרש בין ערך הנכסים בהשקעות בסוף התקופה וסך כל הכסף המושקע</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">484</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">490</context></context-group></trans-unit>
       
       <trans-unit id="786177733579111869" datatype="html">
         <source>Equity (before tax)</source>
         <target>ערך השקעות (לפני מס)</target>
         
         <note priority="1" from="description">Invested money while renting, before deducting capital gains tax</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">487</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">493</context></context-group></trans-unit>
       <trans-unit id="3327641557657753424" datatype="html">
         <source>How much all invested assets (not including the property!) are worth, before capital gains tax</source>
         <target>שווי כלל ההשקעות (לא כולל הבית!), לפני מס רווחי הון</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">489</context></context-group></trans-unit><trans-unit id="6933206237705791010" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">495</context></context-group></trans-unit><trans-unit id="6933206237705791010" datatype="html">
         <source>After paying taxes, the net value of investments (other than the property)</source><target state="final">After paying taxes, the net value of investments (other than the property)</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">499</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">505</context></context-group></trans-unit>
       
       <trans-unit id="6945085742607234417" datatype="html">
         <source>Property value</source>
         <target>ערך הבית הצפוי</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">457</context></context-group></trans-unit><trans-unit id="8497891911245105242" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">463</context></context-group></trans-unit><trans-unit id="8497891911245105242" datatype="html">
         <source>Expected value of the property at the end of the period, calculated by compounding the price of the property by the annual property value increase rate for <x id="PH" equiv-text="yearsCount"/> years.</source>
         <target state="final">הערך הצפוי של הנכס בסוף התקופה, מחושב ע"י העליה השנתית בערך הנכס לאורך תקופה של <x id="PH" equiv-text="yearsCount"/> שנים.</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">459</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">465</context></context-group></trans-unit>
       
       <trans-unit id="6823790006433887158" datatype="html">
         <source>Total assets value (after tax)</source>
         <target>סה"כ ערך נכסים (אחרי מס)</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">445</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">451</context></context-group></trans-unit>
       <trans-unit id="4944442139447379129" datatype="html">
         <source>Property value + investments value</source>
         <target>ערך הנכס + ערך השקעות</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">448</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">454</context></context-group></trans-unit>
       <trans-unit id="2082184418220549071" datatype="html">
         <source>Total value minus money paid</source>
         <target>סה"כ הון פחות כסף ששולם</target>
         
         <note priority="1" from="description">Value minus payments on mortgage</note>
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">462</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">468</context></context-group></trans-unit>
       <trans-unit id="394857983282135697" datatype="html">
         <source>Sum of all the monetary value of the property + equity, minus money paid on the mortgage</source>
         <target>סך כל הערך הכספי של הבית + השקעות אחרות, פחות הכסף ששולם על המשכנתא ומסים</target>
         
-      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">464</context></context-group></trans-unit><trans-unit id="8615594155988496710" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">470</context></context-group></trans-unit><trans-unit id="8615594155988496710" datatype="html">
         <source>Total interest rate paid</source>
         <target state="final">סה"כ ריבית ששולמה</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">467</context>
-        </context-group>
-      </trans-unit><trans-unit id="8327635114425501235" datatype="html">
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">473</context></context-group></trans-unit><trans-unit id="8327635114425501235" datatype="html">
         <source>Total amount of interest paid for the mortgage (in other words, the price you pay for the mortgage).</source>
         <target state="final">סה"כ הכסף ששולם עבור ריבית המשכנתא (או במלים אחרות, המחיר שאתם משלמים עבור לקיחת המשכנתא).</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context>
-          <context context-type="linenumber">469</context>
-        </context-group>
-      </trans-unit>
+        
+      <context-group purpose="location"><context context-type="sourcefile">src/app/real-estate/real-estate.component.ts</context><context context-type="linenumber">475</context></context-group></trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, Params, NavigationEnd } from '@angular/router';
-import { LoanConfig } from '../data_types/Loan';
-import { Mortgage, MortgageConfig } from '../data_types/Mortgage';
-import { Rent } from '../data_types/Rent';
-import { calculatCapitalGainsTax, futureValue, subtractCapitalGainsTax } from '../math/payments';
-import { SummaryItem } from '../summary-table/summary-table.component';
-import { CalcTextType } from '../text/text.component';
+import { LoanConfig } from '../../data_types/Loan';
+import { Mortgage, MortgageConfig } from '../../data_types/Mortgage';
+import { Rent } from '../../data_types/Rent';
+import { calculatCapitalGainsTax, futureValue, subtractCapitalGainsTax } from '../../shared/math/payments';
+import { CalcTextType } from '../../shared/components/display/text/text.component';
 import { filter, skip } from 'rxjs/operators';
-import { CurrencyService } from '../currency.service';
+import { CurrencyService } from '../../shared/services/currency.service';
 import { Title } from '@angular/platform-browser';
+import { SummaryItem } from 'src/app/shared/components/display/summary-table/summary-table.component';
 
 const LOCAL_STORAGE_KEY = "rent-vs-ownership";
 
@@ -36,7 +36,8 @@ interface RentVsOwnershipQueryParams {
   extraYears: number,
   capitalGainsTax: number,
   rentAnnualIncreaseRate: number,
-  mortgage: string
+  mortgage: string,
+  price: number
 }
 
 type ChartData = ChartDataItem[];
@@ -55,11 +56,10 @@ const DEFAULT_LOANS = [
 const PAGE_TITLE = $localize `Rent vs Home Ownership Calculator`;
 
 @Component({
-  selector: 'app-real-estate',
-  templateUrl: './real-estate.component.html',
-  styleUrls: ['./real-estate.component.scss']
+  selector: 'app-rent-vs-mortgage',
+  templateUrl: './rent-vs-mortgage.component.html',
 })
-export class RealEstateComponent implements OnInit {
+export class RentVsMortgageComponent implements OnInit {
   private _totalRentEquity: number;
   private _totalMortgageSavings: number;
   private _totalRentInvestmentSum: number;
@@ -174,6 +174,10 @@ export class RealEstateComponent implements OnInit {
     return this.totalRentInvestmentGainsAfterTax - this.totalRentInvestmentSum;
   }
 
+  get financingPercent(): number {
+    return 100 * (this.price - this.initialSum) / this.price;
+  }
+
   get capitalGainsTaxPercentage(): number {
     return this.capitalGainsTax * 100;
   }
@@ -240,12 +244,13 @@ export class RealEstateComponent implements OnInit {
       extraYears: this.extraYears,
       capitalGainsTax: this.capitalGainsTax,
       rentAnnualIncreaseRate: this.rent.annualIncreaseRate,
-      mortgage: this.mortgage ? this.mortgage.serialize() : undefined
+      mortgage: this.mortgage ? this.mortgage.serialize() : undefined,
+      price: this.price
     };
   }
 
   private getDataFromQueryParams(queryParams: Params): Params {
-    const params = ['initialSum', 'rent', 'annualAssetInterest', 'investmentInterest', 'extraYears', 'capitalGainsTax', 'rentAnnualIncreaseRate'];
+    const params = ['initialSum', 'rent', 'annualAssetInterest', 'investmentInterest', 'extraYears', 'capitalGainsTax', 'rentAnnualIncreaseRate', 'price'];
     const data = params.reduce((numericParams, param) => {
       const numericValue = getNumberFromParam(param);
       return numericValue !== null ? {
@@ -274,7 +279,7 @@ export class RealEstateComponent implements OnInit {
   }
 
   private setDataFromQueryParams(numericParams: Params) {
-    ['initialSum', 'annualAssetInterest', 'investmentInterest', 'extraYears', 'capitalGainsTax'].forEach(param => {
+    ['initialSum', 'annualAssetInterest', 'investmentInterest', 'extraYears', 'capitalGainsTax', 'price'].forEach(param => {
       if (numericParams[param] !== undefined) {
         this[param] = numericParams[param];
       }

@@ -37,7 +37,7 @@
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
-                        <div class="calc-flex-horizontal sum-inputs">
+                        <div class="calc-flex-horizontal sum-inputs margin-bottom-2">
                             <mat-form-field class="calc-flex-1">
                                 <mat-label i18n>Initial savings</mat-label>
                                 <input 
@@ -47,11 +47,14 @@
                                     placeholder="Your initial available sum"
                                     [(ngModel)]="initialSum"
                                     (ngModelChange)="update()"
-                                    calcTrackOnBlur
+                                    calcTrackOnBlur="currency"
                                     calcSelectOnFocus
                                     name="initialSum"
                                     #ctrl="ngModel">
                                 <span matSuffix>{{currencyService.currencySymbol}}</span>
+                                <mat-hint align="start">
+                                    <strong i18n>Down payment for mortgage or initial investment for rent</strong>
+                                </mat-hint>
                             </mat-form-field>
                         </div>
                         <div class="margin-bottom-2">
@@ -132,7 +135,7 @@
                                     placeholder="What you're paying for rent now"
                                     [(ngModel)]="rent.initialRent" 
                                     (ngModelChange)="update()" 
-                                    calcTrackOnBlur
+                                    calcTrackOnBlur="currency"
                                     calcSelectOnFocus
                                     name="currentRent"
                                     #ctrl="ngModel">
@@ -181,7 +184,8 @@
                                 placeholder="The total price for the asset"
                                 [(ngModel)]="price" 
                                 name="price" 
-                                calcTrackOnBlur
+                                (ngModelChange)="update()"
+                                calcTrackOnBlur="currency"
                                 calcSelectOnFocus
                                 #ctrl="ngModel">
                             <span matSuffix>{{currencyService.currencySymbol}}</span>
@@ -206,6 +210,12 @@
                                 </mat-hint>
                             </mat-form-field>
                         </div>
+                        <p>
+                            <span i18n>With a down payment of </span>
+                            <calc-money [amount]="initialSum" type="good"></calc-money>,
+                            <span i18n>the required financing for the mortgage is:</span>&nbsp;
+                            <strong>{{financingPercent.toFixed(0)}}%</strong>.
+                        </p>
                         <calc-mortgage 
                             (mortgageChange)="setMortgage($event)" 
                             [requiredPrincipal]="price - initialSum"

@@ -9,10 +9,16 @@
     </button>
   </mat-toolbar>
   <div class="app-contents">
-    <app-real-estate></app-real-estate>
+    <router-outlet></router-outlet>
   </div>
 </div>
 <mat-menu #menu="matMenu">
+  <a mat-menu-item routerLink="/rent-vs-mortgage">
+    Rent vs Mortgage
+  </a>
+  <a mat-menu-item routerLink="/real-estate-investment">
+    Real estate investment
+  </a>
   <button mat-menu-item [matMenuTriggerFor]="locales">
     <mat-icon>language</mat-icon>
     Language
