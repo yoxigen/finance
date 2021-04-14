@@ -14,9 +14,15 @@
       "sourceRoot": "src",
       "prefix": "calc",
       "i18n": {
-        "sourceLocale": "en-US",
+        "sourceLocale": {
+          "code": "en-US",
+          "baseHref": ""
+        },
         "locales": {
-          "he": "src/locale/messages.he.xlf"
+          "he": {
+            "translation": "src/locale/messages.he.xlf",
+            "baseHref": ""
+          }
         }
       },
       "architect": {

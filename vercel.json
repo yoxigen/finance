@@ -3,15 +3,11 @@
     "rewrites": [
         {
             "source": "/finance",
-            "destination": "/en-US/index.html"
+            "destination": "/he/index.html"
         },
         {
-            "source": "/finance/:lang",
-            "destination": "/:lang/index.html"
-        },
-        {
-            "source": "/finance/:lang/:page*",
-            "destination": "/:lang/index.html"
+            "source": "/finance/:page*",
+            "destination": "/he/index.html"
         }
     ]
 }
