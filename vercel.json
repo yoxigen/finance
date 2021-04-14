@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/:lang/:page*",
+            "destination": "/:lang/index.html"
+        }
+    ]
+}
