@@ -1,8 +1,16 @@
 {
     "rewrites": [
         {
-            "source": "/:lang/:page*",
-            "destination": "/:lang/index.html"
+            "source": "/finance",
+            "destination": "/finance/en-US/index.html"
+        },
+        {
+            "source": "/finance/:lang",
+            "destination": "/finance/:lang/index.html"
+        },
+        {
+            "source": "/finance/:lang/:page*",
+            "destination": "/finance/:lang/index.html"
         }
     ]
 }
