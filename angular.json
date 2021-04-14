@@ -30,6 +30,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/",
+            "baseHref": "/finance",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,6 +59,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "/finance",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -144,7 +146,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "/finance/"
+            "baseHref": "/finance"
           }
         }
       }
