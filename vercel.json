@@ -2,16 +2,16 @@
     "trailingSlash": false,
     "rewrites": [
         {
-            "source": "/finance/:asset*.css",
-            "destination": "/he/:asset*.css"
-        },
-        {
             "source": "/finance",
             "destination": "/he/index.html"
         },
         {
             "source": "/finance/:page*",
             "destination": "/he/index.html"
+        },
+        {
+            "source": "/:asset*",
+            "destination": "/he/:asset*"
         }
     ]
 }
