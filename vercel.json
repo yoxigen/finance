@@ -12,6 +12,10 @@
         {
             "source": "/:asset*",
             "destination": "/he/:asset*"
+        },
+        {
+            "source": "/fabicon.svg",
+            "destination": "/he/fabicon.svg"
         }
     ]
 }
